@@ -69,8 +69,8 @@ $config = [
                         'yii\base\InvalidValueException*',
                     ],
                     'message' => [
-                       'from' => getenv('ADMIN_EMAIL'),
-                       'to' => getenv('ENGINEER_EMAIL'),
+                       'from' => [getenv('ADMIN_EMAIL')],
+                       'to' => [getenv('ENGINEER_EMAIL')],
                        'subject' => 'Error occured, Please attention!',
                     ],
                 ],

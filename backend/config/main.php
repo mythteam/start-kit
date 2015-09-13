@@ -24,6 +24,11 @@ return [
             'errorAction' => 'site/error',
         ],
         'urlManager' => require '_urlManager.php',
+        'assetManager' => [
+            'class' => 'yii\web\AssetManager',
+            'appendTimestamp' => YII_ENV_DEV,
+            'bundles' => YII_ENV_DEV ? [] : require 'asset-bundles.php',
+        ],
     ],
     'params' => array_merge(
         require (__DIR__ . '/../../common/config/params.php'),
