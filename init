@@ -1,0 +1,162 @@
+#!/usr/bin/env php
+<?php
+/**
+ * Yii Application Initialization Tool
+ *
+ * In order to run in non-interactive mode:
+ *
+ * init --env=Development --overwrite=n
+ *
+ * @author Alexander Makarov <sam@rmcreative.ru>
+ *
+ * @link http://www.yiiframework.com/
+ * @copyright Copyright (c) 2008 Yii Software LLC
+ * @license http://www.yiiframework.com/license/
+ */
+
+if (!extension_loaded('mcrypt')) {
+    die('The mcrypt PHP extension is required by Yii2.');
+}
+$params = getParams();
+$root = str_replace('\\', '/', __DIR__);
+
+echo "\n  Initialize the application? [yes|no] ";
+$answer = trim(fgets(STDIN));
+if (strncasecmp($answer, 'y', 1)) {
+    echo "\n  Quit initialization.\n";
+    exit(0);
+}
+$env = [
+    'setWritable' => [
+        'backend/runtime',
+        'backend/web/assets',
+        'frontend/runtime',
+        'frontend/web/assets',
+    ],
+    'setExecutable' => [
+        'yii',
+    ],
+    'setCookieValidationKey' => [
+        '.env',
+    ],
+];
+
+echo "\n  Start initialization ...\n\n";
+
+//copy .env file
+copyFile($root, '.env.example', '.env', false, $params);
+
+$callbacks = ['setCookieValidationKey', 'setWritable', 'setExecutable'];
+foreach ($callbacks as $callback) {
+    if (!empty($env[$callback])) {
+        $callback($root, $env[$callback]);
+    }
+}
+
+echo "\n  ... initialization completed.\n\n";
+
+function copyFile($root, $source, $target, $all, $params)
+{
+    if (!is_file($root . '/' . $source)) {
+        echo "       skip $target ($source not exist)\n";
+        return true;
+    }
+    if (is_file($root . '/' . $target)) {
+        if (file_get_contents($root . '/' . $source) === file_get_contents($root . '/' . $target)) {
+            echo "  unchanged $target\n";
+            return true;
+        }
+        if ($all) {
+            echo "  overwrite $target\n";
+        } else {
+            echo "      exist $target\n";
+            echo "            ...overwrite? [Yes|No|All|Quit] ";
+
+
+            $answer = !empty($params['overwrite']) ? $params['overwrite'] : trim(fgets(STDIN));
+            if (!strncasecmp($answer, 'q', 1)) {
+                return false;
+            } else {
+                if (!strncasecmp($answer, 'y', 1)) {
+                    echo "  overwrite $target\n";
+                } else {
+                    if (!strncasecmp($answer, 'a', 1)) {
+                        echo "  overwrite $target\n";
+                        $all = true;
+                    } else {
+                        echo "       skip $target\n";
+                        return true;
+                    }
+                }
+            }
+        }
+        file_put_contents($root . '/' . $target, file_get_contents($root . '/' . $source));
+        return true;
+    }
+    echo "   generate $target\n";
+    @mkdir(dirname($root . '/' . $target), 0777, true);
+    file_put_contents($root . '/' . $target, file_get_contents($root . '/' . $source));
+    return true;
+}
+
+function setWritable($root, $paths)
+{
+    foreach ($paths as $writable) {
+        echo "      chmod 0777 $writable\n";
+        @chmod("$root/$writable", 0777);
+    }
+}
+
+function getParams()
+{
+    $rawParams = [];
+    if (isset($_SERVER['argv'])) {
+        $rawParams = $_SERVER['argv'];
+        array_shift($rawParams);
+    }
+
+    $params = [];
+    foreach ($rawParams as $param) {
+        if (preg_match('/^--(\w+)(=(.*))?$/', $param, $matches)) {
+            $name = $matches[1];
+            $params[$name] = isset($matches[3]) ? $matches[3] : true;
+        } else {
+            $params[] = $param;
+        }
+    }
+    return $params;
+}
+
+function setExecutable($root, $paths)
+{
+    foreach ($paths as $executable) {
+        echo "      chmod 0755 $executable\n";
+        @chmod("$root/$executable", 0755);
+    }
+}
+
+function setCookieValidationKey($root, $paths)
+{
+    foreach ($paths as $file) {
+        echo "   generate cookie validation key in $file\n";
+        $file = $root . '/' . $file;
+        $length = 32;
+        $content = preg_replace_callback('/(<generated_cookie_validation_key>)/', function($matches) use ($length) {
+            $bytes = mcrypt_create_iv($length, MCRYPT_DEV_URANDOM);
+            $key = strtr(substr(base64_encode($bytes), 0, $length), '+/=', '_-.');
+            return $key;
+        }, file_get_contents($file));
+        
+        file_put_contents($file, $content);
+    }
+}
+
+function createSymlink($links)
+{
+    foreach ($links as $link => $target) {
+        echo "    symlink $target as $link\n";
+        if (!is_link($link)) {
+            symlink($target, $link);
+        }
+    }
+}
