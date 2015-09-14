@@ -1,0 +1,20 @@
+{
+	"name": "start-kit-webpack",
+	"version": "1.0.0",
+	"description": "Yii2 Gulp",
+	"keywords": [
+	  "tools",
+	  "Yii2",
+	  "Gulp",
+	  "gulp"
+	],
+	"author": "lichunqiang<light-li@hotmail.com>",
+	"license": "ISC",
+	"dependencies": {
+	  "gulp": "*",
+		"gulp-uglify": "*",
+		"minimist": "*",
+		"gulp-rename": "*",
+		"gulp-css": "*"
+	}
+}
