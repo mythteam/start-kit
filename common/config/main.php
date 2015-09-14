@@ -50,13 +50,6 @@ $config = [
                     'logFile' => '@runtime/logs/error_{date}.log',
                 ],
                 [
-                    'class' => 'common\components\log\FileTarget',
-                    'levels' => ['info'],
-                    'logFile' => '@runtime/logs/__jserror_{date}.log',
-                    'logVars' => ['_SESSION' ,'_SERVER'],
-                    'categories' => ['__jserror'],
-                ],
-                [
                     'class' => 'yii\log\EmailTarget',
                     'levels' => ['error'],
                     'enabled' => !YII_DEBUG,
