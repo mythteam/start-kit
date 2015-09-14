@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "dd45b6fcd8b302bfef7cae056fc89d8b",
+    "hash": "d4dbc28bf3b6ad956288eb701e6ff4c5",
     "packages": [
         {
             "name": "bower-asset/bootstrap",
@@ -503,16 +503,16 @@
         },
         {
             "name": "kartik-v/yii2-widget-select2",
-            "version": "v2.0.2",
+            "version": "v2.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kartik-v/yii2-widget-select2.git",
-                "reference": "585e8797d7982e0c9d09370b98b451a028a59439"
+                "reference": "e72880e7e8dfc845c112ed7df275bf1c929be6db"
             },
             "dist": {
                 "type": "zip",
-                "url": "http://packagist.phpcomposer.com/files/kartik-v/yii2-widget-select2/585e8797d7982e0c9d09370b98b451a028a59439.zip",
-                "reference": "585e8797d7982e0c9d09370b98b451a028a59439",
+                "url": "http://packagist.phpcomposer.com/files/kartik-v/yii2-widget-select2/e72880e7e8dfc845c112ed7df275bf1c929be6db.zip",
+                "reference": "e72880e7e8dfc845c112ed7df275bf1c929be6db",
                 "shasum": ""
             },
             "require": {
@@ -547,7 +547,7 @@
                 "widget",
                 "yii2"
             ],
-            "time": "2015-07-01 15:20:59"
+            "time": "2015-09-12 19:56:48"
         },
         {
             "name": "swiftmailer/swiftmailer",
