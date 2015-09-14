@@ -5,7 +5,8 @@
 
 // In the console environment, some path aliases may not exist. Please define these:
 Yii::setAlias('@webroot', __DIR__ . '/../../frontend/web');
-Yii::setAlias('@web', getenv('FRONTEND_URL'));
+Yii::setAlias('@web', '/');
+Yii::setAlias('@cdn', getenv('FRONTEND_URL'));
 
 return [
     // Adjust command/callback for JavaScript files compressing:
@@ -27,7 +28,7 @@ return [
         'application' => [
             'class' => 'yii\web\AssetBundle',
             'basePath' => '@webroot/assets',
-            'baseUrl' => '@web/assets',
+            'baseUrl' => '@cdn/assets',
             'js' => 'application-{hash}.js',
             'css' => 'application-{hash}.css',
             'depends' => [
@@ -38,10 +39,18 @@ return [
                 'yii\bootstrap\BootstrapPluginAsset',
             ],
         ],
+        'site' => [
+            'class' => 'yii\web\AssetBundle',
+            'basePath' => '@webroot/assets',
+            'baseUrl' => '@cdn/assets',
+            'js' => 'site-{hash}.js',
+            'css' => 'site-{hash}.css',
+            'depends' => [], //剩下bundle全被打包到这里
+        ],
     ],
     // Asset manager configuration:
     'assetManager' => [
         'basePath' => '@webroot/assets',
-        'baseUrl' => '@web/assets',
+        'baseUrl' => '@cdn/assets',
     ],
 ];

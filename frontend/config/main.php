@@ -29,6 +29,7 @@ return [
         'assetManager' => [
             'class' => 'yii\web\AssetManager',
             'appendTimestamp' => YII_ENV_DEV,
+            'baseUrl' => '@cdn/assets',
             'bundles' => YII_ENV_DEV ? [] : require 'asset-bundles.php',
         ],
     ],
