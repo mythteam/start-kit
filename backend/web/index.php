@@ -1,8 +1,6 @@
 <?php
 /*Composer autoload*/
 require(__DIR__ . '/../../vendor/autoload.php');
-/*Load env variables*/
-require(__DIR__ . '/../../common/env.php');
 require(__DIR__ . '/../../vendor/yiisoft/yii2/Yii.php');
 require(__DIR__ . '/../../common/config/bootstrap.php');
 require(__DIR__ . '/../config/bootstrap.php');

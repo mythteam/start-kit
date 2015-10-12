@@ -1,36 +1,41 @@
 {
-    "name": "mythteam/starter-kit",
-    "description": "Project Template Based On the Yii2 advanced template",
-    "keywords": ["yii2", "framework", "advanced", "project template"],
-    "homepage": "http://www.mythteam.com/",
-    "type": "project",
-    "license": "MIT",
-    "support": {
-        "issues": "https://github.com/mythteam/start-kit/issues?state=open",
-        "wiki": "https://github.com/mythteam/start-kit/wiki",
-        "source": "https://github.com/mythteam/start-kit"
-    },
-    "minimum-stability": "stable",
-    "require": {
-        "php": ">=5.4.0",
-        "yiisoft/yii2": ">=2.0.6",
-        "yiisoft/yii2-bootstrap": "*",
-        "yiisoft/yii2-swiftmailer": "*",
-        "vlucas/phpdotenv": "~2.0"
-    },
-    "require-dev": {
-        "yiisoft/yii2-codeception": "*",
-        "yiisoft/yii2-debug": "*",
-        "yiisoft/yii2-gii": "*",
-        "yiisoft/yii2-faker": "*"
-    },
-    "config": {
-        "process-timeout": 1800
-    },
-    "extra": {
-        "asset-installer-paths": {
-            "npm-asset-library": "vendor/npm",
-            "bower-asset-library": "vendor/bower"
-        }
+  "name": "mythteam/starter-kit",
+  "description": "Project Template Based On the Yii2 advanced template",
+  "keywords": ["yii2", "framework", "advanced", "project template"],
+  "homepage": "http://www.mythteam.com/",
+  "type": "project",
+  "license": "MIT",
+  "support": {
+    "issues": "https://github.com/mythteam/start-kit/issues?state=open",
+    "wiki": "https://github.com/mythteam/start-kit/wiki",
+    "source": "https://github.com/mythteam/start-kit"
+  },
+  "minimum-stability": "stable",
+  "require": {
+    "php": ">=5.4.0",
+    "yiisoft/yii2": ">=2.0.6",
+    "yiisoft/yii2-bootstrap": "*",
+    "yiisoft/yii2-swiftmailer": "*",
+    "vlucas/phpdotenv": "~2.0"
+  },
+  "require-dev": {
+    "yiisoft/yii2-codeception": "*",
+    "yiisoft/yii2-debug": "*",
+    "yiisoft/yii2-gii": "*",
+    "yiisoft/yii2-faker": "*"
+  },
+  "autoload": {
+    "files": [
+      "common/env.php"
+    ]
+  },
+  "config": {
+    "process-timeout": 1800
+  },
+  "extra": {
+    "asset-installer-paths": {
+      "npm-asset-library": "vendor/npm",
+      "bower-asset-library": "vendor/bower"
     }
+  }
 }
