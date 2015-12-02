@@ -14,8 +14,8 @@ $config = [
         ],
         'mailer' => [
             'class' => 'yii\swiftmailer\Mailer',
-            'viewPath' => '@common/mail',
-            'htmlLayout' => '@common/mail/layouts/transactional.php',
+            'viewPath' => '@common/business/mail/views',
+            'htmlLayout' => '@common/business/mail/views/layouts/main.php',
             // send all mails to a file by default. You have to set
             // 'useFileTransport' to false and configure a transport
             // for the mailer to send real emails.
@@ -73,6 +73,11 @@ $config = [
         'cache' => [
             'class' => YII_DEBUG ? 'yii\caching\DummyCache' : 'yii\caching\FileCache',
         ],
+        'redis' => [
+            'class' => 'yii\redis\Connection',
+            'hostname' => getenv('REDIS_HOST'),
+            'port' => getenv('REDIS_PORT'),
+        ],
         'i18n' => [
             'translations' => [
                 'app*' => [
@@ -98,6 +103,35 @@ if (YII_DEBUG) {
 if (YII_ENV_DEV) {
     $config['modules']['gii'] = [
         'class' => 'yii\gii\Module',
+        'generators' => [
+            'module' => [
+                'class' => 'yii\gii\generators\module\Generator',
+                'templates' => [
+                    'common' => '@common/components/generators/module/common',
+                ],
+            ],
+            'crud' => [
+                'class' => 'yii\gii\generators\crud\Generator',
+                'templates' => [
+                    'common' => '@common/components/generators/crud/common',
+                ],
+            ],
+            'model' => [
+                'class' => 'yii\gii\generators\model\Generator',
+                'templates' => [
+                    'common' => '@common/components/generators/model/common',
+                ],
+            ],
+            'mailer' => [
+                'class' => 'common\components\generators\mailer\Generator',
+            ],
+            'controller' => [
+                'class' => 'yii\gii\generators\controller\Generator',
+                'templates' => [
+                    'common' => '@common/components/generators/controller/common',
+                ],
+            ],
+        ],
     ];
 }
 

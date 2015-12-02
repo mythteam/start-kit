@@ -29,8 +29,11 @@
     "fabpot/php-cs-fixer": "^1.11"
   },
   "autoload": {
+    "psr-4": {
+    },
     "files": [
-      "common/env.php"
+      "common/env.php",
+      "common/helpers/helpers.php"
     ]
   },
   "config": {

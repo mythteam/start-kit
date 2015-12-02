@@ -12,6 +12,14 @@ return [
                     'class' => 'yii\log\FileTarget',
                     'levels' => ['error', 'warning'],
                 ],
+                [
+                    'class' => 'yii\log\FileTarget',
+                    'levels' => ['info'],
+                    'logFile' => '@runtime/logs/db.log',
+                    'logVars' => [],
+                    'categories' => ['yii\db*'],
+                    'enabled' => YII_DEBUG,
+                ],
             ],
         ],
     ],
@@ -22,5 +30,7 @@ return [
         require(__DIR__ . '/../../common/config/params.php'),
         require(__DIR__ . '/params.php')
     ),
-
+    'controllerMap' => [
+        'migrate' => 'console\controllers\MigrateController',
+    ],
 ];

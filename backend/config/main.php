@@ -14,8 +14,10 @@ return [
             'cookieValidationKey' => getenv('BACKEND_COOKIE_VALIDATION_KEY'),
         ],
         'user' => [
-            'identityClass' => 'common\models\User',
+            'identityClass' => 'common\models\Webmaster',
             'enableAutoLogin' => true,
+            'as afterLogin' => 'backend\components\behaviors\AfterLoginBehavior',
+            'authTimeout' => 3600, //auto logout 60 mins
         ],
         'cache' => [
             'keyPrefix' => 'frontend',
@@ -34,4 +36,11 @@ return [
         require(__DIR__ . '/../../common/config/params.php'),
         require(__DIR__ . '/params.php')
     ),
+    'as access' => [
+        'class' => 'yii\filters\AccessControl',
+        'except' => ['site/login'],
+        'rules' => [
+            ['allow' => true, 'roles' => ['@']],
+        ],
+    ],
 ];

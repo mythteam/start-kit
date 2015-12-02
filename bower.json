@@ -1,0 +1,27 @@
+{
+  "name": "start-kit",
+  "version": "0.0.0",
+  "authors": [
+    "lichunqiang <light-li@hotmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [
+    "globals"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "vendor/bower",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "font-awesome": "~4.4.0",
+    "metisMenu": "~2.2.0"
+  }
+}

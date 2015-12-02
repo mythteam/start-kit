@@ -1,41 +1,22 @@
-html,
-body {
-    height: 100%;
-}
-
-.wrap {
-    min-height: 100%;
-    height: auto;
-    margin: 0 auto -60px;
-    padding: 0 0 60px;
-}
-
-.wrap > .container {
-    padding: 70px 15px 20px;
-}
-
-.footer {
-    height: 60px;
-    background-color: #f5f5f5;
-    border-top: 1px solid #ddd;
-    padding-top: 20px;
-}
-
-.jumbotron {
-    text-align: center;
-    background-color: transparent;
-}
-
-.jumbotron .btn {
-    font-size: 21px;
-    padding: 14px 24px;
-}
+/* common */
+.ml40 {margin-left: 40px;}
+.mt50 {margin-top: 50px;}
+.mt10 {margin-top: 10px;}
+.pt20 {padding-top: 20px;}
+.mb15 {margin-bottom: 15px;}
+.pt15 {padding-top: 15px;}
 
 .not-set {
     color: #c55;
     font-style: italic;
 }
 
+.footer {
+  height: 60px;
+  background-color: #f5f5f5;
+  border-top: 1px solid #ddd;
+  padding-top: 20px;
+}
 /* add sorting icons to gridview sort links */
 a.asc:after, a.desc:after {
     position: relative;
@@ -89,3 +70,5 @@ a.desc:after {
     padding: 10px 20px;
     margin: 0 0 15px 0;
 }
+td, th {text-align: center;}
+.detail-dl dt, .detail-dl dd {line-height: 2.428571;}
