@@ -17,14 +17,16 @@
     "yiisoft/yii2-bootstrap": "*",
     "yiisoft/yii2-swiftmailer": "*",
     "vlucas/phpdotenv": "~2.0",
-    "dektrium/yii2-user": "~0.9",
-    "dektrium/yii2-rbac": "*"
+    "light/yii2-sweet-submit": "~1.0.0",
+    "light/yii2-ajaxform": "~1.0.0",
+    "light/yii2-lock-form": "~1.0.0"
   },
   "require-dev": {
     "yiisoft/yii2-codeception": "*",
     "yiisoft/yii2-debug": "*",
     "yiisoft/yii2-gii": "*",
-    "yiisoft/yii2-faker": "*"
+    "yiisoft/yii2-faker": "*",
+    "fabpot/php-cs-fixer": "^1.11"
   },
   "autoload": {
     "files": [
@@ -39,5 +41,10 @@
       "npm-asset-library": "vendor/npm",
       "bower-asset-library": "vendor/bower"
     }
+  },
+  "scripts": {
+    "cs": [
+      "vendor/bin/php-cs-fixer fix --verbose"
+    ]
   }
 }
