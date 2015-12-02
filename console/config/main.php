@@ -1,4 +1,5 @@
 <?php
+
 return [
     'id' => 'app-console',
     'basePath' => dirname(__DIR__),
@@ -18,8 +19,8 @@ return [
         'gii' => 'yii\gii\Module',
     ],
     'params' => array_merge(
-        require (__DIR__ . '/../../common/config/params.php'),
-        require (__DIR__ . '/params.php')
+        require(__DIR__ . '/../../common/config/params.php'),
+        require(__DIR__ . '/params.php')
     ),
 
 ];

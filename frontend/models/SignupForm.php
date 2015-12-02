@@ -1,12 +1,12 @@
 <?php
+
 namespace frontend\models;
 
 use common\models\User;
 use yii\base\Model;
-use Yii;
 
 /**
- * Signup form
+ * Signup form.
  */
 class SignupForm extends Model
 {
@@ -15,7 +15,7 @@ class SignupForm extends Model
     public $password;
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function rules()
     {
@@ -54,6 +54,6 @@ class SignupForm extends Model
             }
         }
 
-        return null;
+        return;
     }
 }

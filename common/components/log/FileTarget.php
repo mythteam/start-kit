@@ -1,4 +1,6 @@
-<?php namespace common\components\log;
+<?php
+
+namespace common\components\log;
 
 use Yii;
 use yii\base\InvalidConfigException;
@@ -6,7 +8,7 @@ use yii\helpers\FileHelper;
 use yii\log\Target;
 
 /**
- * 按照时间来创建日志
+ * 按照时间来创建日志.
  */
 class FileTarget extends Target
 {
@@ -15,23 +17,27 @@ class FileTarget extends Target
      */
     public $logFile;
     /**
-     * 每个文件最大存储量,以kb为单位。默认为10M
-     * @var integer
+     * 每个文件最大存储量,以kb为单位。默认为10M.
+     *
+     * @var int
      */
     public $maxFileSize = 10240; // 10M
     /**
-     * 创建文件的权限
-     * @var integer
+     * 创建文件的权限.
+     *
+     * @var int
      */
     public $dirMode = 0775;
     /**
-     * 文件模式
+     * 文件模式.
+     *
      * @var int
      */
     public $fileMode;
     /**
-     * 最多创建日之爱文件个数
-     * @var integer
+     * 最多创建日之爱文件个数.
+     *
+     * @var int
      */
     public $maxLogFiles = 5;
 
@@ -39,10 +45,9 @@ class FileTarget extends Target
 
     public $rotateByCopy = true;
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      *
      * 进行变量等初始化工作
-     * @return null
      */
     public function init()
     {
@@ -66,7 +71,7 @@ class FileTarget extends Target
         }
     }
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function export()
     {
