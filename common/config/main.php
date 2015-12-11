@@ -77,6 +77,7 @@ $config = [
             'class' => 'yii\redis\Connection',
             'hostname' => getenv('REDIS_HOST'),
             'port' => getenv('REDIS_PORT'),
+            'password' => getenv('REDIS_PASS') ?: null,
         ],
         'i18n' => [
             'translations' => [
