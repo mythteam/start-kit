@@ -13,22 +13,23 @@
   "minimum-stability": "stable",
   "require": {
     "php": ">=5.4.0",
-    "yiisoft/yii2": "~2.0.6",
-    "yiisoft/yii2-bootstrap": "~2.0.5",
-    "yiisoft/yii2-swiftmailer": "~2.0.4",
-    "yiisoft/yii2-authclient": "~2.0.5",
-    "yiisoft/yii2-authclient": "~2.0.4",
-    "vlucas/phpdotenv": "~2.0",
-    "light/yii2-sweet-submit": "~1.0.0",
     "light/yii2-ajaxform": "~1.0.0",
-    "light/yii2-lock-form": "~1.0.0"
+    "light/yii2-lock-form": "~1.0.0",
+    "light/yii2-sweet-submit": "~1.0.0",
+    "vlucas/phpdotenv": "~2.0",
+    "yiisoft/yii2": "~2.0.6",
+    "yiisoft/yii2-authclient": "~2.0.5",
+    "yiisoft/yii2-bootstrap": "~2.0.5",
+    "yiisoft/yii2-redis": "*",
+    "yiisoft/yii2-swiftmailer": "~2.0.4"
   },
   "require-dev": {
     "yiisoft/yii2-codeception": "*",
     "yiisoft/yii2-debug": "*",
     "yiisoft/yii2-gii": "*",
     "yiisoft/yii2-faker": "*",
-    "fabpot/php-cs-fixer": "^1.11"
+    "fabpot/php-cs-fixer": "^1.11",
+    "light/yii2-generators": "~0.1.2"
   },
   "autoload": {
     "psr-4": {
@@ -48,6 +49,12 @@
     }
   },
   "scripts": {
+    "post-install-cmd": [
+      "bower install --allow-root"
+    ],
+    "post-update-cmd": [
+      "bower install --allow-root"
+    ],
     "cs": [
       "vendor/bin/php-cs-fixer fix --verbose"
     ]

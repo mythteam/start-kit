@@ -63,9 +63,9 @@ $config = [
                         'yii\base\InvalidValueException*',
                     ],
                     'message' => [
-                       'from' => [getenv('ADMIN_EMAIL')],
-                       'to' => [getenv('ENGINEER_EMAIL')],
-                       'subject' => 'Error occured, Please attention!',
+                        'from' => [getenv('ADMIN_EMAIL')],
+                        'to' => [getenv('ENGINEER_EMAIL')],
+                        'subject' => 'Error occured, Please attention!',
                     ],
                 ],
             ],
@@ -105,32 +105,35 @@ if (YII_ENV_DEV) {
     $config['modules']['gii'] = [
         'class' => 'yii\gii\Module',
         'generators' => [
-            'module' => [
-                'class' => 'yii\gii\generators\module\Generator',
-                'templates' => [
-                    'common' => '@common/components/generators/module/common',
-                ],
-            ],
             'crud' => [
-                'class' => 'yii\gii\generators\crud\Generator',
-                'templates' => [
-                    'common' => '@common/components/generators/crud/common',
-                ],
+                'class' => 'light\generators\crud\Generator',
             ],
             'model' => [
                 'class' => 'yii\gii\generators\model\Generator',
                 'templates' => [
-                    'common' => '@common/components/generators/model/common',
+                    'light' => '@vendor/light/yii2-generators/model/default',
                 ],
-            ],
-            'mailer' => [
-                'class' => 'common\components\generators\mailer\Generator',
             ],
             'controller' => [
                 'class' => 'yii\gii\generators\controller\Generator',
                 'templates' => [
                     'common' => '@common/components/generators/controller/common',
                 ],
+            ],
+            'form' => [
+                'class' => 'light\generators\form\Generator',
+            ],
+            'module' => [
+                'class' => 'yii\gii\generators\module\Generator',
+                'templates' => [
+                    'light' => '@vendor/light/yii2-generators/module/common',
+                ],
+            ],
+            'extension' => [
+                'class' => 'light\generators\extension\Generator',
+            ],
+            'mailer' => [
+                'class' => 'common\components\generators\mailer\Generator',
             ],
         ],
     ];

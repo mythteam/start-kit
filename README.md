@@ -1,7 +1,17 @@
-# start-kit
+start-kit
+---------
+
+[![version](https://img.shields.io/packagist/v/mythteam/starter-kit.svg?style=flat-square)](https://packagist.org/packages/mythteam/starter-kit)
+[![Download](https://img.shields.io/packagist/dd/mythteam/starter-kit.svg?style=flat-square)](https://packagist.org/packages/mythteam/starter-kit)
 
 start project
 
+
+## Usage
+
+```
+$composer create-project mythteam/starter-kit appname
+```
 
 
 ## Thanks to

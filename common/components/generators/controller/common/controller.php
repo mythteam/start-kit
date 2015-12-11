@@ -8,10 +8,12 @@ use yii\helpers\StringHelper;
 /* @var $this yii\web\View */
 /* @var $generator yii\gii\generators\controller\Generator */
 
-echo '<?php ';
-?>namespace <?= $generator->getControllerNamespace() ?>;
+echo "<?php\n";
+?>
 
-use common\traits\MethodInjectionTrait;
+namespace <?= $generator->getControllerNamespace() ?>;
+
+use Yii;
 
 /**
  *
@@ -19,8 +21,6 @@ use common\traits\MethodInjectionTrait;
  */
 class <?= StringHelper::basename($generator->controllerClass) ?> extends <?= '\\' . trim($generator->baseClass, '\\') . "\n" ?>
 {
-    use MethodInjectionTrait;
-
     /**
      * @inheritdoc
      */
