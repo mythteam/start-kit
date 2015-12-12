@@ -1,6 +1,6 @@
 <?php
+
 use console\components\db\Migration;
-use yii\helpers\Console;
 
 class m151202_100954_init extends Migration
 {

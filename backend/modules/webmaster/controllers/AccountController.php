@@ -119,8 +119,8 @@ class AccountController extends Controller
      * @param int $id
      *
      * @throws NotFoundHttpException if the model cannot be found
-     * @return Webmaster the loaded model
      *
+     * @return Webmaster the loaded model
      */
     protected function findModel($id)
     {

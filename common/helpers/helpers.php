@@ -36,7 +36,7 @@ function data($filename)
 }
 
 /**
- * Get file alias
+ * Get file alias.
  */
 function alias($alias)
 {
@@ -44,9 +44,9 @@ function alias($alias)
 }
 
 /**
- * Get Yii::Application or a component
+ * Get Yii::Application or a component.
  *
- * @param  string|null $components
+ * @param string|null $components
  *
  * @return mixed
  */
@@ -59,7 +59,7 @@ function app($components = null)
     }
 }
 /**
- * 创建类实例
+ * 创建类实例.
  *
  * @see Yii::createObject
  */
@@ -86,7 +86,7 @@ function response()
 /**
  * ~~~
  * user()->isGuest ? echo 'Hello guest' : echo 'Hello boby';
- * ~~~
+ * ~~~.
  *
  * @return \yii\web\User
  */

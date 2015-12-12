@@ -192,8 +192,8 @@ class SiteController extends Controller
      * @param string $token
      *
      * @throws BadRequestHttpException
-     * @return mixed
      *
+     * @return mixed
      */
     public function actionResetPassword($token)
     {
