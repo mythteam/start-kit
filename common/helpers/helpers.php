@@ -65,7 +65,7 @@ function app($components = null)
  */
 function make($type, array $params = [])
 {
-    return \Yii::createObject($tyep, $params);
+    return \Yii::createObject($type, $params);
 }
 
 /**
