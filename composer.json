@@ -49,6 +49,9 @@
     }
   },
   "scripts": {
+    "post-create-project-cmd": [
+      "composer global require fxp/composer-asset-plugin=~1.1.1"
+    ],
     "post-install-cmd": [
       "bower install --allow-root"
     ],
