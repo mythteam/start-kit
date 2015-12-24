@@ -11,6 +11,7 @@ $config = [
             'tablePrefix' => getenv('DB_TABLE_PREFIX'),
             'enableSchemaCache' => YII_DEBUG,
             'charset' => 'utf8',
+            'schemaCache' => 'rcache',
         ],
         'mailer' => [
             'class' => 'yii\swiftmailer\Mailer',
@@ -78,6 +79,9 @@ $config = [
             'hostname' => getenv('REDIS_HOST'),
             'port' => getenv('REDIS_PORT'),
             'password' => getenv('REDIS_PASS') ?: null,
+        ],
+        'rcache' => [
+            'class' => 'yii\redis\Cache',
         ],
         'i18n' => [
             'translations' => [
