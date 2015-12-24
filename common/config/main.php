@@ -53,7 +53,7 @@ $config = [
                 [
                     'class' => 'yii\log\EmailTarget',
                     'levels' => ['error'],
-                    'enabled' => !YII_DEBUG,
+                    'enabled' => getenv('EMAIL_LOGGER') == 1,
                     'categories' => [
                         'yii\db\*',
                         'yii\base\ErrorException*',
