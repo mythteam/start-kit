@@ -40,7 +40,9 @@
     ]
   },
   "config": {
-    "process-timeout": 1800
+    "process-timeout": 1800,
+    "preferred-install": "dist",
+    "optimize-autoloader": true
   },
   "extra": {
     "asset-installer-paths": {
