@@ -31,6 +31,9 @@
     "fabpot/php-cs-fixer": "^1.11",
     "light/yii2-generators": "~0.1.2"
   },
+  "suggest": {
+    "bocharsky-bw/file-naming-resolver": "A lightweight library to resolve uploaded files and directories naming using various naming strategies"
+  },
   "autoload": {
     "psr-4": {
     },
