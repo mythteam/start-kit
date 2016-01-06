@@ -29,13 +29,13 @@ return [
         'urlManager' => require __DIR__ . '/_urlManager.php',
         'assetManager' => [
             'class' => 'yii\web\AssetManager',
-            'appendTimestamp' => YII_ENV_DEV,
+            'appendTimestamp' => !YII_ENV_PROD,
             'baseUrl' => '@cdn/assets',
-            'bundles' => YII_ENV_DEV ? [] : require 'asset-bundles.php',
+            'bundles' => YII_ENV_PROD ? require 'asset-bundles.php' : [],
         ],
     ],
     'params' => array_merge(
-        require(__DIR__ . '/../../common/config/params.php'),
-        require(__DIR__ . '/params.php')
+        require (__DIR__ . '/../../common/config/params.php'),
+        require (__DIR__ . '/params.php')
     ),
 ];
