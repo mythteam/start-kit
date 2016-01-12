@@ -21,7 +21,8 @@
     "yiisoft/yii2-authclient": "~2.0.5",
     "yiisoft/yii2-bootstrap": "~2.0.5",
     "yiisoft/yii2-redis": "~2.0.4",
-    "yiisoft/yii2-swiftmailer": "~2.0.4"
+    "yiisoft/yii2-swiftmailer": "~2.0.4",
+    "phpbu/phpbu": "2.1.*"
   },
   "require-dev": {
     "yiisoft/yii2-codeception": "*",
@@ -64,6 +65,9 @@
     ],
     "cs": [
       "php-cs-fixer fix --verbose"
+    ],
+    "backup": [
+      "vendor/bin/phpbu --configuration=./backup/phpbu.xml.dist"
     ]
   }
 }

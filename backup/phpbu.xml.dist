@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpbu xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="http://schema.phpbu.de/2.1/phpbu.xsd"
+       verbose="true">
+
+  <!-- <logging>
+    <log type="json" target="/tmp/logfile.json"/>
+  </logging> -->
+
+  <backups>
+    <backup>
+      <!-- data to backup -->
+      <source type="mysqldump">
+        <option name="host" value="localhost"/>
+        <option name="databases" value="iyuban"/>
+        <option name="user" value="root"/>
+        <option name="password" value="1221212"/>
+        <!-- <option name="ignoreTables" value=""/> -->
+        <!-- <option name="structureOnly" value="dbname.table1,dbname.table2"/> -->
+      </source>
+
+      <!-- where should the backup be stored -->
+      <target dirname="mysql" filename="mysqldump-%Y%m%d-%H%i.sql" compress="bzip2"/>
+
+      <!-- do some sanity checks to make sure everything worked as planned -->
+      <check type="sizemin" value="2M"/>
+
+      <!-- sync backup to some location or service -->
+      <!-- <sync type="sftp">
+        <option name="host" value="example.com"/>
+        <option name="user" value="user.name"/>
+        <option name="password" value="topsecret"/>
+        <option name="path" value="some/dir"/>
+      </sync> -->
+
+      <!-- deletes old backups -->
+      <cleanup type="outdated">
+        <option name="older" value="1M"/>
+      </cleanup>
+    </backup>
+    <backup>
+      <source type="tar">
+        <option name="path" value="tools"/>
+      </source>
+
+      <target dirname="tools" filename="%Y%m%d-%H%i.zip" compress="bzip2"/>
+    </backup>
+  </backups>
+</phpbu>
