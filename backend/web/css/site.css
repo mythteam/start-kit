@@ -1,3 +1,34 @@
+body,html {
+  height: 100%;
+  font-size: 14px;
+  color: #333;
+  font-family: lato-regular,"Helvetica Neue",Helvetica,Arial,"Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  background: #DFDFDF;
+  -webkit-font-smoothing: antialiased
+}
+
+.navbar-default {
+  background-color: #fff
+}
+
+#wrapper {
+  background-color: #fff;
+}
+
+.alert {
+  box-shadow: 4px 4px 5px 0 rgba(50,50,50,.19)
+}
+label {font-weight: normal;}
+
+.panel .panel-heading h3 {
+  color: #999;
+  font-size: 14px;
+}
+
+.table-bordered > thead > tr > th, .table-bordered > thead > tr > td {
+  border-bottom-width: 1px;
+}
+
 /* common */
 .ml40 {margin-left: 40px;}
 .mt50 {margin-top: 50px;}
