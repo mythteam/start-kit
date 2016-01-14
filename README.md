@@ -13,13 +13,15 @@ start project
 $composer create-project mythteam/starter-kit appname
 ```
 
+## Advance
+
+* beauty backend ui and some basic functions
+* redeay to minify the assets
+* and more
 
 ## Thanks to
 
-* [phpdotenv](https://github.com/vlucas/phpdotenv)
 * [yii2-starter-kit](https://github.com/trntv/yii2-starter-kit)
-* [yii2-user](https://github.com/dektrium/yii2-user)
-* [yii2-rbac](https://github.com/dektrium/yii2-rbac)
 
 
 [![Yii2](https://img.shields.io/badge/Powered_by-Yii_Framework-green.svg?style=flat)](http://www.yiiframework.com/)
