@@ -5,10 +5,10 @@ $config = [
     'components' => [
         'db' => [
             'class' => 'yii\db\Connection',
-            'dsn' => getenv('DB_DSN'),
-            'username' => getenv('DB_USERNAME'),
-            'password' => getenv('DB_PASSWORD'),
-            'tablePrefix' => getenv('DB_TABLE_PREFIX'),
+            'dsn' => env('DSN'),
+            'username' => env('USERNAME'),
+            'password' => env('PASSWORD'),
+            'tablePrefix' => env('TABLE_PREFIX'),
             'enableSchemaCache' => YII_DEBUG,
             'charset' => 'utf8',
             'schemaCache' => 'rcache',
@@ -23,10 +23,10 @@ $config = [
             'useFileTransport' => YII_DEBUG,
             'transport' => [
                 'class' => 'Swift_SmtpTransport',
-                'host' => getenv('SMTP_HOST'),
-                'username' => getenv('SMTP_USERNAME'),
-                'password' => getenv('SMTP_PASSWORD'),
-                'port' => getenv('SMTP_PORT') ?: '25',
+                'host' => env('email.SMTP_HOST'),
+                'username' => env('email.SMTP_USERNAME'),
+                'password' => env('email.SMTP_PASSWORD'),
+                'port' => env('email.SMTP_PORT') ?: '25',
             ],
         ],
         'formatter' => [
@@ -54,7 +54,7 @@ $config = [
                 [
                     'class' => 'yii\log\EmailTarget',
                     'levels' => ['error'],
-                    'enabled' => getenv('EMAIL_LOGGER') == 1,
+                    'enabled' => env('logging.EMAIL_LOGGER') == 1,
                     'categories' => [
                         'yii\db\*',
                         'yii\base\ErrorException*',
@@ -64,8 +64,8 @@ $config = [
                         'yii\base\InvalidValueException*',
                     ],
                     'message' => [
-                        'from' => [getenv('ADMIN_EMAIL')],
-                        'to' => [getenv('ENGINEER_EMAIL')],
+                        'from' => [env('email.ADMIN_EMAIL')],
+                        'to' => [env('email.ENGINEER_EMAIL')],
                         'subject' => 'Error occured, Please attention!',
                     ],
                 ],
@@ -76,9 +76,9 @@ $config = [
         ],
         'redis' => [
             'class' => 'yii\redis\Connection',
-            'hostname' => getenv('REDIS_HOST'),
-            'port' => getenv('REDIS_PORT'),
-            'password' => getenv('REDIS_PASS') ?: null,
+            'hostname' => env('redis.HOST'),
+            'port' => env('redis.PORT'),
+            'password' => env('redis.PASS') ?: null,
         ],
         'rcache' => [
             'class' => 'yii\redis\Cache',

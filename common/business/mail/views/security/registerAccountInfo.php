@@ -10,7 +10,7 @@
                 <tr style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; margin: 0; padding: 0;">
                   <td class="content-block" style="font-family: 'MicroSoft YaHei','Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; vertical-align: top; margin: 0; padding: 0 0 20px;" valign="top">
                     <p><?= __('email', 'Hi, my dear customer') ?>：</p>
-                    <p style="padding-left:15px;"><?= __('email', 'Thank you for registering for {site}.', ['site' => getenv('FRONTEND_DOMAIN')]) ?></p>
+                    <p style="padding-left:15px;"><?= __('email', 'Thank you for registering for {site}.', ['site' => env('app.FRONTEND_DOMAIN')]) ?></p>
                     <p><?= __('email', 'Your login details are as follows:') ?></p>
                     <p>
                         <?= __('email', 'Email') ?>: <?= $email ?> <br>
@@ -19,7 +19,7 @@
                     <p><?= __('app', 'Please keep this information safe for future reference.') ?></p>
 
                     <p><?= __('email', 'Thank you') ?>,</p>
-                    <p><a href="<?= getenv('FRONTEND_URL') ?>"><?= getenv('FRONTEND_DOMAIN') ?></a></p>
+                    <p><a href="<?= env('app.FRONTEND_URL') ?>"><?= env('app.FRONTEND_DOMAIN') ?></a></p>
                   </td>
                 </tr>
               </table>

@@ -1,3 +1,3 @@
 <?php
 
-Yii::setAlias('@cdn', getenv('FRONTEND_URL'));
+Yii::setAlias('@cdn', env('app.FRONTEND_URL'));

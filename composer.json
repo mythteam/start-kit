@@ -16,7 +16,6 @@
     "light/yii2-ajaxform": "~1.0.0",
     "light/yii2-lock-form": "~1.0.0",
     "light/yii2-sweet-submit": "~1.0.0",
-    "vlucas/phpdotenv": "~2.0",
     "yiisoft/yii2": "~2.0.6",
     "yiisoft/yii2-authclient": "~2.0.5",
     "yiisoft/yii2-bootstrap": "~2.0.5",

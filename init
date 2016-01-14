@@ -37,14 +37,14 @@ $env = [
         'yii',
     ],
     'setCookieValidationKey' => [
-        '.env',
+        'env.ini',
     ],
 ];
 
 echo "\n  Start initialization ...\n\n";
 
 //copy .env file
-copyFile($root, '.env.example', '.env', false, $params);
+copyFile($root, 'env.ini.example', 'env.ini', false, $params);
 
 $callbacks = ['setCookieValidationKey', 'setWritable', 'setExecutable'];
 foreach ($callbacks as $callback) {
@@ -146,7 +146,7 @@ function setCookieValidationKey($root, $paths)
             $key = strtr(substr(base64_encode($bytes), 0, $length), '+/=', '_-.');
             return $key;
         }, file_get_contents($file));
-        
+
         file_put_contents($file, $content);
     }
 }

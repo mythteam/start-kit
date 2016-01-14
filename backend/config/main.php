@@ -7,11 +7,11 @@ return [
     'bootstrap' => ['log'],
     'modules' => require '_modules.php',
     'language' => 'zh-CN',
-    'homeUrl' => getenv('BACKEND_URL'),
+    'homeUrl' => env('app.BACKEND_URL'),
     'components' => [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
-            'cookieValidationKey' => getenv('BACKEND_COOKIE_VALIDATION_KEY'),
+            'cookieValidationKey' => env('security.BACKEND_COOKIE_VALIDATION_KEY'),
         ],
         'user' => [
             'identityClass' => 'common\models\Webmaster',
