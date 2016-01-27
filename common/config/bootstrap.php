@@ -6,5 +6,5 @@ Yii::setAlias('backend', dirname(dirname(__DIR__)) . '/backend');
 Yii::setAlias('console', dirname(dirname(__DIR__)) . '/console');
 
 Yii::$container->set('yii\data\Pagination', [
-    'defaultSize' => 10,
+    'defaultPageSize' => 10,
 ]);

@@ -29,7 +29,16 @@ return [
         'assetManager' => [
             'class' => 'yii\web\AssetManager',
             'appendTimestamp' => !YII_ENV_PROD,
-            'bundles' => YII_ENV_PROD ? require 'asset-bundles.php' : [],
+            'bundles' => require 'asset-bundles.php',
+        ],
+        'view' => [
+            'theme' => [
+                'basePath' => '@app/themes/sbadmin',
+                'baseUrl' => '@web/themes/sbadmin',
+                'pathMap' => [
+                    '@app/views' => '@app/themes/sbadmin',
+                ],
+            ],
         ],
     ],
     'params' => array_merge(

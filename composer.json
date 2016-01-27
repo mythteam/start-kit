@@ -53,7 +53,7 @@
     }
   },
   "scripts": {
-    "pre-install-cmd": [
+    "post-root-package-install": [
       "composer global require fxp/composer-asset-plugin=~1.1.1"
     ],
     "post-install-cmd": [

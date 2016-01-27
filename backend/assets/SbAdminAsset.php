@@ -7,7 +7,7 @@ use yii\web\AssetBundle;
 class SbAdminAsset extends AssetBundle
 {
     public $basePath = '@webroot';
-    public $baseUrl = '@web';
+    public $baseUrl = '@web/themes/sbadmin';
 
     public $js = [];
 
