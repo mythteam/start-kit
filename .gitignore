@@ -27,4 +27,6 @@ phpunit.phar
 /phpunit.xml
 
 # .env file
+.env
 env.ini
+env.ini.example
