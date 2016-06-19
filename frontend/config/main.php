@@ -7,11 +7,11 @@ return [
     'controllerNamespace' => 'frontend\controllers',
     'modules' => require __DIR__ . '/_modules.php',
     'language' => 'zh-CN',
-    'homeUrl' => env('app.FRONTEND_URL'),
+    'homeUrl' => env('FRONTEND_URL'),
     'components' => [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
-            'cookieValidationKey' => env('security.FRONTEND_COOKIE_VALIDATION_KEY'),
+            'cookieValidationKey' => env('FRONTEND_COOKIE_VALIDATION_KEY'),
         ],
         'user' => [
             'identityClass' => 'common\models\User',
@@ -30,8 +30,6 @@ return [
         'assetManager' => [
             'class' => 'yii\web\AssetManager',
             'appendTimestamp' => !YII_ENV_PROD,
-            'baseUrl' => '@cdn/assets',
-            'bundles' => YII_ENV_PROD ? require 'asset-bundles.php' : [],
         ],
     ],
     'params' => array_merge(
