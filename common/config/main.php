@@ -4,7 +4,7 @@ $config = [
     'vendorPath' => dirname(dirname(__DIR__)) . '/vendor',
     'components' => [
         'db' => [
-            'class' => 'yii\db\Connection',
+            'class' => yii\db\Connection::class,
             'dsn' => env('DB_DSN'),
             'username' => env('DB_USERNAME'),
             'password' => env('DB_PASSWORD'),
@@ -14,7 +14,7 @@ $config = [
             'schemaCache' => 'rcache',
         ],
         'mailer' => [
-            'class' => 'yii\swiftmailer\Mailer',
+            'class' => yii\swiftmailer\Mailer::class,
             'viewPath' => '@common/business/mail/views',
             'htmlLayout' => '@common/business/mail/views/layouts/main.php',
             // send all mails to a file by default. You have to set
@@ -41,18 +41,18 @@ $config = [
             'traceLevel' => 0,
             'targets' => [
                 [
-                    'class' => 'common\components\log\FileTarget',
+                    'class' => common\components\log\FileTarget::class,
                     'levels' => ['warning'],
                     'logFile' => '@runtime/logs/warning_{date}.log',
                 ],
                 [
-                    'class' => 'common\components\log\FileTarget',
+                    'class' => common\components\log\FileTarget::class,
                     'levels' => ['error'],
                     'except' => ['yii\web\HttpException:404'],
                     'logFile' => '@runtime/logs/error_{date}.log',
                 ],
                 [
-                    'class' => 'yii\log\EmailTarget',
+                    'class' => yii\log\EmailTarget::class,
                     'levels' => ['error'],
                     'enabled' => env('EMAIL_LOGGER'),
                     'categories' => [
@@ -72,25 +72,25 @@ $config = [
             ],
         ],
         'cache' => [
-            'class' => YII_DEBUG ? 'yii\caching\DummyCache' : 'yii\caching\FileCache',
+            'class' => YII_DEBUG ? yii\caching\DummyCache::class : yii\caching\FileCache::class,
         ],
         'redis' => [
-            'class' => 'yii\redis\Connection',
+            'class' => yii\redis\Connection::class,
             'hostname' => env('REDIS_HOST'),
             'port' => env('REDIS_PORT'),
             'password' => env('REDIS_PASS') ?: null,
         ],
         'rcache' => [
-            'class' => 'yii\redis\Cache',
+            'class' => yii\redis\Cache::class,
         ],
         'i18n' => [
             'translations' => [
                 'app*' => [
-                    'class' => 'yii\i18n\PhpMessageSource',
+                    'class' => yii\i18n\PhpMessageSource::class,
                     'basePath' => '@app/messages', //app下的messages文件夹
                 ],
                 '*' => [
-                    'class' => 'yii\i18n\PhpMessageSource',
+                    'class' => yii\i18n\PhpMessageSource::class,
                     'basePath' => '@common/messages',
                 ],
             ],
@@ -101,13 +101,13 @@ $config = [
 if (YII_DEBUG) {
     $config['bootstrap'][] = 'debug';
     $config['modules']['debug'] = [
-        'class' => 'yii\debug\Module',
+        'class' => yii\debug\Module::class,
     ];
 }
 
 if (YII_ENV_DEV) {
     $config['modules']['gii'] = [
-        'class' => 'yii\gii\Module',
+        'class' => yii\gii\Module::class,
         'generators' => [
             'crud' => [
                 'class' => 'light\generators\crud\Generator',

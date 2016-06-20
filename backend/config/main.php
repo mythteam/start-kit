@@ -14,9 +14,9 @@ return [
             'cookieValidationKey' => env('BACKEND_COOKIE_VALIDATION_KEY'),
         ],
         'user' => [
-            'identityClass' => 'common\models\Webmaster',
+            'identityClass' => common\models\Webmaster::class,
             'enableAutoLogin' => true,
-            'as afterLogin' => 'backend\components\behaviors\AfterLoginBehavior',
+            'as afterLogin' => backend\components\behaviors\AfterLoginBehavior::class,
             'authTimeout' => 3600, //auto logout 60 mins
         ],
         'cache' => [
@@ -25,9 +25,15 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
-        'urlManager' => require '_urlManager.php',
+        'urlManager' => [
+            'enablePrettyUrl' => true,
+            'showScriptName' => false,
+            // 'cache' => 'cache',
+            //'hostInfo' => env('app.BACKEND_URL'),
+            'rules' => require '_routes.php'
+        ],
         'assetManager' => [
-            'class' => 'yii\web\AssetManager',
+            'class' => yii\web\AssetManager::class,
             'appendTimestamp' => !YII_ENV_PROD,
             'bundles' => require 'asset-bundles.php',
         ],
@@ -46,7 +52,7 @@ return [
         require (__DIR__ . '/params.php')
     ),
     'as access' => [
-        'class' => 'yii\filters\AccessControl',
+        'class' => yii\filters\AccessControl::class,
         'except' => ['site/login'],
         'rules' => [
             ['allow' => true, 'roles' => ['@']],

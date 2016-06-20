@@ -4,7 +4,7 @@ return [
     'gii' => [
         'generators' => [
             'form' => [
-                'class' => 'yii\gii\generators\form\Generator',
+                'class' => yii\gii\generators\form\Generator::class,
                 'templates' => [
                     'bootstrap' => '@app/components/generators/form/bootstrap',
                 ],
@@ -12,6 +12,6 @@ return [
         ],
     ],
     'webmaster' => [
-        'class' => 'backend\modules\webmaster\Module',
+        'class' => backend\modules\webmaster\Module::class,
     ],
 ];

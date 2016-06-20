@@ -2,7 +2,12 @@
 
 namespace common\models;
 
+use common\components\querys\WebmasterQuery;
+use common\Constants;
 use Yii;
+use yii\base\NotSupportedException;
+use yii\behaviors\TimestampBehavior;
+use yii\db\ActiveRecord;
 use yii\web\IdentityInterface;
 
 /**
@@ -19,11 +24,8 @@ use yii\web\IdentityInterface;
  * @property string $password_hash
  * @property string $password_reset_token
  */
-class Webmaster extends \yii\db\ActiveRecord implements IdentityInterface
+class Webmaster extends ActiveRecord implements IdentityInterface
 {
-    //账号状态
-    const STATUS_ENALBED = 1;
-    const STATUS_DISABLED = 0;
     //是否为超级管理员
     const SUPER_YES = 1;
     const SUPER_NO = 0;
@@ -50,7 +52,7 @@ class Webmaster extends \yii\db\ActiveRecord implements IdentityInterface
             [['account'], 'unique'],
 
             ['is_super', 'default', 'value' => self::SUPER_NO],
-            ['status', 'default', 'value' => self::STATUS_ENALBED],
+            ['status', 'default', 'value' => Constants::STATUS_ENABLED],
         ];
     }
 
@@ -61,7 +63,7 @@ class Webmaster extends \yii\db\ActiveRecord implements IdentityInterface
     {
         return [
             '_time' => [
-                'class' => 'yii\behaviors\TimestampBehavior',
+                'class' => TimestampBehavior::class,
                 'createdAtAttribute' => 'registed_at',
                 'updatedAtAttribute' => false,
             ],
@@ -94,7 +96,7 @@ class Webmaster extends \yii\db\ActiveRecord implements IdentityInterface
      */
     public static function find()
     {
-        return new \common\components\querys\WebmasterQuery(get_called_class());
+        return new WebmasterQuery(get_called_class());
     }
 
     /**
@@ -102,7 +104,7 @@ class Webmaster extends \yii\db\ActiveRecord implements IdentityInterface
      */
     public static function findIdentity($id)
     {
-        return static::findOne(['id' => $id, 'status' => self::STATUS_ENALBED]);
+        return static::findOne(['id' => $id, 'status' => Constants::STATUS_ENABLED]);
     }
 
     /**
@@ -132,7 +134,7 @@ class Webmaster extends \yii\db\ActiveRecord implements IdentityInterface
 
         return static::findOne([
             'password_reset_token' => $token,
-            'status' => self::STATUS_ENABLE,
+            'status' => Constants::STATUS_ENABLED,
         ]);
     }
 

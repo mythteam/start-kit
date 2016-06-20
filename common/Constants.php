@@ -19,6 +19,10 @@ namespace common;
  */
 class Constants
 {
+    //状态标识
+    const STATUS_ENABLED = 1;
+    const STATUS_DISABLED = 0;
+
     //是否删除标记
     const DELETED_YES = 1;
     const DELETED_NO = 0;

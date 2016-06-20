@@ -14,7 +14,7 @@ return [
             'cookieValidationKey' => env('FRONTEND_COOKIE_VALIDATION_KEY'),
         ],
         'user' => [
-            'identityClass' => 'common\models\User',
+            'identityClass' => common\models\User::class,
             'enableAutoLogin' => true,
         ],
         'session' => [
@@ -26,9 +26,16 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
-        'urlManager' => require __DIR__ . '/_urlManager.php',
+        'urlManager' => [
+            'enablePrettyUrl' => true,
+            'showScriptName' => false,
+            'ruleConfig' => ['class' => 'yii\web\UrlRule', 'host' => env('app.FRONTEND_URL')],
+            // 'cache' => 'cache',
+            'hostInfo' => env('app.FRONTEND_URL'),
+            'rules' => require '_routes.php'
+        ],
         'assetManager' => [
-            'class' => 'yii\web\AssetManager',
+            'class' => yii\web\AssetManager::class,
             'appendTimestamp' => !YII_ENV_PROD,
         ],
     ],

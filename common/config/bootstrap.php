@@ -5,6 +5,7 @@ Yii::setAlias('frontend', dirname(dirname(__DIR__)) . '/frontend');
 Yii::setAlias('backend', dirname(dirname(__DIR__)) . '/backend');
 Yii::setAlias('console', dirname(dirname(__DIR__)) . '/console');
 
-Yii::$container->set('yii\data\Pagination', [
+//set default pagination page size to 10
+Yii::$container->set(yii\data\Pagination::class, [
     'defaultPageSize' => 10,
 ]);

@@ -40,4 +40,19 @@ class Migration extends BaseMigration
     {
         parent::createTable($table, $columns, $tableOptions ?: $this->tableOptions);
     }
+
+    /**
+     * Drop table if exists.
+     *
+     * @param string $table The table name
+     *
+     * @throws \yii\db\Exception
+     */
+    public function dropTableIfExists($table)
+    {
+        echo "  > drop table {$table} ...";
+        $time = microtime(true);
+        $this->db->createCommand("DROP TABLE IF EXISTS {$table}")->execute();
+        echo " done (time: " . sprintf('0.3%f', microtime(true) - $time) . "s)\n";
+    }
 }

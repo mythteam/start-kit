@@ -1,8 +1,9 @@
 <?php
 
-use console\components\db\Migration;
+use common\models\Webmaster;
+use yii\db\Migration;
 
-class m151202_100954_init extends Migration
+class m160619_075016_create_webmaster extends Migration
 {
     protected $tb_name = '{{%webmaster}}';
 
@@ -24,7 +25,7 @@ class m151202_100954_init extends Migration
         ]);
         echo 'Init super administrator account:', PHP_EOL;
         $this->insert($this->tb_name, [
-            'is_super' => 1,
+            'is_super' => WebMaster::SUPER_YES,
             'registed_at' => time(),
             'nickname' => 'Administrator',
             'account' => 'admin',
