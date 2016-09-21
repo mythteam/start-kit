@@ -5,7 +5,7 @@ use yii\helpers\Html;
 if (!function_exists('image')) {
     function image($file, $options = [])
     {
-        return Html::img(FRONTEDN_URL . '/images/' . $file, $options);
+        return Html::img(Yii::$app->request->getHostInfo() . '/images/' . $file, $options);
     }
 }
 
@@ -24,19 +24,11 @@ if (!function_exists('t')) {
 }
 
 /**
- * get path with alias.
- *
- * @param string $path
- *
- * @return mixed
- */
-function data($filename)
-{
-    return require \Yii::getAlias("@common/data/{$filename}.php");
-}
-
-/**
  * Get file alias.
+ *
+ * @param string $alias
+ *
+ * @return bool|string
  */
 function alias($alias)
 {
@@ -58,10 +50,16 @@ function app($components = null)
         return \Yii::$app->get($components);
     }
 }
+
 /**
  * 创建类实例.
  *
  * @see Yii::createObject
+ *
+ * @param mixed $type
+ * @param array $params
+ *
+ * @return object
  */
 function make($type, array $params = [])
 {
@@ -85,8 +83,8 @@ function response()
 }
 /**
  * ~~~
- * user()->isGuest ? echo 'Hello guest' : echo 'Hello boby';
- * ~~~.
+ * user()->isGuest ? echo 'Hello guest' : echo 'Hello baby';
+ * ~~~
  *
  * @return \yii\web\User
  */

@@ -6,7 +6,7 @@ use yii\base\Object;
 use yii\web\NotFoundHttpException;
 
 /**
- * The abstact class of all the finders.
+ * The abstract class of all the finders.
  */
 abstract class Finder extends Object implements FinderInterface
 {
@@ -20,6 +20,7 @@ abstract class Finder extends Object implements FinderInterface
      */
     public function getQuery()
     {
+        /** @var \yii\db\ActiveRecord $class */
         $class = $this->modelClass;
 
         return $class::find();

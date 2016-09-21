@@ -13,7 +13,7 @@ use yii\web\Cookie;
 class SetLocaleAction extends Action
 {
     /**
-     * @var array List of avaliable locales
+     * @var array List of available locales
      */
     public $locales;
 
@@ -56,7 +56,7 @@ class SetLocaleAction extends Action
             'domain' => $this->cookieDomain ?: '',
         ]);
 
-        Yii::$app->reponse->getCookies()->add($cookie);
+        Yii::$app->response->getCookies()->add($cookie);
         if ($this->callback && $this->callback instanceof \Closure) {
             return call_user_func_array($this->callback, [
                 $this,
@@ -64,6 +64,6 @@ class SetLocaleAction extends Action
             ]);
         }
 
-        return Yii::$app->reponse->redirect(Yii::$app->request->referrer ?: Yii::$app->homeUrl);
+        return Yii::$app->response->redirect(Yii::$app->request->referrer ?: Yii::$app->homeUrl);
     }
 }
