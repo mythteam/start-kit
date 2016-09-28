@@ -9,11 +9,11 @@ return [
         'log' => [
             'targets' => [
                 [
-                    'class' => 'yii\log\FileTarget',
+                    'class' => yii\log\FileTarget::class,
                     'levels' => ['error', 'warning'],
                 ],
                 [
-                    'class' => 'yii\log\FileTarget',
+                    'class' => yii\log\FileTarget::class,
                     'levels' => ['info'],
                     'logFile' => '@runtime/logs/db.log',
                     'logVars' => [],
@@ -24,13 +24,13 @@ return [
         ],
     ],
     'modules' => [
-        'gii' => 'yii\gii\Module',
+        'gii' => yii\gii\Module::class,
     ],
     'params' => array_merge(
         require(__DIR__ . '/../../common/config/params.php'),
         require(__DIR__ . '/params.php')
     ),
     'controllerMap' => [
-        'migrate' => 'console\controllers\MigrateController',
+        'migrate' => console\controllers\MigrateController::class,
     ],
 ];
