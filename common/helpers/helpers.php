@@ -103,6 +103,6 @@ function user()
  */
 function url($url = '', $scheme = false)
 {
-    return Url::to($url = '', $scheme = false);
+    return Url::to($url, $scheme);
 }
 
