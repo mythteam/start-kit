@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "d51a01f2610652e098b0d8fc41eb7ca6",
-    "content-hash": "80bfcb52b171dc628de3359a1cb3e669",
+    "hash": "72c054a4848fe92e35222f31899d9eb8",
+    "content-hash": "f4d38db21bdebf87d743334a1dc43abf",
     "packages": [
         {
             "name": "bower-asset/bootstrap",
@@ -190,17 +190,67 @@
             }
         },
         {
-            "name": "bower-asset/yii2-pjax",
-            "version": "v2.0.5",
+            "name": "bower-asset/ueditor",
+            "version": "1.4.3.3",
             "source": {
                 "type": "git",
-                "url": "https://github.com/yiisoft/jquery-pjax.git",
-                "reference": "6818718408086db6bdcf33649cecb86b6b4f9b67"
+                "url": "https://github.com/lichunqiang/ueditor.git",
+                "reference": "89cd8bd3ded5181ba53196df051095a380a26c82"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/jquery-pjax/zipball/6818718408086db6bdcf33649cecb86b6b4f9b67",
-                "reference": "6818718408086db6bdcf33649cecb86b6b4f9b67",
+                "url": "https://api.github.com/repos/lichunqiang/ueditor/zipball/89cd8bd3ded5181ba53196df051095a380a26c82",
+                "reference": "89cd8bd3ded5181ba53196df051095a380a26c82",
+                "shasum": ""
+            },
+            "type": "bower-asset-library"
+        },
+        {
+            "name": "bower-asset/x-editable",
+            "version": "1.5.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/vitalets/x-editable.git",
+                "reference": "f32802f48a33b8a7ec9cca32eec4ca844b7d39b2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/vitalets/x-editable/zipball/f32802f48a33b8a7ec9cca32eec4ca844b7d39b2",
+                "reference": "f32802f48a33b8a7ec9cca32eec4ca844b7d39b2",
+                "shasum": ""
+            },
+            "require": {
+                "bower-asset/jquery": ">=1.6"
+            },
+            "type": "bower-asset-library",
+            "extra": {
+                "bower-asset-ignore": [
+                    "CHANGELOG.txt",
+                    "Gruntfile.js",
+                    "LICENSE-MIT",
+                    "Package.nuspec",
+                    "README.md",
+                    "composer.json",
+                    "package.json",
+                    "node_modules",
+                    "components",
+                    "src",
+                    "test"
+                ]
+            }
+        },
+        {
+            "name": "bower-asset/yii2-pjax",
+            "version": "v2.0.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/yiisoft/jquery-pjax.git",
+                "reference": "60728da6ade5879e807a49ce59ef9a72039b8978"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/yiisoft/jquery-pjax/zipball/60728da6ade5879e807a49ce59ef9a72039b8978",
+                "reference": "60728da6ade5879e807a49ce59ef9a72039b8978",
                 "shasum": ""
             },
             "require": {
@@ -213,6 +263,7 @@
                     ".travis.yml",
                     "Gemfile",
                     "Gemfile.lock",
+                    "CONTRIBUTING.md",
                     "vendor/",
                     "script/",
                     "test/"
@@ -998,17 +1049,21 @@
         },
         {
             "name": "yii2mod/yii2-editable",
-            "version": "1.1.3",
+            "version": "1.1.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/yii2mod/yii2-editable.git",
-                "reference": "6140bd357e237024a30dc369a6421fbbf389e595"
+                "reference": "d69e31672ebbf599c59ce34271f113c0c45a7596"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yii2mod/yii2-editable/zipball/6140bd357e237024a30dc369a6421fbbf389e595",
-                "reference": "6140bd357e237024a30dc369a6421fbbf389e595",
+                "url": "https://api.github.com/repos/yii2mod/yii2-editable/zipball/d69e31672ebbf599c59ce34271f113c0c45a7596",
+                "reference": "d69e31672ebbf599c59ce34271f113c0c45a7596",
                 "shasum": ""
+            },
+            "require": {
+                "bower-asset/x-editable": "*",
+                "yiisoft/yii2": "*"
             },
             "type": "yii2-extension",
             "autoload": {
@@ -1031,7 +1086,7 @@
                 "extension",
                 "yii2"
             ],
-            "time": "2016-01-21 12:00:04"
+            "time": "2016-07-01 15:36:54"
         },
         {
             "name": "yiisoft/yii2",

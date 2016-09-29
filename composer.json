@@ -26,7 +26,8 @@
     "mythteam/yii2-schedule": "~0.1.2",
     "kartik-v/yii2-widget-fileinput": "~1.0.4",
     "pda/pheanstalk": "~3.0",
-    "qiniu/php-sdk": "~7.0.8"
+    "qiniu/php-sdk": "~7.0.8",
+    "bower-asset/ueditor": "1.4.3.3"
   },
   "require-dev": {
     "yiisoft/yii2-codeception": "~2.0.5",
@@ -56,7 +57,14 @@
     "asset-installer-paths": {
       "npm-asset-library": "vendor/npm",
       "bower-asset-library": "vendor/bower"
-    }
+    },
+    "asset-repositories": [
+      {
+        "type": "bower-vcs",
+        "url": "https://github.com/lichunqiang/ueditor.git",
+        "name": "bower-asset/ueditor"
+      }
+    ]
   },
   "scripts": {
     "post-root-package-install": [
