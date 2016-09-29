@@ -2,8 +2,8 @@
 
 namespace common\models;
 
-use common\components\querys\WebmasterQuery;
 use common\Constants;
+use common\models\queries\WebmasterQuery;
 use Yii;
 use yii\base\NotSupportedException;
 use yii\behaviors\TimestampBehavior;
@@ -13,23 +13,31 @@ use yii\web\IdentityInterface;
 /**
  * This is the model class for table "{{%webmaster}}".
  *
- * @property int $id
- * @property int $status
- * @property int $is_super
- * @property int $registed_at
- * @property int $logged_at
+ * @property int    $id
+ * @property int    $status
+ * @property int    $is_super
+ * @property int    $registed_at
+ * @property int    $logged_at
  * @property string $auth_key
  * @property string $nickname
  * @property string $account
  * @property string $password_hash
  * @property string $password_reset_token
+ * @property bool   $isSuper
+ *
+ * @method void touch(string $attribute)
  */
-class Webmaster extends ActiveRecord implements IdentityInterface
+class WebMaster extends ActiveRecord implements IdentityInterface
 {
     //是否为超级管理员
     const SUPER_YES = 1;
-    const SUPER_NO = 0;
-
+    const SUPER_NO  = 0;
+    
+    /**
+     * @var string The plain password of the user input.
+     */
+    public $password;
+    
     /**
      * {@inheritdoc}
      */
@@ -37,7 +45,7 @@ class Webmaster extends ActiveRecord implements IdentityInterface
     {
         return '{{%webmaster}}';
     }
-
+    
     /**
      * {@inheritdoc}
      */
@@ -48,14 +56,19 @@ class Webmaster extends ActiveRecord implements IdentityInterface
             [['account'], 'required'],
             [['auth_key'], 'string', 'max' => 32],
             [['nickname', 'account'], 'string', 'max' => 50],
+            [
+                'password',
+                'string',
+            ],
+            
             [['password_hash', 'password_reset_token'], 'string', 'max' => 100],
             [['account'], 'unique'],
-
+            
             ['is_super', 'default', 'value' => self::SUPER_NO],
             ['status', 'default', 'value' => Constants::STATUS_ENABLED],
         ];
     }
-
+    
     /**
      * {@inheritdoc}
      */
@@ -69,36 +82,34 @@ class Webmaster extends ActiveRecord implements IdentityInterface
             ],
         ];
     }
-
+    
     /**
      * {@inheritdoc}
      */
     public function attributeLabels()
     {
         return [
-            'id' => Yii::t('models', 'ID'),
-            'status' => Yii::t('models', 'Status'),
-            'is_super' => Yii::t('models', 'Is Super'),
-            'registed_at' => Yii::t('models', 'Registed At'),
-            'logged_at' => Yii::t('models', 'Logged At'),
-            'auth_key' => Yii::t('models', 'Auth Key'),
-            'nickname' => Yii::t('models', 'Nickname'),
-            'account' => Yii::t('models', 'Account'),
-            'password_hash' => Yii::t('models', 'Password Hash'),
-            'password_reset_token' => Yii::t('models', 'Password Reset Token'),
+            'id' => 'ID',
+            'status' => '账号状态',
+            'is_super' => '是否为超级管理员',
+            'registed_at' => '账号创建于',
+            'logged_at' => '最后登录于',
+            'nickname' => '昵称',
+            'account' => '登录账号',
+        
         ];
     }
-
+    
     /**
      * {@inheritdoc}
      *
-     * @return \common\components\querys\WebmasterQuery the active query used by this AR class.
+     * @return WebmasterQuery the active query used by this AR class.
      */
     public static function find()
     {
         return new WebmasterQuery(get_called_class());
     }
-
+    
     /**
      * {@inheritdoc}
      */
@@ -106,7 +117,7 @@ class Webmaster extends ActiveRecord implements IdentityInterface
     {
         return static::findOne(['id' => $id, 'status' => Constants::STATUS_ENABLED]);
     }
-
+    
     /**
      * {@inheritdoc}
      */
@@ -114,7 +125,7 @@ class Webmaster extends ActiveRecord implements IdentityInterface
     {
         throw new NotSupportedException('"findIdentityByAccessToken" is not implemented.');
     }
-
+    
     /**
      * Finds user by password reset token.
      *
@@ -126,18 +137,18 @@ class Webmaster extends ActiveRecord implements IdentityInterface
     {
         $expire = Yii::$app->params['user.passwordResetTokenExpire'];
         $parts = explode('_', $token);
-        $timestamp = (int) end($parts);
+        $timestamp = (int)end($parts);
         if ($timestamp + $expire < time()) {
             // token expired
             return;
         }
-
+        
         return static::findOne([
             'password_reset_token' => $token,
             'status' => Constants::STATUS_ENABLED,
         ]);
     }
-
+    
     /**
      * 根据account查找用户.
      *
@@ -147,9 +158,9 @@ class Webmaster extends ActiveRecord implements IdentityInterface
      */
     public static function findByAccount($account)
     {
-        return static::findOne(['account' => $account]);
+        return static::findOne(['account' => $account, 'status' => Constants::STATUS_ENABLED]);
     }
-
+    
     /**
      * {@inheritdoc}
      */
@@ -157,7 +168,7 @@ class Webmaster extends ActiveRecord implements IdentityInterface
     {
         return $this->getPrimaryKey();
     }
-
+    
     /**
      * {@inheritdoc}
      */
@@ -165,7 +176,7 @@ class Webmaster extends ActiveRecord implements IdentityInterface
     {
         return $this->auth_key;
     }
-
+    
     /**
      * {@inheritdoc}
      */
@@ -173,7 +184,7 @@ class Webmaster extends ActiveRecord implements IdentityInterface
     {
         return $this->getAuthKey() === $authKey;
     }
-
+    
     /**
      * Validates password.
      *
@@ -185,7 +196,7 @@ class Webmaster extends ActiveRecord implements IdentityInterface
     {
         return Yii::$app->security->validatePassword($password, $this->password_hash);
     }
-
+    
     /**
      * Generates password hash from password and sets it to the model.
      *
@@ -195,7 +206,7 @@ class Webmaster extends ActiveRecord implements IdentityInterface
     {
         $this->password_hash = Yii::$app->security->generatePasswordHash($password);
     }
-
+    
     /**
      * Generates "remember me" authentication key.
      */
@@ -203,7 +214,7 @@ class Webmaster extends ActiveRecord implements IdentityInterface
     {
         $this->auth_key = Yii::$app->security->generateRandomString();
     }
-
+    
     /**
      * Generates new password reset token.
      */
@@ -211,12 +222,53 @@ class Webmaster extends ActiveRecord implements IdentityInterface
     {
         $this->password_reset_token = Yii::$app->security->generateRandomString() . '_' . time();
     }
-
+    
     /**
      * Removes password reset token.
      */
     public function removePasswordResetToken()
     {
         $this->password_reset_token = null;
+    }
+    
+    /**
+     * Status dictionary
+     *
+     * @return array
+     */
+    public static function statusDict()
+    {
+        return [
+            Constants::STATUS_ENABLED => '启用',
+            Constants::STATUS_DISABLED => '禁用',
+        ];
+    }
+    
+    /**
+     * Get the status Label
+     *
+     * @return string
+     */
+    public function getStatusLabel()
+    {
+        return static::statusDict()[$this->status];
+    }
+    
+    /**
+     * @return string
+     */
+    public function getLoggedAt()
+    {
+        return Yii::$app->getFormatter()->asDatetime($this->logged_at);
+    }
+    
+    /**
+     * If the super administrator.
+     *
+     * @return bool
+     */
+    public function getIsSuper()
+    {
+        return $this->is_super == self::SUPER_YES;
     }
 }

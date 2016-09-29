@@ -2,14 +2,14 @@
 
 namespace backend\modules\webmaster\models;
 
-use common\models\Webmaster;
+use common\models\WebMaster;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 
 /**
- * WebmasterSearch represents the model behind the search form about `common\models\Webmaster`.
+ * WebMasterSearch represents the model behind the search form about `common\models\WebMaster`.
  */
-class WebmasterSearch extends Webmaster
+class WebMasterSearch extends WebMaster
 {
     /**
      * {@inheritdoc}
@@ -48,7 +48,7 @@ class WebmasterSearch extends Webmaster
      */
     public function search($params)
     {
-        $query = Webmaster::find();
+        $query = WebMaster::find();
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,

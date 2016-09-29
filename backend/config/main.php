@@ -14,7 +14,8 @@ return [
             'cookieValidationKey' => Yaconf::get('kit.backend.cookie_vk'),
         ],
         'user' => [
-            'identityClass' => common\models\Webmaster::class,
+            'class' => backend\components\User::class,
+            'identityClass' => common\models\WebMaster::class,
             'enableAutoLogin' => true,
             'as afterLogin' => backend\components\behaviors\AfterLoginBehavior::class,
             'authTimeout' => 3600, //auto logout 60 mins
@@ -39,10 +40,10 @@ return [
         ],
         'view' => [
             'theme' => [
-                'basePath' => '@app/themes/sbadmin',
-                'baseUrl' => '@web/themes/sbadmin',
+                'basePath' => '@app/themes/adminlte',
+                'baseUrl' => '@web/themes/adminlte',
                 'pathMap' => [
-                    '@app/views' => '@app/themes/sbadmin',
+                    '@app/views' => '@app/themes/adminlte',
                 ],
             ],
         ],

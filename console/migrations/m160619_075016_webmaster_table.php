@@ -1,14 +1,15 @@
 <?php
 
-use common\models\Webmaster;
-use yii\db\Migration;
+use common\models\WebMaster;
+use console\components\db\Migration;
 
-class m160619_075016_create_webmaster extends Migration
+class m160619_075016_webmaster_table extends Migration
 {
     protected $tb_name = '{{%webmaster}}';
 
     public function up()
     {
+        $this->dropTableIfExists($this->tb_name);
         $this->createTable($this->tb_name, [
             'id' => $this->primaryKey(),
 
@@ -27,6 +28,7 @@ class m160619_075016_create_webmaster extends Migration
         $this->insert($this->tb_name, [
             'is_super' => WebMaster::SUPER_YES,
             'registed_at' => time(),
+            'logged_at' => time(),
             'nickname' => 'Administrator',
             'account' => 'admin',
             'password_hash' => \Yii::$app->security->generatePasswordHash('admin'),

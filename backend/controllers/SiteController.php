@@ -3,10 +3,12 @@
 namespace backend\controllers;
 
 use backend\models\LoginForm;
+use Yaconf;
 use Yii;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
 use yii\web\Controller;
+use yii\web\Response;
 
 /**
  * Site controller.
@@ -53,18 +55,28 @@ class SiteController extends Controller
             ],
         ];
     }
-
+    
+    /**
+     * Landingpage.
+     *
+     * @return Response
+     */
     public function actionIndex()
     {
         return $this->render('index');
     }
-
+    
+    /**
+     * Login Page.
+     *
+     * @return string|Response
+     */
     public function actionLogin()
     {
         if (!\Yii::$app->user->isGuest) {
             return $this->goHome();
         }
-        $this->layout = false;
+        $this->layout = Yaconf::get('kit.backend.theme') === 'adminlte' ? 'out' : false;
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
             return $this->goBack();

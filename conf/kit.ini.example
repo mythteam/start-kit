@@ -11,6 +11,7 @@ url     = http://api.kit.io
 [backend:app]
 url         = http://admin.kit.io
 cookie_vk   = "V8QZp75XhlYUM6L3ffFdr5GzNTv0_kyF"
+theme       = adminlte
 
 [frontend:app]
 url             = http://www.kit.io
