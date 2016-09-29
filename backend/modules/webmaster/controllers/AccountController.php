@@ -9,6 +9,7 @@ use Yii;
 use yii\filters\VerbFilter;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
+use yii2mod\editable\EditableAction;
 
 /**
  * AccountController implements the CRUD actions for WebMaster model.
@@ -41,6 +42,10 @@ class AccountController extends Controller
             'status' => [
                 'class' => HandleChangeSingleColumnAction::class,
             ],
+            'update-attr' => [
+                'class' => EditableAction::class,
+                'modelClass' => WebMaster::class,
+            ]
         ];
     }
     

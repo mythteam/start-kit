@@ -60,12 +60,16 @@ class WebMaster extends ActiveRecord implements IdentityInterface
                 'password',
                 'string',
             ],
+            ['password', 'filter', 'filter' => function($value) {
+                $this->setPassword($value);
+            }, 'skipOnEmpty' => true],
             
             [['password_hash', 'password_reset_token'], 'string', 'max' => 100],
             [['account'], 'unique'],
             
             ['is_super', 'default', 'value' => self::SUPER_NO],
             ['status', 'default', 'value' => Constants::STATUS_ENABLED],
+            ['logged_at', 'default', 'value' => time()],
         ];
     }
     

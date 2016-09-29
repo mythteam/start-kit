@@ -86,7 +86,12 @@ class SiteController extends Controller
             ]);
         }
     }
-
+    
+    /**
+     * Logout.
+     *
+     * @return Response
+     */
     public function actionLogout()
     {
         Yii::$app->user->logout();

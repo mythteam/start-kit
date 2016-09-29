@@ -9,28 +9,23 @@ use yii\data\ActiveDataProvider;
 /**
  * WebMasterSearch represents the model behind the search form about `common\models\WebMaster`.
  */
-class WebMasterSearch extends WebMaster
+class WebMasterSearch extends Model
 {
+    public $status;
+    public $is_super;
+    public $register_at;
+    public $query;
     /**
      * {@inheritdoc}
      */
     public function rules()
     {
         return [
-            [['id', 'status', 'is_super', 'registed_at', 'logged_at'], 'integer'],
-            [['auth_key', 'nickname', 'account', 'password_hash', 'password_reset_token'], 'safe'],
+            [['status', 'is_super'], 'integer'],
+            [['query', 'register_at'], 'safe'],
         ];
     }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function scenarios()
-    {
-        // bypass scenarios() implementation in the parent class
-        return Model::scenarios();
-    }
-
+    
     /**
      * {@inheritdoc}
      */
@@ -52,6 +47,9 @@ class WebMasterSearch extends WebMaster
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'sort' => [
+                'defaultOrder' => ['registed_at' => SORT_DESC],
+            ]
         ]);
 
         $this->load($params);
@@ -63,18 +61,19 @@ class WebMasterSearch extends WebMaster
         }
 
         $query->andFilterWhere([
-            'id' => $this->id,
             'status' => $this->status,
             'is_super' => $this->is_super,
-            'registed_at' => $this->registed_at,
-            'logged_at' => $this->logged_at,
         ]);
-
-        $query->andFilterWhere(['like', 'auth_key', $this->auth_key])
-            ->andFilterWhere(['like', 'nickname', $this->nickname])
-            ->andFilterWhere(['like', 'account', $this->account])
-            ->andFilterWhere(['like', 'password_hash', $this->password_hash])
-            ->andFilterWhere(['like', 'password_reset_token', $this->password_reset_token]);
+    
+        $query->andFilterWhere(['like', 'nickname', $this->query]);
+    
+        if ($this->register_at) {
+            $range = explode(' - ', $this->register_at);
+            $range = array_map(function ($value) {
+                return strtotime($value);
+            }, $range);
+            $query->andWhere(['between', 'registed_at', $range[0], $range[1] + 86400]);
+        }
 
         return $dataProvider;
     }

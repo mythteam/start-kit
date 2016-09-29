@@ -28,6 +28,10 @@ class ChangeSingleColumn extends Column
      * @var array|callable
      */
     public $buttonOptions = ['class' => 'btn btn-default btn-sm'];
+    /**
+     * @var bool|callable If the button disabled.
+     */
+    public $disable = false;
     
     /**
      * {@inheritdoc}
@@ -75,6 +79,15 @@ class ChangeSingleColumn extends Column
                 $_item['url'] = $this->handleUrl;
             }
             $items[] = $_item;
+        }
+        
+        $disableButton = $this->disable;
+        if (is_callable($this->disable)) {
+            $disableButton =  call_user_func($this->disable, $model, $key, $index);
+        }
+        
+        if (true === $disableButton) {
+            $buttonOptions = ['disabled' => 'disabled'];
         }
 
         return ButtonDropdown::widget([

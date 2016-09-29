@@ -5,6 +5,7 @@ use common\Constants;
 use yii\grid\ActionColumn;
 use yii\helpers\Html;
 use yii\grid\GridView;
+use yii\widgets\Pjax;
 
 /* @var $this yii\web\View */
 /* @var $searchModel backend\modules\webmaster\models\WebmasterSearch */
@@ -17,19 +18,27 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="box">
     <div class="box-body">
         <div class="col-md-12">
-            <?= Html::a('创建管理员', ['create'], ['class' => 'btn btn-success pull-right']) ?>
+            <?= $this->render('_search', ['model' => $searchModel]) ?>
+            
         </div>
-        <div class="col-md-12">
+        <?php Pjax::begin(['formSelector' => '#masterSearchForm', 'options' => ['class' => 'col-md-12']]) ?>
             <?= GridView::widget([
                 'dataProvider' => $dataProvider,
                 'columns' => [
                     'id',
                     [
+                        'class' => \yii2mod\editable\EditableColumn::class,
                         'attribute' => 'nickname',
-                        'label' => '姓名'
+                        'label' => '姓名',
+                        'url' => 'update-attr',
+                        'enableSorting' => false,
                     ],
                     'account',
-                    'registed_at:datetime',
+                    [
+                        'attribute' => 'registed_at',
+                        'format' => 'datetime',
+                        'enableSorting' => true,
+                    ],
                     'logged_at:datetime',
                     [
                         'class' => ChangeSingleColumn::class,
@@ -37,6 +46,10 @@ $this->params['breadcrumbs'][] = $this->title;
                         'data' => Constants::statusLabels(),
                         'handleUrl' => ['status'],
                         'header' => '状态',
+                        'disable' => function ($model, $key, $index) {
+                            /* @var $model \common\models\WebMaster; */
+                            return $model->isSuper;
+                        }
                     ],
                     [
                         'class' => ActionColumn::class,
@@ -44,6 +57,6 @@ $this->params['breadcrumbs'][] = $this->title;
                     ],
                 ],
             ]); ?>
-        </div>
+        <?php Pjax::end() ?>
     </div>
 </div>
