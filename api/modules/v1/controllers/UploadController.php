@@ -8,6 +8,7 @@ use FileNamingResolver\FileNamingResolver;
 use Qiniu\Auth;
 use Qiniu\Storage\BucketManager;
 use Qiniu\Storage\UploadManager;
+use Yaconf;
 use Yii;
 use yii\validators\RangeValidator;
 use yii\web\UploadedFile;
@@ -74,8 +75,8 @@ class UploadController extends Controller
             ]),
         ];
         $buckets = [
-            'img' => env('storage.QN_BUCKET_IMG'),
-            'voice' => env('storage.QN_BUCKET_VOICE'),
+            'img' => Yaconf::get('kit.qn.bucket_img'),
+            'voice' => Yaconf::get('kit.qn.bucket_voice'),
         ];
         return [
             'token' => $auth->uploadToken($buckets[$source], null, 3600, $policy),
@@ -93,8 +94,8 @@ class UploadController extends Controller
         $_data = json_decode($_data, true);
 
         $prefix = [
-            'img' => env('storage.QN_IMG_BUCKET_PREFIX'),
-            'voice' => env('storage.QN_VOICE_BUCKET_PREFIX'),
+            'img' => Yaconf::get('kit.qn.img_bucket_prefix'),
+            'voice' => Yaconf::get('kit.qn.voice_bucket_prefix'),
         ];
 
         $prefix = $prefix[$_data['source']];
@@ -259,7 +260,7 @@ class UploadController extends Controller
     public function actionFileDelete(
         BucketManager $bucketManager
     ) {
-        $bucket = env('storage.QN_BUCKET_IMG');
+        $bucket = Yaconf::get('kit.qn.bucket_img');
         $result = $bucketManager->delete($bucket, request()->post('key'));
         if ($result) {
             return [

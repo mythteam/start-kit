@@ -7,11 +7,11 @@ return [
     'bootstrap' => ['log'],
     'modules' => require '_modules.php',
     'language' => 'zh-CN',
-    'homeUrl' => env('BACKEND_URL'),
+    'homeUrl' => BACKEND_URL,
     'components' => [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
-            'cookieValidationKey' => env('BACKEND_COOKIE_VALIDATION_KEY'),
+            'cookieValidationKey' => Yaconf::get('kit.backend.cookie_vk'),
         ],
         'user' => [
             'identityClass' => common\models\Webmaster::class,

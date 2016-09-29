@@ -1,0 +1,79 @@
+;Application global
+[app]
+debug = "true"
+env = dev
+
+[api:app]
+version = 1.0.0
+remote  = api.kit.io
+url     = http://api.kit.io
+
+[backend:app]
+url         = http://admin.kit.io
+cookie_vk   = "V8QZp75XhlYUM6L3ffFdr5GzNTv0_kyF"
+
+[frontend:app]
+url             = http://www.kit.io
+domain          = kit.io
+cookie_domain   = ".kit.io"
+;cookie validation key
+cookie_vk       = "dt6V_C4WO_w3kos2mZ2WARgeIlgWQJVZ"
+
+[logging]
+email = "false" ;enable send email when error occured
+
+[db]
+dsn           = "mysql:host=localhost;port=3306;dbname=kit"
+username      = vagrant
+password      = vagrant
+;table_prefix  =
+
+[redis]
+host 		= localhost
+port		= 6379
+;pass   		=
+
+[ssdb]
+host   = 127.0.0.1
+port   = 8888
+debug  = "false"
+
+[email]
+host 		= smtp.example.com
+username 	= admin@exaple.com
+password 	= password
+;port		= 25
+admin       = admin@example.com
+contact     = contact@exmple.com
+robot       = robot@example.com
+enginer     = engineer@example.com
+support     = support@example.com
+
+[qn]
+access_token 		= adasd-QWI-34SDZPudoc00bp
+security_token 		= QWI-QWI34SDZPudoc00bp
+bucket_img 			= xx
+bucket_voice		= xx
+img_bucket_prefix	= https://ob7m61jn4.qnssl.com/
+voice_bucket_prefix	= https://ob7m61jn4.qnssl.com/
+
+[beanstalkd]
+host = 127.0.0.1
+port = 11300
+
+;payment
+[alipay]
+key 		 = xxxxxxx
+partner 	 = 800032131312
+seller_email =
+
+[wechat]
+debug 		= "false"
+app_id 		= wxe00673d4630cfda
+app_secret 	= 905781d7fdasf5e90cf8e578e07
+merchant_id	= 1367482121
+merchant_key = fdasfasdfadsfqrqeew
+
+[paypal]
+id 		=
+secret	=

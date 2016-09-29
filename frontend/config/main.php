@@ -7,11 +7,11 @@ return [
     'controllerNamespace' => 'frontend\controllers',
     'modules' => require __DIR__ . '/_modules.php',
     'language' => 'zh-CN',
-    'homeUrl' => env('FRONTEND_URL'),
+    'homeUrl' => FRONT_URL,
     'components' => [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
-            'cookieValidationKey' => env('FRONTEND_COOKIE_VALIDATION_KEY'),
+            'cookieValidationKey' => Yaconf::get('kit.frontend.cookie_vk'),
         ],
         'user' => [
             'identityClass' => common\models\User::class,
@@ -29,9 +29,9 @@ return [
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
-            'ruleConfig' => ['class' => 'yii\web\UrlRule', 'host' => env('app.FRONTEND_URL')],
+            'ruleConfig' => ['class' => 'yii\web\UrlRule', 'host' => FRONT_URL],
             // 'cache' => 'cache',
-            'hostInfo' => env('app.FRONTEND_URL'),
+            'hostInfo' => FRONT_URL,
             'rules' => require '_routes.php'
         ],
         'assetManager' => [

@@ -5,10 +5,10 @@ $config = [
     'components' => [
         'db' => [
             'class' => yii\db\Connection::class,
-            'dsn' => env('DB_DSN'),
-            'username' => env('DB_USERNAME'),
-            'password' => env('DB_PASSWORD'),
-            'tablePrefix' => env('DB_TABLE_PREFIX'),
+            'dsn' => Yaconf::get('kit.db.dsn'),
+            'username' => Yaconf::get('kit.db.username'),
+            'password' => Yaconf::get('kit.db.password'),
+            'tablePrefix' => Yaconf::get('kit.db.table_prefix', ''),
             'enableSchemaCache' => YII_DEBUG,
             'charset' => 'utf8',
             'schemaCache' => 'rcache',
@@ -23,10 +23,10 @@ $config = [
             'useFileTransport' => YII_DEBUG,
             'transport' => [
                 'class' => 'Swift_SmtpTransport',
-                'host' => env('SMTP_HOST'),
-                'username' => env('SMTP_USERNAME'),
-                'password' => env('SMTP_PASSWORD'),
-                'port' => env('SMTP_PORT') ?: '25',
+                'host' => Yaconf::get('kit.email.host'),
+                'username' => Yaconf::get('kit.email.username'),
+                'password' => Yaconf::get('kit.email.password'),
+                'port' => Yaconf::get('kit.email.port', 25),
             ],
         ],
         'formatter' => [
@@ -54,7 +54,7 @@ $config = [
                 [
                     'class' => yii\log\EmailTarget::class,
                     'levels' => ['error'],
-                    'enabled' => env('EMAIL_LOGGER'),
+                    'enabled' => Yaconf::get('kit.logging.email', 'false') === 'true',
                     'categories' => [
                         'yii\db\*',
                         'yii\base\ErrorException*',
@@ -64,8 +64,8 @@ $config = [
                         'yii\base\InvalidValueException*',
                     ],
                     'message' => [
-                        'from' => [env('ADMIN_EMAIL')],
-                        'to' => [env('ENGINEER_EMAIL')],
+                        'from' => [Yaconf::get('kit.email.admin')],
+                        'to' => [Yaconf::get('kit.email.enginer')],
                         'subject' => 'Error occured, Please attention!',
                     ],
                 ],
@@ -76,9 +76,9 @@ $config = [
         ],
         'redis' => [
             'class' => yii\redis\Connection::class,
-            'hostname' => env('REDIS_HOST'),
-            'port' => env('REDIS_PORT'),
-            'password' => env('REDIS_PASS') ?: null,
+            'hostname' => Yaconf::get('kit.redis.host'),
+            'port' => Yaconf::get('kit.redis.port', 6379),
+            'password' => Yaconf::get('kit.redis.pass'),
         ],
         'rcache' => [
             'class' => yii\redis\Cache::class,

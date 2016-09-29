@@ -39,7 +39,7 @@ return [
                 'class' => yii\rest\UrlRule::class,
                 // 'prefix' => 'v1',
             ],
-            'hostInfo' => env('app.REST_URL'),
+            'hostInfo' => API_URL,
             'rules' => require '_urls.php',
         ],
         'errorHandler' => [
