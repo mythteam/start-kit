@@ -1,8 +1,6 @@
 <?php
 
 define('DEFAULT_LANG', 'en_US');
-defined('YII_DEBUG') or define('YII_DEBUG', Yaconf::get('kit.api.debug', 'false') === 'true');
-defined('YII_ENV') or define('YII_ENV', Yaconf::get('kit.api.env', 'prod'));
 define('API_ADDRESS', Yaconf::get('kit.api.remote'));
 define('API_VERSION', Yaconf::get('kit.api.version', '1.0.0'));
 
@@ -15,4 +13,5 @@ Yii::$classMap['yii\helpers\ArrayHelper'] = '@api/rest/polyfill/helpers/ArrayHel
 Yii::$container->set('yii\data\Pagination', [
     'validatePage' => false,
 ]);
+
 Yii::$container->set(yii\data\ActiveDataProvider::class, common\components\data\ActiveDataProvider::class);

@@ -1,8 +1,5 @@
 <?php
 
-defined('YII_DEBUG') or define('YII_DEBUG', Yaconf::get('welfare.backend.debug', 'false') === 'true');
-defined('YII_ENV') or define('YII_ENV', Yaconf::get('welfare.backend.env', 'prod'));
-
 \Yii::$container->set(yii\widgets\ActiveForm::class, [
     'errorSummaryCssClass' => 'alert alert-danger',
 ]);

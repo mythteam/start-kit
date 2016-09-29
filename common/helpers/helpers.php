@@ -1,6 +1,7 @@
 <?php
 
 use yii\helpers\Html;
+use yii\helpers\Url;
 
 if (!function_exists('image')) {
     function image($file, $options = [])
@@ -81,6 +82,7 @@ function response()
 {
     return \Yii::$app->getResponse();
 }
+
 /**
  * ~~~
  * user()->isGuest ? echo 'Hello guest' : echo 'Hello baby';
@@ -92,3 +94,15 @@ function user()
 {
     return \Yii::$app->getUser();
 }
+
+/**
+ * @param string|array $url
+ * @param bool|string  $scheme
+ *
+ * @return string
+ */
+function url($url = '', $scheme = false)
+{
+    return Url::to($url = '', $scheme = false);
+}
+

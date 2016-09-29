@@ -26,6 +26,7 @@ class AfterLoginBehavior extends Behavior
      */
     public function afterLogin($event)
     {
+        /** @var \common\models\WebMaster $user */
         $user = $event->identity;
 
         $user->touch($this->attribute);

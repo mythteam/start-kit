@@ -12,7 +12,7 @@
   },
   "minimum-stability": "stable",
   "require": {
-    "php": ">=5.4.0",
+    "php": ">=7.0",
     "light/yii2-ajaxform": "~1.0.0",
     "light/yii2-lock-form": "~1.0.0",
     "light/yii2-sweet-submit": "~1.0.0",

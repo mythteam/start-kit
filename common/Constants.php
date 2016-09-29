@@ -26,4 +26,15 @@ class Constants
     //是否删除标记
     const DELETED_YES = 1;
     const DELETED_NO = 0;
+    
+    /**
+     * @return array
+     */
+    public static function statusLabels()
+    {
+        return [
+            static::STATUS_ENABLED => '启用',
+            static::STATUS_DISABLED => '禁用',
+        ];
+    }
 }
