@@ -20,13 +20,13 @@
     "yiisoft/yii2-bootstrap": "~2.0.5",
     "yiisoft/yii2-redis": "~2.0.4",
     "yiisoft/yii2-swiftmailer": "~2.0.4",
-    "vlucas/phpdotenv": "~2.0",
     "kartik-v/yii2-date-range": "~1.6",
     "kartik-v/yii2-widget-select2": "~2.0",
     "yii2mod/yii2-editable": "*",
     "mythteam/yii2-schedule": "~0.1.2",
     "kartik-v/yii2-widget-fileinput": "~1.0.4",
-    "pda/pheanstalk": "~3.0"
+    "pda/pheanstalk": "~3.0",
+    "qiniu/php-sdk": "~7.0.8"
   },
   "require-dev": {
     "yiisoft/yii2-codeception": "~2.0.5",
@@ -44,7 +44,6 @@
     "psr-4": {
     },
     "files": [
-      "common/env.php",
       "common/helpers/helpers.php"
     ]
   },
