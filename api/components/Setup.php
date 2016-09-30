@@ -2,18 +2,28 @@
 
 namespace api\components;
 
-class Setup implements \yii\base\BootstrapInterface
+use yii\base\BootstrapInterface;
+use yii\web\UrlRule;
+
+/**
+ * Class Setup.
+ * Do application initialize things.
+ */
+class Setup implements BootstrapInterface
 {
+    /**
+     * @inheritdoc
+     */
     public function bootstrap($app)
     {
         $app->getUrlManager()->addRules([
             [
-                'class' => 'yii\web\UrlRule',
+                'class' => UrlRule::class,
                 'pattern' => '',
                 'route' => 'site/doc',
             ],
             [
-                'class' => 'yii\web\UrlRule',
+                'class' => UrlRule::class,
                 'pattern' => 'site/<action:\w+>',
                 'route' => 'site/<action>',
             ],

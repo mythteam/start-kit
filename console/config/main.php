@@ -32,5 +32,9 @@ return [
     ),
     'controllerMap' => [
         'migrate' => console\controllers\MigrateController::class,
+        'schedule' => [
+            'class' => mythteam\schedule\ScheduleController::class,
+            'scheduleFile' => '@app/config/schedule.php',
+        ],
     ],
 ];

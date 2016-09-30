@@ -106,3 +106,13 @@ function url($url = '', $scheme = false)
     return Url::to($url, $scheme);
 }
 
+/**
+ * @param \yii\base\Model $model
+ *
+ * @return string
+ */
+function error_summary($model)
+{
+    return Html::errorSummary($model);
+}
+

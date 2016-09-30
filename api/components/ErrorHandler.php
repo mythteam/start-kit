@@ -7,7 +7,10 @@ use yii\base\UserException;
 use yii\web\HttpException;
 use yii\web\Response;
 
-class ErrorHandler extends \yii\base\ErrorHandler
+/**
+ * Class ErrorHandler.
+ */
+final class ErrorHandler extends \yii\base\ErrorHandler
 {
     /**
      * {@inheritdoc}
@@ -25,24 +28,24 @@ class ErrorHandler extends \yii\base\ErrorHandler
         } else {
             $response = new Response();
         }
-
+        
         //force return json format exception
         $response->format = Response::FORMAT_JSON;
         // if ($exception instanceof SystemException) {
-
+        
         //     $response->send();
         // }
         $response->data = $this->convertExceptionToArray($exception);
-
+        
         if ($exception instanceof HttpException) {
             $response->setStatusCode($exception->statusCode);
         } else {
             $response->setStatusCode(500);
         }
-
+        
         $response->send();
     }
-
+    
     /**
      * @inheritdoc
      */
@@ -51,7 +54,7 @@ class ErrorHandler extends \yii\base\ErrorHandler
         if (!YII_DEBUG && !$exception instanceof UserException && !$exception instanceof HttpException) {
             $exception = new HttpException(500, 'There was an error at the server.');
         }
-
+        
         $array = [
             // 'name' => $exception->getName() ?: 'Exception',
             'errmsg' => $exception->getMessage(),
@@ -74,7 +77,7 @@ class ErrorHandler extends \yii\base\ErrorHandler
                 $array['data']['previous'] = $this->convertExceptionToArray($prev);
             }
         }
-
+        
         return $array;
     }
 }

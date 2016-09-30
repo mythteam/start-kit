@@ -4,9 +4,59 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "72c054a4848fe92e35222f31899d9eb8",
-    "content-hash": "f4d38db21bdebf87d743334a1dc43abf",
+    "hash": "bcd3903adab488ecb6906b5c3b4fa124",
+    "content-hash": "b690924bd979ef24ad196874dd760f29",
     "packages": [
+        {
+            "name": "bocharsky-bw/file-naming-resolver",
+            "version": "v0.3.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/bocharsky-bw/FileNamingResolver.git",
+                "reference": "2205b8c8e88abf270d560e91c3cca6da9ef09fcb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/bocharsky-bw/FileNamingResolver/zipball/2205b8c8e88abf270d560e91c3cca6da9ef09fcb",
+                "reference": "2205b8c8e88abf270d560e91c3cca6da9ef09fcb",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.8"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "FileNamingResolver\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Victor Bocharsky",
+                    "email": "bocharsky.bw@gmail.com"
+                }
+            ],
+            "description": "A lightweight library which helps to resolve a file/directory naming of uploaded files using various naming strategies.",
+            "homepage": "https://github.com/bocharsky-bw/FileNamingResolver",
+            "keywords": [
+                "directory",
+                "generator",
+                "helper",
+                "namer",
+                "naming",
+                "resolver",
+                "uploaded file",
+                "utility"
+            ],
+            "time": "2016-08-09 07:48:44"
+        },
         {
             "name": "bower-asset/bootstrap",
             "version": "v3.3.7",
@@ -642,6 +692,89 @@
                 "yii2"
             ],
             "time": "2016-02-17 11:49:30"
+        },
+        {
+            "name": "league/flysystem",
+            "version": "1.0.27",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thephpleague/flysystem.git",
+                "reference": "50e2045ed70a7e75a5e30bc3662904f3b67af8a9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/50e2045ed70a7e75a5e30bc3662904f3b67af8a9",
+                "reference": "50e2045ed70a7e75a5e30bc3662904f3b67af8a9",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0"
+            },
+            "conflict": {
+                "league/flysystem-sftp": "<1.0.6"
+            },
+            "require-dev": {
+                "ext-fileinfo": "*",
+                "mockery/mockery": "~0.9",
+                "phpspec/phpspec": "^2.2",
+                "phpunit/phpunit": "~4.8"
+            },
+            "suggest": {
+                "ext-fileinfo": "Required for MimeType",
+                "league/flysystem-aws-s3-v2": "Allows you to use S3 storage with AWS SDK v2",
+                "league/flysystem-aws-s3-v3": "Allows you to use S3 storage with AWS SDK v3",
+                "league/flysystem-azure": "Allows you to use Windows Azure Blob storage",
+                "league/flysystem-cached-adapter": "Flysystem adapter decorator for metadata caching",
+                "league/flysystem-copy": "Allows you to use Copy.com storage",
+                "league/flysystem-dropbox": "Allows you to use Dropbox storage",
+                "league/flysystem-eventable-filesystem": "Allows you to use EventableFilesystem",
+                "league/flysystem-rackspace": "Allows you to use Rackspace Cloud Files",
+                "league/flysystem-sftp": "Allows you to use SFTP server storage via phpseclib",
+                "league/flysystem-webdav": "Allows you to use WebDAV storage",
+                "league/flysystem-ziparchive": "Allows you to use ZipArchive adapter"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.1-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "League\\Flysystem\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Frank de Jonge",
+                    "email": "info@frenky.net"
+                }
+            ],
+            "description": "Filesystem abstraction: Many filesystems, one API.",
+            "keywords": [
+                "Cloud Files",
+                "WebDAV",
+                "abstraction",
+                "aws",
+                "cloud",
+                "copy.com",
+                "dropbox",
+                "file systems",
+                "files",
+                "filesystem",
+                "filesystems",
+                "ftp",
+                "rackspace",
+                "remote",
+                "s3",
+                "sftp",
+                "storage"
+            ],
+            "time": "2016-08-10 08:55:11"
         },
         {
             "name": "light/yii2-ajaxform",
@@ -2312,7 +2445,7 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=5.4.0"
+        "php": ">=7.0"
     },
     "platform-dev": []
 }
