@@ -22,7 +22,7 @@ $config = [
             'as beforeSend' => api\components\behaviors\FormatResponseBehavior::class,
         ],
         'user' => [
-            'identityClass' => 'common\models\User',
+            'identityClass' => common\models\User::class,
             'enableAutoLogin' => false,
             'loginUrl' => null,
             'enableSession' => false,
