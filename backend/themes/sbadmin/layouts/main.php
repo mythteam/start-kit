@@ -75,62 +75,18 @@ AppAsset::register($this);
                     'items' => [
                         ['label' => 'Hello,' . Yii::$app->user->identity->account, 'options' => ['class' => 'sidebar-search']],
                         [
-                            'label' => t('app', 'Dashboard'),
+                            'label' => '首页',
                             'url' => ['/site/index'],
                             'icon' => 'fa-dashboard'
                         ],
                         [
-                            'label' => t('app', 'Webmasters'),
+                            'label' => '管理员管理',
                             'url' => '#',
                             'items' => [
-                                ['label' => t('app', 'Accounts'), 'url' => ['/webmaster/account/list']],
-                                ['label' => t('app', 'Create Account'), 'url' => ['/webmaster/account/create']]
+                                ['label' => '管理员账号', 'url' => ['/webmaster/account/list']],
+                                ['label' => '创建账号', 'url' => ['/webmaster/account/create']]
                             ],
                             'icon' => 'fa-user'
-                        ],
-                        [
-                            'label' => t('app', 'Settings'),
-                            'url' => '#',
-                            'items' => [
-                                ['label' => t('app', 'Service Charge'), 'url' => ['/setting/service/charge']],
-                                ['label' => t('app', 'Discount Cofiguration'), 'url' => ['/setting/discount/index']],
-                                ['label' => t('app', 'Site Cofigurations'), 'url' => ['/setting/site/index']],
-                            ],
-                            'icon' => 'fa-cogs'
-                        ],
-                        [
-                            'label' => t('app', 'Users'),
-                            'url' => '#',
-                            'items' => [
-                                ['label' => t('app', 'Developers'), 'url' => ['/user/developer/index']],
-                                ['label' => t('app', 'Reviewers'), 'url' => ['/user/reviewer/index']]
-                            ],
-                            'icon' => 'fa-users'
-                        ],
-                        [
-                            'label' => t('app', 'Tasks'),
-                            'url' => '#',
-                            'items' => [
-                                ['label' => t('app', 'All Tasks'), 'url' => ['/tasks/default/index']],
-                            ],
-                            'icon' => 'fa-tasks'
-                        ],
-                        [
-                            'label' => t('app', 'Orders'),
-                            'url' => '#',
-                            'items' => [
-                                ['label' => t('app', 'All Orders'), 'url' => ['/order/default/index']],
-                                ['label' => t('app', 'Apps'), 'url' => ['/app/index']],
-                            ],
-                            'icon' => 'fa-cart-plus'
-                        ],
-                        [
-                            'label' => t('app', 'Payment'),
-                            'url' => '#',
-                            'items' => [
-                                ['label' => t('app', 'Withdraw Requests'), 'url' => ['/payment/withdraw/index']]
-                            ],
-                            'icon' => 'fa-credit-card'
                         ],
                     ]
                 ]) ?>

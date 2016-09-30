@@ -2,7 +2,7 @@
 
 /* @var $this yii\web\View */
 
-$this->title = t('app', 'Dashboard');
+$this->title = '首页';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="row">

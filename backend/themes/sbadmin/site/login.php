@@ -30,7 +30,7 @@ AppAsset::register($this);
         <div class="col-md-4 col-md-offset-4">
             <div class="login-panel panel panel-default">
                 <div class="panel-heading">
-                    <h3 class="panel-title"><?= t('app', 'Please Sign In') ?></h3>
+                    <h3 class="panel-title">Please Sign In</h3>
                 </div>
                 <div class="panel-body">
                     <?= Alert::widget() ?>
@@ -43,7 +43,7 @@ AppAsset::register($this);
                         <?= $form->field($model, 'rememberMe')->checkbox() ?>
 
                         <div class="form-group">
-                            <?= Html::submitButton(t('app', 'Login'), ['class' => 'btn btn-primary', 'name' => 'login-button', 'data-loading-text' => t('app', 'Logining')]) ?>
+                            <?= Html::submitButton('登录', ['class' => 'btn btn-primary', 'name' => 'login-button', 'data-loading-text' => '登录中...']) ?>
                         </div>
                     <?php ActiveForm::end(); ?>
                 </div>

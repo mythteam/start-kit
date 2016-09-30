@@ -1,6 +1,6 @@
 <?php
 
-return [
+$config = [
     'id' => 'app-backend',
     'basePath' => dirname(__DIR__),
     'controllerNamespace' => 'backend\controllers',
@@ -60,3 +60,51 @@ return [
         ],
     ],
 ];
+
+if (YII_DEBUG) {
+    $config['bootstrap'][] = 'debug';
+    $config['modules']['debug'] = [
+        'class' => yii\debug\Module::class,
+        'allowedIPs' => ['127.0.0.1', '::1', '192.168.10.*'],
+    ];
+}
+
+if (YII_ENV_DEV) {
+    $config['modules']['gii'] = [
+        'class' => yii\gii\Module::class,
+        'generators' => [
+            'crud' => [
+                'class' => 'light\generators\crud\Generator',
+            ],
+            'model' => [
+                'class' => 'yii\gii\generators\model\Generator',
+                'templates' => [
+                    'light' => '@vendor/light/yii2-generators/model/default',
+                ],
+            ],
+            'controller' => [
+                'class' => 'yii\gii\generators\controller\Generator',
+                'templates' => [
+                    'common' => '@common/components/generators/controller/common',
+                ],
+            ],
+            'form' => [
+                'class' => 'light\generators\form\Generator',
+            ],
+            'module' => [
+                'class' => 'yii\gii\generators\module\Generator',
+                'templates' => [
+                    'light' => '@vendor/light/yii2-generators/module/common',
+                ],
+            ],
+            'extension' => [
+                'class' => 'light\generators\extension\Generator',
+            ],
+            'mailer' => [
+                'class' => 'common\components\generators\mailer\Generator',
+            ],
+        ],
+    ];
+}
+
+return $config;
