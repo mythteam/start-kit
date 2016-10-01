@@ -29,7 +29,7 @@ $config = [
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
-            'ruleConfig' => ['class' => 'yii\web\UrlRule', 'host' => FRONT_URL],
+            'ruleConfig' => ['class' => yii\web\UrlRule::class, 'host' => FRONT_URL],
             // 'cache' => 'cache',
             'hostInfo' => FRONT_URL,
             'rules' => require '_routes.php'
