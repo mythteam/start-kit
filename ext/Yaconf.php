@@ -3,6 +3,8 @@
 /**
  * Class Yaconf
  *
+ * This just for phpstorm document.
+ *
  * @see https://github.com/laruence/yaconf/
  */
 class Yaconf
