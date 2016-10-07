@@ -72,6 +72,7 @@ if (YII_DEBUG) {
 if (YII_ENV_DEV) {
     $config['modules']['gii'] = [
         'class' => yii\gii\Module::class,
+        'allowedIPs' => ['127.0.0.1', '::1', '192.168.10.*'],
         'generators' => [
             'crud' => [
                 'class' => 'light\generators\crud\Generator',
