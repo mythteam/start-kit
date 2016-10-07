@@ -14,4 +14,7 @@ return [
     'webmaster' => [
         'class' => backend\modules\webmaster\Module::class,
     ],
+    'blog' => [
+        'class' => backend\modules\blog\Module::class,
+    ],
 ];
