@@ -13,6 +13,7 @@
   "minimum-stability": "stable",
   "require": {
     "php": ">=7.0",
+    "ext-yaconf": "*",
     "light/yii2-ajaxform": "~1.0.0",
     "light/yii2-lock-form": "~1.0.0",
     "light/yii2-sweet-submit": "~1.0.0",
