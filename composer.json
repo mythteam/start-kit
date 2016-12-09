@@ -32,13 +32,13 @@
     "bocharsky-bw/file-naming-resolver": "^0.3.1"
   },
   "require-dev": {
-    "yiisoft/yii2-codeception": "~2.0.5",
     "yiisoft/yii2-debug": "dev-master",
     "yiisoft/yii2-gii": "dev-master",
     "yiisoft/yii2-faker": "~2.0.3",
     "light/yii2-generators": "~0.1.2",
-    "phpbu/phpbu": "2.1.*",
-    "light/yii2-swagger": "~1.0.0"
+    "light/yii2-swagger": "~1.0.0",
+    "codeception/base": "^2.2.3",
+    "codeception/verify": "~0.3.1"
   },
   "suggest": {
     "bocharsky-bw/file-naming-resolver": "A lightweight library to resolve uploaded files and directories naming using various naming strategies"
