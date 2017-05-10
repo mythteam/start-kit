@@ -1,13 +1,11 @@
 <?php
 
-use yii\helpers\Html;
 
-/** @var \yii\web\View $this */
-
+/* @var \yii\web\View $this */
 
 $this->title = 'Profile';
 $this->params['breadcrumbs'][] = $this->title;
-$js = <<<JS
+$js = <<<'JS'
 jQuery('#test').on('click', function() {
   jQuery.post('ajax', {'name': 'light', '_csrf': 'dsada'})
   .done(function(response) {

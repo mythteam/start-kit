@@ -6,7 +6,6 @@ use Yii;
 
 /**
  * User's operation is too much, reach the rate limit.
- *
  */
 class RateLimitException extends Exception
 {
@@ -16,4 +15,3 @@ class RateLimitException extends Exception
         parent::__construct($message, $code, $previous);
     }
 }
-

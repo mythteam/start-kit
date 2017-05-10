@@ -1,11 +1,12 @@
 <?php
 
 /**
- * @link http://www.yiiframework.com/
+ * @see http://www.yiiframework.com/
  *
  * @copyright Copyright (c) 2008 Yii Software LLC
  * @license http://www.yiiframework.com/license/
  */
+
 namespace common\widgets;
 
 /**
@@ -44,7 +45,7 @@ class Alert extends \yii\bootstrap\Widget
     ];
 
     /**
-     * @var array the options for rendering the close button tag.
+     * @var array the options for rendering the close button tag
      */
     public $closeButton = [];
 

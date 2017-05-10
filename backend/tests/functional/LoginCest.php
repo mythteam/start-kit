@@ -2,11 +2,11 @@
 
 namespace backend\tests\functional;
 
-use \backend\tests\FunctionalTester;
+use backend\tests\FunctionalTester;
 use common\fixtures\User as UserFixture;
 
 /**
- * Class LoginCest
+ * Class LoginCest.
  */
 class LoginCest
 {
@@ -15,10 +15,11 @@ class LoginCest
         $I->haveFixtures([
             'user' => [
                 'class' => UserFixture::className(),
-                'dataFile' => codecept_data_dir() . 'login_data.php'
-            ]
+                'dataFile' => codecept_data_dir() . 'login_data.php',
+            ],
         ]);
     }
+
     /**
      * @param FunctionalTester $I
      */

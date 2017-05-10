@@ -15,6 +15,7 @@ class WebMasterSearch extends Model
     public $is_super;
     public $register_at;
     public $query;
+
     /**
      * {@inheritdoc}
      */
@@ -25,7 +26,7 @@ class WebMasterSearch extends Model
             [['query', 'register_at'], 'safe'],
         ];
     }
-    
+
     /**
      * {@inheritdoc}
      */
@@ -49,7 +50,7 @@ class WebMasterSearch extends Model
             'query' => $query,
             'sort' => [
                 'defaultOrder' => ['registed_at' => SORT_DESC],
-            ]
+            ],
         ]);
 
         $this->load($params);
@@ -64,9 +65,9 @@ class WebMasterSearch extends Model
             'status' => $this->status,
             'is_super' => $this->is_super,
         ]);
-    
+
         $query->andFilterWhere(['like', 'nickname', $this->query]);
-    
+
         if ($this->register_at) {
             $range = explode(' - ', $this->register_at);
             $range = array_map(function ($value) {

@@ -21,6 +21,7 @@ trait SleepifyTrait
             return $property->getName();
         }, $properties);
     }
+
     /**
      * Magic method of wake up.
      */
@@ -34,6 +35,7 @@ trait SleepifyTrait
             );
         }
     }
+
     /**
      * Get the property value for the given property.
      *

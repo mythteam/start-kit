@@ -44,6 +44,7 @@ class FileTarget extends Target
     public $enableRotation = true;
 
     public $rotateByCopy = true;
+
     /**
      * {@inheritdoc}
      *
@@ -70,6 +71,7 @@ class FileTarget extends Target
             $this->maxFileSize = 1;
         }
     }
+
     /**
      * {@inheritdoc}
      */

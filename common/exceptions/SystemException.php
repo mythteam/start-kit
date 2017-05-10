@@ -10,7 +10,7 @@ class SystemException extends Exception
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function getName()
     {

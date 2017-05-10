@@ -2,14 +2,14 @@
 
 namespace tests\codeception\frontend\acceptance;
 
-use tests\codeception\frontend\_pages\SignupPage;
 use common\models\User;
+use tests\codeception\frontend\_pages\SignupPage;
 
 class SignupCest
 {
-
     /**
-     * This method is called before each cest class test method
+     * This method is called before each cest class test method.
+     *
      * @param \Codeception\Event\TestEvent $event
      */
     public function _before($event)
@@ -18,6 +18,7 @@ class SignupCest
 
     /**
      * This method is called after each cest class test method, even if test failed.
+     *
      * @param \Codeception\Event\TestEvent $event
      */
     public function _after($event)
@@ -30,6 +31,7 @@ class SignupCest
 
     /**
      * This method is called when test fails.
+     *
      * @param \Codeception\Event\FailEvent $event
      */
     public function _fail($event)
@@ -38,7 +40,7 @@ class SignupCest
 
     /**
      * @param \codeception_frontend\AcceptanceTester $I
-     * @param \Codeception\Scenario $scenario
+     * @param \Codeception\Scenario                  $scenario
      */
     public function testUserSignup($I, $scenario)
     {

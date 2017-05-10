@@ -8,7 +8,6 @@ class SignupCest
 {
     protected $formId = '#form-signup';
 
-
     public function _before(FunctionalTester $I)
     {
         $I->amOnRoute('site/signup');
@@ -22,16 +21,15 @@ class SignupCest
         $I->seeValidationError('Username cannot be blank.');
         $I->seeValidationError('Email cannot be blank.');
         $I->seeValidationError('Password cannot be blank.');
-
     }
 
     public function signupWithWrongEmail(FunctionalTester $I)
     {
         $I->submitForm(
             $this->formId, [
-            'SignupForm[username]'  => 'tester',
-            'SignupForm[email]'     => 'ttttt',
-            'SignupForm[password]'  => 'tester_password',
+            'SignupForm[username]' => 'tester',
+            'SignupForm[email]' => 'ttttt',
+            'SignupForm[password]' => 'tester_password',
         ]
         );
         $I->dontSee('Username cannot be blank.', '.help-block');

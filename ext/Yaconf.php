@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Class Yaconf
+ * Class Yaconf.
  *
  * This just for phpstorm document.
  *
@@ -18,15 +18,14 @@ class Yaconf
     {
         return true;
     }
-    
+
     /**
      * @param string $name
      * @param null   $default
      *
-     * @return  mixed
+     * @return mixed
      */
     public static function get($name, $default = null)
     {
-        
     }
 }

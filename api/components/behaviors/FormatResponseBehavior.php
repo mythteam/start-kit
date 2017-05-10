@@ -2,7 +2,6 @@
 
 namespace api\components\behaviors;
 
-use Yii;
 use yii\base\Behavior;
 use yii\web\Response;
 
@@ -20,9 +19,9 @@ class FormatResponseBehavior extends Behavior
             Response::EVENT_BEFORE_SEND => 'formatResponse',
         ];
     }
-    
+
     /**
-     * @param  \yii\base\Event $event
+     * @param \yii\base\Event $event
      */
     public function formatResponse($event)
     {
@@ -32,7 +31,6 @@ class FormatResponseBehavior extends Behavior
         $headers->set('Access-Control-Allow-Origin', '*');
         //format response
         if ('html' !== $response->format) {
-            
             if (!isset($response->data['errcode'])) {
                 if ($response->data !== null) {
                     $response->data = [

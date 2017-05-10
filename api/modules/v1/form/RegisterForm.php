@@ -64,7 +64,7 @@ class RegisterForm extends Model
     /**
      * @SWG\Property(format = "int64")
      *
-     * @var integer
+     * @var int
      */
     public $country_id;
 
@@ -103,6 +103,7 @@ class RegisterForm extends Model
 
     /**
      * @return $this|array|User|UserProfile
+     *
      * @throws SystemException
      * @throws \yii\base\InvalidConfigException
      * @throws \yii\db\Exception
@@ -123,7 +124,7 @@ class RegisterForm extends Model
         $nationalNumber = $phoneUtil->format($phoneNumber, PhoneNumberFormat::NATIONAL);
         $nationalNumber = preg_replace('[-|\s|\(|\)]', '', $nationalNumber);
 
-        if ($nationalNumber !== $phoneNumber->getNationalNumber())  {
+        if ($nationalNumber !== $phoneNumber->getNationalNumber()) {
             $phoneNumber->setNationalNumber($nationalNumber);
         }
         unset($phoneUtil, $nationalNumber);
@@ -134,9 +135,9 @@ class RegisterForm extends Model
         /** @var \light\Easemob\Rest\User $easemobUserComponent */
         $easemobUserComponent = $easemob->user;
 
-        $user = new User;
+        $user = new User();
         $user->phone = $phoneNumber->getNationalNumber();
-        $user->calling_code = (string)$phoneNumber->getCountryCode();
+        $user->calling_code = (string) $phoneNumber->getCountryCode();
         $user->setPassword($this->password);
         $user->generateAccessToken();
         $user->nickname = $this->username;
@@ -154,6 +155,7 @@ class RegisterForm extends Model
         try {
             if (false === $user->insert()) {
                 $transaction->rollBack();
+
                 return $user;
             }
 
@@ -166,6 +168,7 @@ class RegisterForm extends Model
             }
             if (false === $profile->insert()) {
                 $transaction->rollBack();
+
                 return $profile;
             }
             //register user to easemob
@@ -177,12 +180,14 @@ class RegisterForm extends Model
             $result = $easemobUserComponent->register($data);
             if (false === $result) {
                 $transaction->rollBack();
+
                 return [
                     'errcode' => 1,
                     'errmsg' => 'Register Error',
                 ];
             }
             $transaction->commit();
+
             return [
                 'user_id' => $user->id,
                 'access_token' => $user->access_token,

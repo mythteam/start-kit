@@ -7,18 +7,19 @@ use yii\web\AssetBundle;
 final class UEditorAsset extends AssetBundle
 {
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public $js = [
         'ueditor.config.js',
         'ueditor.all.js',
     ];
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public $depends = ['yii\web\JqueryAsset'];
+
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function init()
     {

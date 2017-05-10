@@ -86,7 +86,7 @@ function response()
 /**
  * ~~~
  * user()->isGuest ? echo 'Hello guest' : echo 'Hello baby';
- * ~~~
+ * ~~~.
  *
  * @return \yii\web\User
  */
@@ -115,4 +115,3 @@ function error_summary($model)
 {
     return Html::errorSummary($model);
 }
-

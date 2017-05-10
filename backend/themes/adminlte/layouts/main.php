@@ -4,10 +4,10 @@
 /* @var $content string */
 
 use backend\themes\adminlte\assets\AppAsset;
-use yii\helpers\Html;
-use common\widgets\Alert;
-use yii\widgets\Breadcrumbs;
 use common\widgets\AdminLTEMenu;
+use common\widgets\Alert;
+use yii\helpers\Html;
+use yii\widgets\Breadcrumbs;
 
 AppAsset::register($this);
 ?>
@@ -220,7 +220,7 @@ AppAsset::register($this);
             </div>
             <!-- sidebar menu: : style can be found in sidebar.less -->
             <?= AdminLTEMenu::widget([
-                'items' => Yii::$app->user->getMenus()
+                'items' => Yii::$app->user->getMenus(),
             ]) ?>
         </section>
         <!-- /.sidebar -->
@@ -235,7 +235,7 @@ AppAsset::register($this);
                 'homeLink' => [
                     'label' => '首页',
                     'url' => Yii::$app->homeUrl,
-                    'template' => '<li><i class="fa fa-dashboard"></i> {link}</li>'
+                    'template' => '<li><i class="fa fa-dashboard"></i> {link}</li>',
                 ],
                 'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
             ]) ?>
@@ -250,7 +250,7 @@ AppAsset::register($this);
     <!-- /.content-wrapper -->
     <footer class="main-footer">
         <div class="pull-right hidden-xs">
-            <b>耗时</b> <?= number_format(Yii::getLogger()->getElapsedTime() * 1000).' ms';?>
+            <b>耗时</b> <?= number_format(Yii::getLogger()->getElapsedTime() * 1000).' ms'; ?>
         </div>
         <strong>Copyright © <?= date('Y') ?> <a href="http://almsaeedstudio.com"><?= Yii::$app->name ?></a>.</strong> All rights
         reserved.

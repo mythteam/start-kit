@@ -41,7 +41,7 @@ return [
         '/messages',
         '/runtime',
         '.md',
-        '/config'
+        '/config',
     ],
 
     // 'php' output format is for saving messages to php files.

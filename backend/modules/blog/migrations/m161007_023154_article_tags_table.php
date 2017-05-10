@@ -1,4 +1,5 @@
 <?php
+
 use console\components\db\Migration;
 use yii\helpers\Console;
 

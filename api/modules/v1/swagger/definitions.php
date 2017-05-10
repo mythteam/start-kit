@@ -9,6 +9,7 @@ class Image
 {
     /**
      * 上传七牛后的地址
+     *
      * @SWG\Property(default = "https://dn-iyuban.qbox.me/img/avatar.png")
      *
      * @var string
@@ -37,7 +38,7 @@ class Tweet
     /**
      * @SWG\Property()
      *
-     * @var integer
+     * @var int
      */
     public $permission;
 
@@ -59,7 +60,7 @@ class User
      *     description = "用户ID"
      * )
      *
-     * @var integer
+     * @var int
      */
     public $id;
 
@@ -81,7 +82,7 @@ class UserProfile
     /**
      * @SWG\Property(format = "int64", enum = {1, 2}, description ="dsadasd")
      *
-     * @var integer
+     * @var int
      */
     public $sex;
 }
@@ -94,28 +95,28 @@ class Balance
     /**
      * @SWG\Property(description = "账户总余额", example = "100.12")
      *
-     * @var integer
+     * @var int
      */
     public $total;
 
     /**
      * @SWG\Property(description = "充值总值", example = "55.12")
      *
-     * @var integer
+     * @var int
      */
     public $recharge;
 
     /**
      * @SWG\Property(description = "消费总值", example = "100.12")
      *
-     * @var integer
+     * @var int
      */
     public $consumed;
 
     /**
      * @SWG\Property(format = "挣得总值", example = "823.12")
      *
-     * @var integer
+     * @var int
      */
     public $earned;
 
@@ -133,24 +134,25 @@ class Balance
 class BillHistoryItem
 {
     /**
-     * 账单ID
+     * 账单ID.
+     *
      * @SWG\Property(example = 10000)
      *
-     * @var integer
+     * @var int
      */
     public $id;
 
     /**
-     * 账单状态标志位，不用于显示
+     * 账单状态标志位，不用于显示.
      *
      * @SWG\Property(example = 1)
      *
-     * @var integer
+     * @var int
      */
     public $status;
 
     /**
-     * 账单标志位说明, 用于显示
+     * 账单标志位说明, 用于显示.
      *
      * @SWG\Property(example = "交易成功")
      *
@@ -159,15 +161,15 @@ class BillHistoryItem
     public $statusLabel;
 
     /**
-     * 账单行为标志位
+     * 账单行为标志位.
      *
      * @SWG\Property(example = 1)
      *
-     * @var integer
+     * @var int
      */
     public $flag;
     /**
-     * 账单行为标志位说明,用于显示
+     * 账单行为标志位说明,用于显示.
      *
      * @SWG\Property(example = "充值")
      *
@@ -175,15 +177,15 @@ class BillHistoryItem
      */
     public $flagLabel;
     /**
-     * 金钱流向
+     * 金钱流向.
      *
      * @SWG\Property()
      *
-     * @var integer
+     * @var int
      */
     public $flow;
     /**
-     * 账单金额
+     * 账单金额.
      *
      * @SWG\Property()
      *
@@ -191,7 +193,7 @@ class BillHistoryItem
      */
     public $sum;
     /**
-     * 账单创建时间
+     * 账单创建时间.
      *
      * @SWG\Property(example = "2016-01-19 17:21")
      *
@@ -200,7 +202,7 @@ class BillHistoryItem
     public $time;
 
     /**
-     * 显示用户信息
+     * 显示用户信息.
      *
      * @SWG\Property()
      *
@@ -215,11 +217,11 @@ class BillHistoryItem
 class SimpleUser
 {
     /**
-     * 用户ID
+     * 用户ID.
      *
      * @SWG\Property()
      *
-     * @var integer
+     * @var int
      */
     public $id;
     /**
@@ -227,11 +229,11 @@ class SimpleUser
      *
      * @SWG\Property(example = 1)
      *
-     * @var integer
+     * @var int
      */
     public $state;
     /**
-     * 用户姓名
+     * 用户姓名.
      *
      * @SWG\Property()
      *
@@ -254,11 +256,11 @@ class SimpleUser
 class Id
 {
     /**
-     * 用户ID
+     * 用户ID.
      *
      * @SWG\Property(example = 10000)
      *
-     * @var integer
+     * @var int
      */
     public $id;
 }
@@ -268,7 +270,7 @@ class Id
 class UserEasemobIdList
 {
     /**
-     * Access Token
+     * Access Token.
      *
      * @SWG\Property()
      *

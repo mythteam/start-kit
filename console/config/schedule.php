@@ -1,7 +1,7 @@
 <?php
 /**
  * Schedules.
- * @var \mythteam\schedule\Schedule $schedule
+ *
+ * @var \mythteam\schedule\Schedule
  */
-
 $schedule->command('test')->everyMinute();

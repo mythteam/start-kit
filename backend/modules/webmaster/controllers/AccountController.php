@@ -17,9 +17,9 @@ use yii2mod\editable\EditableAction;
 class AccountController extends Controller
 {
     public $defaultAction = 'list';
-    
+
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function behaviors()
     {
@@ -32,9 +32,9 @@ class AccountController extends Controller
             ],
         ];
     }
-    
+
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function actions()
     {
@@ -45,10 +45,10 @@ class AccountController extends Controller
             'update-attr' => [
                 'class' => EditableAction::class,
                 'modelClass' => WebMaster::class,
-            ]
+            ],
         ];
     }
-    
+
     /**
      * Lists all WebMaster models.
      *
@@ -58,13 +58,13 @@ class AccountController extends Controller
     {
         $searchModel = new WebMasterSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-        
+
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
     }
-    
+
     /**
      * Creates a new WebMaster model.
      * If creation is successful, the browser will be redirected to the 'view' page.
@@ -74,10 +74,10 @@ class AccountController extends Controller
     public function actionCreate()
     {
         $model = new WebMaster();
-        
+
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             Yii::$app->getSession()->setFlash('success', '创建成功');
-            
+
             return $this->redirect(['list']);
         } else {
             return $this->render('create', [
@@ -85,7 +85,7 @@ class AccountController extends Controller
             ]);
         }
     }
-    
+
     /**
      * Updates an existing WebMaster model.
      * If update is successful, the browser will be redirected to the 'view' page.
@@ -97,10 +97,10 @@ class AccountController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-        
+
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             Yii::$app->getSession()->setFlash('success', '更新成功');
-            
+
             return $this->redirect(['list']);
         } else {
             return $this->render('update', [
@@ -108,7 +108,7 @@ class AccountController extends Controller
             ]);
         }
     }
-    
+
     /**
      * Finds the WebMaster model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.

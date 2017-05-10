@@ -90,15 +90,15 @@ use yii\base\Component;
 final class Connection extends Component
 {
     /**
-     * @var string The connection host.
+     * @var string the connection host
      */
     public $host = '127.0.0.1';
     /**
-     * @var int The connection port.
+     * @var int the connection port
      */
     public $port = 8888;
     /**
-     * @var int Connection timeout.
+     * @var int connection timeout
      */
     public $timeout = 2000;
     /**
@@ -106,19 +106,19 @@ final class Connection extends Component
      */
     public $easy = true;
     /**
-     * @var bool If open the debug mode.
+     * @var bool if open the debug mode
      */
     public $debug = false;
     /**
-     * @var mixed The socket.
+     * @var mixed the socket
      */
     private $sock;
     /**
-     * @var bool If the connection closed.
+     * @var bool if the connection closed
      */
     private $_closed = false;
     /**
-     * @var string received buffer.
+     * @var string received buffer
      */
     private $recv_buf = '';
     /**
@@ -251,7 +251,7 @@ final class Connection extends Component
                 $resp = new Response('error', $e->getMessage());
             }
         }
-        if ($resp->code == 'noauth') {
+        if ($resp->code === 'noauth') {
             $msg = $resp->message;
             throw new Exception($msg);
         }
@@ -397,7 +397,7 @@ final class Connection extends Component
         } elseif (!$resp) {
             return new Response('disconnected', 'Connection closed');
         }
-        if ($resp[0] == 'noauth') {
+        if ($resp[0] === 'noauth') {
             $errmsg = isset($resp[1]) ? $resp[1] : '';
 
             return new Response($resp[0], $errmsg);
@@ -447,7 +447,7 @@ final class Connection extends Component
             case 'zsum':
             case 'zremrangebyrank':
             case 'zremrangebyscore':
-                if ($resp[0] == 'ok') {
+                if ($resp[0] === 'ok') {
                     $val = isset($resp[1]) ? intval($resp[1]) : 0;
 
                     return new Response($resp[0], $val);
@@ -457,7 +457,7 @@ final class Connection extends Component
                     return new Response($resp[0], $errmsg);
                 }
             case 'zavg':
-                if ($resp[0] == 'ok') {
+                if ($resp[0] === 'ok') {
                     $val = isset($resp[1]) ? floatval($resp[1]) : (float) 0;
 
                     return new Response($resp[0], $val);
@@ -473,8 +473,8 @@ final class Connection extends Component
             case 'qget':
             case 'qfront':
             case 'qback':
-                if ($resp[0] == 'ok') {
-                    if (count($resp) == 2) {
+                if ($resp[0] === 'ok') {
+                    if (count($resp) === 2) {
                         return new Response('ok', $resp[1]);
                     } else {
                         return new Response('server_error', 'Invalid response');
@@ -488,13 +488,13 @@ final class Connection extends Component
             case 'qpop':
             case 'qpop_front':
             case 'qpop_back':
-                if ($resp[0] == 'ok') {
+                if ($resp[0] === 'ok') {
                     $size = 1;
                     if (isset($params[1])) {
                         $size = intval($params[1]);
                     }
                     if ($size <= 1) {
-                        if (count($resp) == 2) {
+                        if (count($resp) === 2) {
                             return new Response('ok', $resp[1]);
                         } else {
                             return new Response('server_error', 'Invalid response');
@@ -516,9 +516,9 @@ final class Connection extends Component
             case 'hlist':
             case 'zlist':
             case 'qslice':
-                if ($resp[0] == 'ok') {
+                if ($resp[0] === 'ok') {
                     $data = [];
-                    if ($resp[0] == 'ok') {
+                    if ($resp[0] === 'ok') {
                         $data = array_slice($resp, 1);
                     }
 
@@ -532,8 +532,8 @@ final class Connection extends Component
             case 'exists':
             case 'hexists':
             case 'zexists':
-                if ($resp[0] == 'ok') {
-                    if (count($resp) == 2) {
+                if ($resp[0] === 'ok') {
+                    if (count($resp) === 2) {
                         return new Response('ok', (bool) $resp[1]);
                     } else {
                         return new Response('server_error', 'Invalid response');
@@ -547,8 +547,8 @@ final class Connection extends Component
             case 'multi_exists':
             case 'multi_hexists':
             case 'multi_zexists':
-                if ($resp[0] == 'ok') {
-                    if (count($resp) % 2 == 1) {
+                if ($resp[0] === 'ok') {
+                    if (count($resp) % 2 === 1) {
                         $data = [];
                         for ($i = 1; $i < count($resp); $i += 2) {
                             $data[$resp[$i]] = (bool) $resp[$i + 1];
@@ -578,11 +578,11 @@ final class Connection extends Component
             case 'multi_get':
             case 'multi_hget':
             case 'multi_zget':
-                if ($resp[0] == 'ok') {
-                    if (count($resp) % 2 == 1) {
+                if ($resp[0] === 'ok') {
+                    if (count($resp) % 2 === 1) {
                         $data = [];
                         for ($i = 1; $i < count($resp); $i += 2) {
-                            if ($cmd[0] == 'z') {
+                            if ($cmd[0] === 'z') {
                                 $data[$resp[$i]] = intval($resp[$i + 1]);
                             } else {
                                 $data[$resp[$i]] = $resp[$i + 1];
@@ -618,12 +618,12 @@ final class Connection extends Component
         try {
             while (true) {
                 $ret = @fwrite($this->sock, $s);
-                if ($ret == false) {
+                if ($ret === false) {
                     $this->close();
                     throw new Exception('Connection lost');
                 }
                 $s = substr($s, $ret);
-                if (strlen($s) == 0) {
+                if (strlen($s) === 0) {
                     break;
                 }
                 @fflush($this->sock);
@@ -655,7 +655,7 @@ final class Connection extends Component
                     throw new Exception('Connection lost');
                 }
                 $this->recv_buf .= $data;
-#				echo "read " . strlen($data) . " total: " . strlen($this->recv_buf) . "\n";
+//				echo "read " . strlen($data) . " total: " . strlen($this->recv_buf) . "\n";
             } else {
                 return $ret;
             }
@@ -686,7 +686,7 @@ final class Connection extends Component
                 $line = substr($this->recv_buf, $spos, $epos - $spos);
                 $spos = $epos;
                 $line = trim($line);
-                if (strlen($line) == 0) { // head end
+                if (strlen($line) === 0) { // head end
                     $this->recv_buf = substr($this->recv_buf, $spos);
                     $ret = $this->resp;
                     $this->resp = [];

@@ -1,7 +1,8 @@
 <?php
+
 defined('YII_APP_BASE_PATH') or define('YII_APP_BASE_PATH', dirname(dirname(dirname(dirname(__DIR__)))));
 
-/**
+/*
  * Application configuration for backend acceptance tests
  */
 return yii\helpers\ArrayHelper::merge(

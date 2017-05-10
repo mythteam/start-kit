@@ -42,10 +42,10 @@ class LoginForm extends Model
     }
 
     /**
-     * Validate password
+     * Validate password.
      *
-     * @param  string $attribute
-     * @param  array $params
+     * @param string $attribute
+     * @param array  $params
      */
     public function validatePassword($attribute, $params)
     {
@@ -83,6 +83,7 @@ class LoginForm extends Model
         if (false === $user->update()) {
             return $user;
         }
+
         return [
             'user_id' => $user->id,
             'access_token' => $user->access_token,

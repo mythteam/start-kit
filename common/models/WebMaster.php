@@ -31,13 +31,13 @@ class WebMaster extends ActiveRecord implements IdentityInterface
 {
     //是否为超级管理员
     const SUPER_YES = 1;
-    const SUPER_NO  = 0;
-    
+    const SUPER_NO = 0;
+
     /**
-     * @var string The plain password of the user input.
+     * @var string the plain password of the user input
      */
     public $password;
-    
+
     /**
      * {@inheritdoc}
      */
@@ -45,7 +45,7 @@ class WebMaster extends ActiveRecord implements IdentityInterface
     {
         return '{{%webmaster}}';
     }
-    
+
     /**
      * {@inheritdoc}
      */
@@ -60,19 +60,19 @@ class WebMaster extends ActiveRecord implements IdentityInterface
                 'password',
                 'string',
             ],
-            ['password', 'filter', 'filter' => function($value) {
+            ['password', 'filter', 'filter' => function ($value) {
                 $this->setPassword($value);
             }, 'skipOnEmpty' => true],
-            
+
             [['password_hash', 'password_reset_token'], 'string', 'max' => 100],
             [['account'], 'unique'],
-            
+
             ['is_super', 'default', 'value' => self::SUPER_NO],
             ['status', 'default', 'value' => Constants::STATUS_ENABLED],
             ['logged_at', 'default', 'value' => time()],
         ];
     }
-    
+
     /**
      * {@inheritdoc}
      */
@@ -86,7 +86,7 @@ class WebMaster extends ActiveRecord implements IdentityInterface
             ],
         ];
     }
-    
+
     /**
      * {@inheritdoc}
      */
@@ -100,20 +100,19 @@ class WebMaster extends ActiveRecord implements IdentityInterface
             'logged_at' => '最后登录于',
             'nickname' => '昵称',
             'account' => '登录账号',
-        
         ];
     }
-    
+
     /**
      * {@inheritdoc}
      *
-     * @return WebmasterQuery the active query used by this AR class.
+     * @return WebmasterQuery the active query used by this AR class
      */
     public static function find()
     {
         return new WebmasterQuery(get_called_class());
     }
-    
+
     /**
      * {@inheritdoc}
      */
@@ -121,7 +120,7 @@ class WebMaster extends ActiveRecord implements IdentityInterface
     {
         return static::findOne(['id' => $id, 'status' => Constants::STATUS_ENABLED]);
     }
-    
+
     /**
      * {@inheritdoc}
      */
@@ -129,7 +128,7 @@ class WebMaster extends ActiveRecord implements IdentityInterface
     {
         throw new NotSupportedException('"findIdentityByAccessToken" is not implemented.');
     }
-    
+
     /**
      * Finds user by password reset token.
      *
@@ -141,18 +140,18 @@ class WebMaster extends ActiveRecord implements IdentityInterface
     {
         $expire = Yii::$app->params['user.passwordResetTokenExpire'];
         $parts = explode('_', $token);
-        $timestamp = (int)end($parts);
+        $timestamp = (int) end($parts);
         if ($timestamp + $expire < time()) {
             // token expired
             return;
         }
-        
+
         return static::findOne([
             'password_reset_token' => $token,
             'status' => Constants::STATUS_ENABLED,
         ]);
     }
-    
+
     /**
      * 根据account查找用户.
      *
@@ -164,7 +163,7 @@ class WebMaster extends ActiveRecord implements IdentityInterface
     {
         return static::findOne(['account' => $account, 'status' => Constants::STATUS_ENABLED]);
     }
-    
+
     /**
      * {@inheritdoc}
      */
@@ -172,7 +171,7 @@ class WebMaster extends ActiveRecord implements IdentityInterface
     {
         return $this->getPrimaryKey();
     }
-    
+
     /**
      * {@inheritdoc}
      */
@@ -180,7 +179,7 @@ class WebMaster extends ActiveRecord implements IdentityInterface
     {
         return $this->auth_key;
     }
-    
+
     /**
      * {@inheritdoc}
      */
@@ -188,7 +187,7 @@ class WebMaster extends ActiveRecord implements IdentityInterface
     {
         return $this->getAuthKey() === $authKey;
     }
-    
+
     /**
      * Validates password.
      *
@@ -200,7 +199,7 @@ class WebMaster extends ActiveRecord implements IdentityInterface
     {
         return Yii::$app->security->validatePassword($password, $this->password_hash);
     }
-    
+
     /**
      * Generates password hash from password and sets it to the model.
      *
@@ -210,7 +209,7 @@ class WebMaster extends ActiveRecord implements IdentityInterface
     {
         $this->password_hash = Yii::$app->security->generatePasswordHash($password);
     }
-    
+
     /**
      * Generates "remember me" authentication key.
      */
@@ -218,7 +217,7 @@ class WebMaster extends ActiveRecord implements IdentityInterface
     {
         $this->auth_key = Yii::$app->security->generateRandomString();
     }
-    
+
     /**
      * Generates new password reset token.
      */
@@ -226,7 +225,7 @@ class WebMaster extends ActiveRecord implements IdentityInterface
     {
         $this->password_reset_token = Yii::$app->security->generateRandomString() . '_' . time();
     }
-    
+
     /**
      * Removes password reset token.
      */
@@ -234,9 +233,9 @@ class WebMaster extends ActiveRecord implements IdentityInterface
     {
         $this->password_reset_token = null;
     }
-    
+
     /**
-     * Status dictionary
+     * Status dictionary.
      *
      * @return array
      */
@@ -247,9 +246,9 @@ class WebMaster extends ActiveRecord implements IdentityInterface
             Constants::STATUS_DISABLED => '禁用',
         ];
     }
-    
+
     /**
-     * Get the status Label
+     * Get the status Label.
      *
      * @return string
      */
@@ -257,7 +256,7 @@ class WebMaster extends ActiveRecord implements IdentityInterface
     {
         return static::statusDict()[$this->status];
     }
-    
+
     /**
      * @return string
      */
@@ -265,7 +264,7 @@ class WebMaster extends ActiveRecord implements IdentityInterface
     {
         return Yii::$app->getFormatter()->asDatetime($this->logged_at);
     }
-    
+
     /**
      * If the super administrator.
      *
@@ -273,6 +272,6 @@ class WebMaster extends ActiveRecord implements IdentityInterface
      */
     public function getIsSuper()
     {
-        return $this->is_super == self::SUPER_YES;
+        return $this->is_super === self::SUPER_YES;
     }
 }

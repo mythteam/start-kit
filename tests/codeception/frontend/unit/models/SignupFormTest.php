@@ -2,14 +2,13 @@
 
 namespace tests\codeception\frontend\unit\models;
 
-use tests\codeception\frontend\unit\DbTestCase;
-use tests\codeception\common\fixtures\UserFixture;
 use Codeception\Specify;
 use frontend\models\SignupForm;
+use tests\codeception\common\fixtures\UserFixture;
+use tests\codeception\frontend\unit\DbTestCase;
 
 class SignupFormTest extends DbTestCase
 {
-
     use Specify;
 
     public function testCorrectSignup()

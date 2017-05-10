@@ -2,8 +2,8 @@
 
 namespace common\components\beanstalkd;
 
-use Pheanstalk\Pheanstalk;
 use Pheanstalk\Job;
+use Pheanstalk\Pheanstalk;
 use Pheanstalk\PheanstalkInterface;
 use yii\base\Component;
 
@@ -29,9 +29,9 @@ use yii\base\Component;
  * @method $this watchOnly(string $tube)
  * @method false|Job reserve($timeout = null)
  * @method Job reserveFromTube(string $tube, $timeout = null)
- * @method Object statsJob($job)
- * @method Object statsTube(string $tube)
- * @method Object stats()
+ * @method object statsJob($job)
+ * @method object statsTube(string $tube)
+ * @method object stats()
  * @method $this touch(Job $job)
  * @method void useTube(string $tube)
  * @method void release(Job $job, $priority = PheanstalkInterface::DEFAULT_PRIORITY, $delay = PheanstalkInterface::DEFAULT_DELAY)
@@ -41,23 +41,23 @@ class Beanstalkd extends Component
     use Traits;
 
     /**
-     * @var string The connection address.
+     * @var string the connection address
      */
     public $address = '127.0.0.1';
     /**
-     * @var string The connection port.
+     * @var string the connection port
      */
     public $port = 11300;
     /**
-     * @var null|int The connection timeout.
+     * @var null|int the connection timeout
      */
     public $timeout;
     /**
-     * @var bool If connection persistent.
+     * @var bool if connection persistent
      */
     public $persistent = false;
     /**
-     * @var string The tube.
+     * @var string the tube
      */
     protected $tube = PheanstalkInterface::DEFAULT_TUBE;
 
@@ -105,9 +105,9 @@ class Beanstalkd extends Component
 
     /**
      * @param string $payload
-     * @param int $priority
-     * @param int $delay
-     * @param int $ttr
+     * @param int    $priority
+     * @param int    $delay
+     * @param int    $ttr
      *
      * @return int
      */
@@ -116,8 +116,7 @@ class Beanstalkd extends Component
         $priority = PheanstalkInterface::DEFAULT_PRIORITY,
         $delay = PheanstalkInterface::DEFAULT_DELAY,
         $ttr = PheanstalkInterface::DEFAULT_TTR
-    )
-    {
+    ) {
         $this->client->useTube($this->tube);
 
         return $this->client->put($payload, $priority, $delay, $ttr);

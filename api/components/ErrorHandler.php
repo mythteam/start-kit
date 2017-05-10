@@ -28,33 +28,33 @@ final class ErrorHandler extends \yii\base\ErrorHandler
         } else {
             $response = new Response();
         }
-        
+
         //force return json format exception
         $response->format = Response::FORMAT_JSON;
         // if ($exception instanceof SystemException) {
-        
+
         //     $response->send();
         // }
         $response->data = $this->convertExceptionToArray($exception);
-        
+
         if ($exception instanceof HttpException) {
             $response->setStatusCode($exception->statusCode);
         } else {
             $response->setStatusCode(500);
         }
-        
+
         $response->send();
     }
-    
+
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     protected function convertExceptionToArray($exception)
     {
         if (!YII_DEBUG && !$exception instanceof UserException && !$exception instanceof HttpException) {
             $exception = new HttpException(500, 'There was an error at the server.');
         }
-        
+
         $array = [
             // 'name' => $exception->getName() ?: 'Exception',
             'errmsg' => $exception->getMessage(),
@@ -77,7 +77,7 @@ final class ErrorHandler extends \yii\base\ErrorHandler
                 $array['data']['previous'] = $this->convertExceptionToArray($prev);
             }
         }
-        
+
         return $array;
     }
 }

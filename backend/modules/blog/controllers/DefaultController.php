@@ -5,13 +5,10 @@ namespace backend\modules\blog\controllers;
 use Yii;
 use yii\web\Controller;
 
-/**
- * @package backend\modules\blog\controllers
- */
 class DefaultController extends Controller
 {
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function behaviors()
     {
@@ -23,15 +20,16 @@ class DefaultController extends Controller
                         'actions' => [], //empty, apply to all actions
                         'allow' => true,
                         'roles' => ['@'],
-                        'verbs' => ['GET']
+                        'verbs' => ['GET'],
                     ],
                 ],
-            ]
+            ],
         ];
     }
 
     /**
-     * index action
+     * index action.
+     *
      * @return mixed
      */
     public function actionIndex()

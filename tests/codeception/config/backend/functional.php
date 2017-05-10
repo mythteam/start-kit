@@ -1,8 +1,9 @@
 <?php
+
 $_SERVER['SCRIPT_FILENAME'] = YII_TEST_BACKEND_ENTRY_FILE;
 $_SERVER['SCRIPT_NAME'] = YII_BACKEND_TEST_ENTRY_URL;
 
-/**
+/*
  * Application configuration for backend functional tests
  */
 return yii\helpers\ArrayHelper::merge(

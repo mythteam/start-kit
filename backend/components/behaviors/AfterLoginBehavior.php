@@ -11,6 +11,7 @@ class AfterLoginBehavior extends Behavior
      * @var int
      */
     public $attribute = 'logged_at';
+
     /**
      * {@inheritdoc}
      */

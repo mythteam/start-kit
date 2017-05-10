@@ -28,7 +28,7 @@ abstract class BaseMail extends Object
         if (false === $this->beforeSend()) {
             return;
         }
-        if (null == $this->to) {
+        if (null === $this->to) {
             throw new InvalidConfigException('The main email target must be setted.');
         }
         $mailer = Yii::$app->get('mailer');
@@ -44,6 +44,7 @@ abstract class BaseMail extends Object
 
         return $message->send();
     }
+
     /**
      * Preview locally
      * ~~~
@@ -58,13 +59,14 @@ abstract class BaseMail extends Object
         if (false === $this->beforeSend()) {
             return;
         }
-        if (null == $this->to) {
+        if (null === $this->to) {
             throw new InvalidConfigException('The main email target must be setted.');
         }
         $mailer = Yii::$app->get('mailer');
 
         return $mailer->render($this->template, $this->params, '@common/business/mail/views/layouts/transactional.php');
     }
+
     /**
      * Logic of before send,
      * We should set to or cc ect.
@@ -99,10 +101,12 @@ abstract class BaseMail extends Object
     {
         return $this->_to;
     }
+
     /**
      * @var string|array
      */
     private $_cc;
+
     /**
      * set mailer cc target email.
      *
@@ -116,6 +120,7 @@ abstract class BaseMail extends Object
 
         return $this;
     }
+
     /**
      * get cc email list.
      *
@@ -134,6 +139,7 @@ abstract class BaseMail extends Object
     abstract public function getTemplate();
 
     private $_params;
+
     /**
      * get the params set to mail template.
      *
@@ -143,6 +149,7 @@ abstract class BaseMail extends Object
     {
         return $this->_params;
     }
+
     /**
      * Setter of params.
      *
@@ -181,7 +188,7 @@ abstract class BaseMail extends Object
     public function enqueue()
     {
         $redis = Yii::$app->get('redis', false);
-        if (null == $redis) {
+        if (null === $redis) {
             return;
         }
 
@@ -201,7 +208,7 @@ abstract class BaseMail extends Object
         }, $tasks);
 
         $redis = Yii::$app->get('redis', false);
-        if (null == $redis) {
+        if (null === $redis) {
             return;
         }
         array_unshift($tasks, static::queueName());
@@ -220,7 +227,7 @@ abstract class BaseMail extends Object
     {
         if (null === $redis) {
             $redis = Yii::$app->get('redis', false);
-            if (null == $redis) {
+            if (null === $redis) {
                 return;
             }
         }

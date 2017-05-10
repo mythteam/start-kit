@@ -9,7 +9,7 @@ use yii\web\AssetBundle;
 use yii\web\JqueryAsset;
 
 /**
- * Class AdminLTEAsset
+ * Class AdminLTEAsset.
  *
  * @see https://almsaeedstudio.com/preview
  */
@@ -18,12 +18,12 @@ class AdminLTEAsset extends AssetBundle
     public $sourcePath = '@bower/AdminLTE/dist';
 
     public $js = [
-        'js/app.js'
+        'js/app.js',
     ];
 
     public $css = [
         'css/AdminLTE.css',
-        'css/skins/skin-blue.css'
+        'css/skins/skin-blue.css',
     ];
 
     public $depends = [
