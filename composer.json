@@ -17,7 +17,7 @@
     "light/yii2-ajaxform": "~1.0.0",
     "light/yii2-lock-form": "~1.0.0",
     "light/yii2-sweet-submit": "~1.0.0",
-    "yiisoft/yii2": "2.0.9",
+    "yiisoft/yii2": "~2.0.11",
     "yiisoft/yii2-bootstrap": "~2.0.5",
     "yiisoft/yii2-redis": "~2.0.4",
     "yiisoft/yii2-swiftmailer": "~2.0.4",
@@ -54,7 +54,8 @@
   "config": {
     "process-timeout": 1800,
     "preferred-install": "dist",
-    "optimize-autoloader": true
+    "optimize-autoloader": true,
+    "sort-packages": true
   },
   "extra": {
     "asset-installer-paths": {
@@ -71,7 +72,7 @@
   },
   "scripts": {
     "post-root-package-install": [
-      "composer global require fxp/composer-asset-plugin=~1.1.1"
+      "composer global require fxp/composer-asset-plugin=~1.*"
     ],
     "post-install-cmd": [
       "bower install --allow-root"
