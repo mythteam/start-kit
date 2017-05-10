@@ -11,12 +11,12 @@ class SiteController extends Controller
 {
     use MethodInjectionTrait;
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public $enableCsrfValidation = false;
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function actions()
     {
@@ -38,16 +38,18 @@ class SiteController extends Controller
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function beforeAction($action)
     {
         if (parent::beforeAction($action)) {
-            if ('api' == $action->id) {
+            if ('api' === $action->id) {
                 app()->response->detachBehavior('beforeSend');
             }
+
             return true;
         }
+
         return false;
     }
 
@@ -60,6 +62,7 @@ class SiteController extends Controller
     {
         app()->response->format = \yii\web\Response::FORMAT_JSON;
         $resutl = app()->request->bodyParams;
+
         return ['tr' => $resutl, 'xx' => app()->request->post(), 'get' => app()->request->get()];
     }
 

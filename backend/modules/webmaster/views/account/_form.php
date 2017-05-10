@@ -10,7 +10,7 @@ use yii\helpers\Html;
 ?>
 <div class="col-md-9 col-md-offset-1">
     <?php $form = ActiveForm::begin([
-        'layout' => 'horizontal'
+        'layout' => 'horizontal',
     ]); ?>
     <?= $form->field($model, 'nickname')->textInput(['maxlength' => true, 'placeholder' => '姓名'])->label('姓名') ?>
     <?= $form->field($model, 'account')->textInput([
@@ -27,7 +27,7 @@ use yii\helpers\Html;
                 $model->isNewRecord ? '创建' : '更新',
                 [
                     'class' => $model->isNewRecord ? 'btn btn-success btn-lg btn-block' : 'btn btn-primary btn-lg btn-block',
-                    'data-loading-text' => '保存中...'
+                    'data-loading-text' => '保存中...',
                 ]
             ) ?>
         </div>

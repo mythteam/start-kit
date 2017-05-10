@@ -6,15 +6,11 @@ use backend\models\UpdateProfileForm;
 use common\traits\MethodInjectionTrait;
 use Yii;
 use yii\web\Controller;
-use yii\web\Response;
 
-/**
- *
- */
 class ProfileController extends Controller
 {
     use MethodInjectionTrait;
-    
+
     /**
      * @param UpdateProfileForm $model
      *
@@ -27,7 +23,7 @@ class ProfileController extends Controller
                 Yii::$app->session->setFlash('success', '保存成功');
             }
         }
-        
+
         return $this->render('update', [
             'model' => $model,
         ]);

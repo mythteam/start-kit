@@ -26,7 +26,7 @@ trait AjaxValidationTrait
             Yii::$app->getResponse()->format = Response::FORMAT_JSON;
             /*ActiveForm::validate*/
             echo json_encode(ActiveForm::validate($model));
-            Yii::$app->end();//terminate the application
+            Yii::$app->end(); //terminate the application
         }
     }
 }

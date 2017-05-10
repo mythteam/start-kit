@@ -14,6 +14,7 @@ class TestController extends Controller
     public function actionCreate()
     {
         $result = app()->request->bodyParams;
+
         return [
             'body' => $result,
             'post' => app()->request->post(),

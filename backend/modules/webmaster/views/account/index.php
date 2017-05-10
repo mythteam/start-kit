@@ -3,7 +3,6 @@
 use common\components\grid\ChangeSingleColumn;
 use common\Constants;
 use yii\grid\ActionColumn;
-use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
 
@@ -49,11 +48,11 @@ $this->params['breadcrumbs'][] = $this->title;
                         'disable' => function ($model, $key, $index) {
                             /* @var $model \common\models\WebMaster; */
                             return $model->isSuper;
-                        }
+                        },
                     ],
                     [
                         'class' => ActionColumn::class,
-                        'template' => '{update}'
+                        'template' => '{update}',
                     ],
                 ],
             ]); ?>

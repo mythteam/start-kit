@@ -5,7 +5,7 @@ namespace common\assets;
 use yii\web\AssetBundle;
 
 /**
- * Class PaceAsset
+ * Class PaceAsset.
  *
  * Pace asset bundle
  *
@@ -20,6 +20,6 @@ class PaceAsset extends AssetBundle
     ];
 
     public $css = [
-        'themes/white/pace-theme-flash.css'
+        'themes/white/pace-theme-flash.css',
     ];
 }

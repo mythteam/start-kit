@@ -1,11 +1,11 @@
 <?php
+
 use console\components\db\Migration;
-use yii\helpers\Console;
 
 class m161007_022623_user_table extends Migration
 {
     protected $tb_name = '{{%user}}';
-    
+
     public function safeUp()
     {
         $this->dropTableIfExists($this->tb_name);
@@ -21,7 +21,7 @@ class m161007_022623_user_table extends Migration
             'password_reset_token' => $this->string()->unique(),
         ]);
     }
-    
+
     public function down()
     {
         $this->dropTable($this->tb_name);

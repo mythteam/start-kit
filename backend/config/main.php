@@ -31,7 +31,7 @@ $config = [
             'showScriptName' => false,
             // 'cache' => 'cache',
             //'hostInfo' => env('app.BACKEND_URL'),
-            'rules' => require '_routes.php'
+            'rules' => require '_routes.php',
         ],
         'assetManager' => [
             'class' => yii\web\AssetManager::class,
@@ -49,8 +49,8 @@ $config = [
         ],
     ],
     'params' => array_merge(
-        require (__DIR__ . '/../../common/config/params.php'),
-        require (__DIR__ . '/params.php')
+        require(__DIR__ . '/../../common/config/params.php'),
+        require(__DIR__ . '/params.php')
     ),
     'as access' => [
         'class' => yii\filters\AccessControl::class,

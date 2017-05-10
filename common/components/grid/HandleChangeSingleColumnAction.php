@@ -27,7 +27,7 @@ class HandleChangeSingleColumnAction extends Action
      */
     public $getQueryParam = 'status';
     /**
-     * @var string The hook for the model operation, we can define more via this.
+     * @var string the hook for the model operation, we can define more via this
      */
     public $modelHandleHook;
     /**
@@ -42,6 +42,7 @@ class HandleChangeSingleColumnAction extends Action
      * @var callable Find model method
      */
     public $findModelMethod;
+
     /**
      * {@inheritdoc}
      */
@@ -59,6 +60,7 @@ class HandleChangeSingleColumnAction extends Action
             $this->redirect = Yii::$app->getRequest()->getReferrer();
         }
     }
+
     /**
      * {@inheritdoc}
      */

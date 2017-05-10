@@ -3,10 +3,10 @@
 namespace common\widgets;
 
 use Yii;
+use yii\helpers\ArrayHelper as Arr;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\widgets\Menu;
-use yii\helpers\ArrayHelper as Arr;
 
 class AdminLTEMenu extends Menu
 {
@@ -15,24 +15,24 @@ class AdminLTEMenu extends Menu
      */
     public $linkTemplate = '<a href="{url}">{icon} <span>{label}</span></a>';
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public $submenuTemplate = "\n<ul class='treeview-menu' {show}>\n{items}\n</ul>\n";
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public $labelTemplate = '<a href="javascript:;">{icon} <span>{label}</span><i class="fa fa-angle-left pull-right"></i></a>';
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public $activateParents = true;
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public $options = ['class' => 'sidebar-menu'];
-    
+
     public $defaultIconClass = 'fa-circle-o';
-    
+
     /**
      * {@inheritdoc}
      */
@@ -43,29 +43,29 @@ class AdminLTEMenu extends Menu
         } else {
             $linkTemplate = $this->linkTemplate;
         }
-        
+
         if (isset($item['url'])) {
             $template = Arr::getValue($item, 'template', $linkTemplate);
-            
+
             $replace = [
                 '{url}' => Url::to($item['url']),
                 '{label}' => $item['label'],
                 '{icon}' => !empty($item['icon']) ? '<i class="fa ' . $item['icon'] . '"></i> ' : '',
             ];
-            
+
             return strtr($template, $replace);
         } else {
             $template = Arr::getValue($item, 'template', $this->labelTemplate);
-            
+
             $replace = [
                 '{label}' => $item['label'],
                 '{icon}' => !empty($item['icon']) ? '<i class="fa ' . $item['icon'] . '"></i> ' : '',
             ];
-            
+
             return strtr($template, $replace);
         }
     }
-    
+
     /**
      * Recursively renders the menu items (without the container tag).
      *
@@ -100,7 +100,7 @@ class AdminLTEMenu extends Menu
                     $options['class'] .= ' ' . implode(' ', $class);
                 }
             }
-            
+
             $menu = $this->renderItem($item);
             if (!empty($item['items'])) {
                 $menu .= strtr($this->submenuTemplate, [
@@ -110,10 +110,10 @@ class AdminLTEMenu extends Menu
             }
             $lines[] = Html::tag($tag, $menu, $options);
         }
-        
+
         return implode("\n", $lines);
     }
-    
+
     /**
      * {@inheritdoc}
      */
@@ -151,10 +151,10 @@ class AdminLTEMenu extends Menu
                 $active = true;
             }
         }
-        
+
         return array_values($items);
     }
-    
+
     /**
      * Checks whether a menu item is active.
      * This is done by checking if [[route]] and [[params]] match that specified in the `url` option of the menu item.
@@ -182,19 +182,19 @@ class AdminLTEMenu extends Menu
             if ($arrayRoute[0] !== $arrayThisRoute[0]) {
                 return false;
             }
-            
+
             unset($item['url']['#']);
             if (count($item['url']) > 1) {
                 foreach (array_splice($item['url'], 1) as $name => $value) {
-                    if ($value !== null && (!isset($this->params[$name]) || $this->params[$name] != $value)) {
+                    if ($value !== null && (!isset($this->params[$name]) || $this->params[$name] !== $value)) {
                         return false;
                     }
                 }
             }
-            
+
             return true;
         }
-        
+
         return false;
     }
 }

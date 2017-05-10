@@ -27,6 +27,7 @@ class Generator extends \yii\gii\Generator
     {
         return '快速生成发送邮件类';
     }
+
     /**
      * {@inheritdoc}
      */
@@ -77,6 +78,7 @@ class Generator extends \yii\gii\Generator
             'mailerName' => 'This is the class name for the mailer. You should provide a camecase class name, e.g., <code>RegisterSuccessNotify</code>.',
         ]);
     }
+
     /**
      * {@inheritdoc}
      */

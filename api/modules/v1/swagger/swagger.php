@@ -1,6 +1,8 @@
 <?php
+
 namespace api\modules\v1\swagger;
-/**
+
+/*
  * @SWG\Swagger(
  *     schemes={"http"},
  *     host=API_ADDRESS,

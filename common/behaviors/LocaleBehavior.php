@@ -54,6 +54,7 @@ class LocaleBehavior extends Behavior
         }
         Yii::$app->language = $userLocale;
     }
+
     /**
      * @return array
      */

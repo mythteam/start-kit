@@ -6,8 +6,6 @@
 /* @var $model \backend\models\LoginForm */
 
 use yii\bootstrap\ActiveForm;
-use yii\helpers\Html;
-use common\widgets\Alert;
 
 $this->title = '管理员登录';
 ?>
@@ -20,13 +18,13 @@ $this->title = '管理员登录';
             'template' => '{input}<span class="glyphicon glyphicon-envelope form-control-feedback"></span>{error}',
             'options' => [
                 'class' => 'form-group has-feedback',
-            ]
+            ],
         ])->textInput(['placeholder' => '登录账号', 'autofocus' => true]) ?>
         <?= $form->field($model, 'password', [
             'template' => '{input}<span class="glyphicon glyphicon-lock form-control-feedback"></span>{error}',
             'options' => [
-                'class' => 'form-group has-feedback'
-            ]
+                'class' => 'form-group has-feedback',
+            ],
         ])->passwordInput(['placeholder' => '登录密码']) ?>
         <div class="row">
             <div class="col-xs-8">

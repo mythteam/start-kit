@@ -1,7 +1,6 @@
 <?php
 
 /** @var \yii\base\Exception $exception */
-
 $this->title = $name;
 $this->params['breadcrumbs'][] = $this->title;
 ?>

@@ -8,7 +8,7 @@ namespace common\widgets\ue\actions\uploader;
 class Uploader
 {
     use UploaderTrait;
-    
+
     public $fileField; //文件域名
     public $file; //文件上传对象
     public $base64; //文件上传对象
@@ -54,9 +54,9 @@ class Uploader
         $this->fileField = $fileField;
         $this->config = $config;
         $this->type = $type;
-        if ($type == 'remote') {
+        if ($type === 'remote') {
             $this->saveRemote();
-        } elseif ($type == 'base64') {
+        } elseif ($type === 'base64') {
             $this->upBase64();
         } else {
             $this->upFile();
@@ -119,7 +119,7 @@ class Uploader
             $this->stateInfo = $this->getStateInfo('ERROR_CREATE_DIR');
 
             return;
-        } elseif (!is_writeable($dirname)) {
+        } elseif (!is_writable($dirname)) {
             $this->stateInfo = $this->getStateInfo('ERROR_DIR_NOT_WRITEABLE');
 
             return;
@@ -143,7 +143,7 @@ class Uploader
     private function upBase64()
     {
         $base64Data = $_POST[$this->fileField];
-        $img = base64_decode($base64Data);
+        $img = base64_decode($base64Data, true);
 
         $this->oriName = $this->config['oriName'];
         $this->fileSize = strlen($img);
@@ -165,7 +165,7 @@ class Uploader
             $this->stateInfo = $this->getStateInfo('ERROR_CREATE_DIR');
 
             return;
-        } elseif (!is_writeable($dirname)) {
+        } elseif (!is_writable($dirname)) {
             $this->stateInfo = $this->getStateInfo('ERROR_DIR_NOT_WRITEABLE');
 
             return;
@@ -206,7 +206,7 @@ class Uploader
         }
         //格式验证(扩展名验证和Content-Type验证)
         $fileType = strtolower(strrchr($imgUrl, '.'));
-        if (!in_array($fileType, $this->config['allowFiles']) || stristr($heads['Content-Type'], 'image')) {
+        if (!in_array($fileType, $this->config['allowFiles'], true) || stristr($heads['Content-Type'], 'image')) {
             $this->stateInfo = $this->getStateInfo('ERROR_HTTP_CONTENTTYPE');
 
             return;
@@ -244,7 +244,7 @@ class Uploader
             $this->stateInfo = $this->getStateInfo('ERROR_CREATE_DIR');
 
             return;
-        } elseif (!is_writeable($dirname)) {
+        } elseif (!is_writable($dirname)) {
             $this->stateInfo = $this->getStateInfo('ERROR_DIR_NOT_WRITEABLE');
 
             return;
@@ -348,7 +348,7 @@ class Uploader
         /*
          * END PATCH 2014-07-20
          */
-        if (substr($fullname, 0, 1) != '/') {
+        if (substr($fullname, 0, 1) !== '/') {
             $fullname = '/' . $fullname;
         }
 
@@ -362,7 +362,7 @@ class Uploader
      */
     private function checkType()
     {
-        return in_array($this->getFileExt(), $this->config['allowFiles']);
+        return in_array($this->getFileExt(), $this->config['allowFiles'], true);
     }
 
     /**

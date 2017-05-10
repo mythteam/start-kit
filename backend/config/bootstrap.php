@@ -17,9 +17,9 @@ Yii::$container->set(\yii\widgets\Pjax::class, [
 Yii::$container->set(\kartik\daterange\DateRangePicker::class, [
     'pluginOptions' => [
         'locale' => [
-            'format' => 'YYYY-MM-DD'
+            'format' => 'YYYY-MM-DD',
         ],
-    ]
+    ],
 ]);
 
 Yii::$container->set(\common\widgets\ue\UEditor::class, [
@@ -32,11 +32,11 @@ Yii::$container->set(\common\widgets\ue\UEditor::class, [
                 'insertimage',
                 'superscript', 'subscript', 'removeformat', 'formatmatch', 'autotypeset', 'blockquote',
                 'pasteplain', '|', 'forecolor', 'backcolor', 'insertorderedlist',
-                'insertunorderedlist', 'selectall', 'cleardoc'
+                'insertunorderedlist', 'selectall', 'cleardoc',
             ],
         ],
         'initialFrameHeight' => 500,
         'elementPathEnabled' => false,
         'wordCount' => false,
-    ]
+    ],
 ]);

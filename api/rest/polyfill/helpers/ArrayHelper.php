@@ -7,7 +7,7 @@ use yii\base\Arrayable;
 class ArrayHelper extends \yii\helpers\BaseArrayHelper
 {
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public static function toArray($object, $properties = [], $recursive = true, $expands = [])
     {

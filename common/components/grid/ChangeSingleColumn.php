@@ -13,15 +13,15 @@ class ChangeSingleColumn extends Column
      */
     public $data;
     /**
-     * @var string The target model attribute.
+     * @var string the target model attribute
      */
     public $modelAttribute;
     /**
-     * @var string The confirm message.
+     * @var string the confirm message
      */
     public $confirmMessage;
     /**
-     * @var string The handler method url.
+     * @var string the handler method url
      */
     public $handleUrl;
     /**
@@ -29,10 +29,10 @@ class ChangeSingleColumn extends Column
      */
     public $buttonOptions = ['class' => 'btn btn-default btn-sm'];
     /**
-     * @var bool|callable If the button disabled.
+     * @var bool|callable if the button disabled
      */
     public $disable = false;
-    
+
     /**
      * {@inheritdoc}
      */
@@ -46,6 +46,7 @@ class ChangeSingleColumn extends Column
             $this->confirmMessage = '确定更改状态?';
         }
     }
+
     /**
      * {@inheritdoc}
      */
@@ -58,10 +59,10 @@ class ChangeSingleColumn extends Column
         } else {
             $buttonOptions = $this->buttonOptions;
         }
-        
+
         foreach ($this->data as $data_key => $label) {
             $_item = ['label' => $label];
-            if ($model->{$this->modelAttribute} == $data_key) {
+            if ($model->{$this->modelAttribute} === $data_key) {
                 $_item['options'] = ['class' => 'disabled'];
                 $selected_label = $label;
             } else {
@@ -80,12 +81,12 @@ class ChangeSingleColumn extends Column
             }
             $items[] = $_item;
         }
-        
+
         $disableButton = $this->disable;
         if (is_callable($this->disable)) {
-            $disableButton =  call_user_func($this->disable, $model, $key, $index);
+            $disableButton = call_user_func($this->disable, $model, $key, $index);
         }
-        
+
         if (true === $disableButton) {
             $buttonOptions = ['disabled' => 'disabled'];
         }

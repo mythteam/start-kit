@@ -98,6 +98,4 @@ $config = [
     ],
 ];
 
-
-
 return $config;

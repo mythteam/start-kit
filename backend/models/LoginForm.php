@@ -27,7 +27,7 @@ class LoginForm extends Model
      * @var WebMaster
      */
     private $_user;
-    
+
     /**
      * {@inheritdoc}
      */
@@ -42,9 +42,9 @@ class LoginForm extends Model
             ['password', 'validatePassword'],
         ];
     }
-    
+
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function attributeLabels()
     {
@@ -54,13 +54,13 @@ class LoginForm extends Model
             'rememberMe' => '记住我',
         ];
     }
-    
+
     /**
      * Validates the password.
      * This method serves as the inline validation for password.
      *
      * @param string $attribute the attribute currently being validated
-     * @param array  $params the additional name-value pairs given in the rule
+     * @param array  $params    the additional name-value pairs given in the rule
      */
     public function validatePassword($attribute, $params)
     {
@@ -71,7 +71,7 @@ class LoginForm extends Model
             }
         }
     }
-    
+
     /**
      * Logs in a user using the provided username and password.
      *
@@ -85,7 +85,7 @@ class LoginForm extends Model
             return false;
         }
     }
-    
+
     /**
      * Finds user by [[username]].
      *
@@ -96,7 +96,7 @@ class LoginForm extends Model
         if ($this->_user === null) {
             $this->_user = WebMaster::findByAccount($this->username);
         }
-        
+
         return $this->_user;
     }
 }

@@ -40,7 +40,7 @@ class UEditor extends InputWidget
     public $readyEvent;
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     final public function init()
     {
@@ -58,9 +58,9 @@ class UEditor extends InputWidget
             $this->value = $this->model->{$attributeName};
         }
     }
-    
+
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     final public function run()
     {
@@ -71,7 +71,7 @@ class UEditor extends InputWidget
             echo $this->renderTag();
         }
     }
-    
+
     /**
      * Register scripts.
      */

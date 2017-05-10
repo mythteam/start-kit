@@ -30,7 +30,7 @@ $gdOK = $imagickOK = false;
 if (extension_loaded('imagick')) {
     $imagick = new Imagick();
     $imagickFormats = $imagick->queryFormats('PNG');
-    if (in_array('PNG', $imagickFormats)) {
+    if (in_array('PNG', $imagickFormats, true)) {
         $imagickOK = true;
     } else {
         $imagickMemo = 'Imagick extension should be installed with PNG support in order to be used for image CAPTCHA.';

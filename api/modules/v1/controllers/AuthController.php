@@ -97,7 +97,6 @@ use yii\web\UnauthorizedHttpException;
  *    ),
  *    @SWG\Response(response = 200, description = "success")
  * )
- *
  */
 class AuthController extends Controller
 {
@@ -108,6 +107,7 @@ class AuthController extends Controller
     {
         $behaviors = parent::behaviors();
         unset($behaviors['authenticator']);
+
         return $behaviors;
     }
 
@@ -122,6 +122,7 @@ class AuthController extends Controller
                 'phoneCheckCallback' => function ($tel) {
                     if (User::checkPhoneIsRegisted($tel)) {
                         $this->sendFaildValidation(t('app', '{phone} had been registed.', ['phone' => $tel]));
+
                         return false;
                     }
                 },
@@ -131,6 +132,7 @@ class AuthController extends Controller
                 'phoneCheckCallback' => function ($tel) {
                     if (!User::checkPhoneIsRegisted($tel)) {
                         $this->sendFaildValidation(t('app', '{phone} has not registed.', ['phone' => $tel]));
+
                         return false;
                     }
                 },
@@ -149,6 +151,7 @@ class AuthController extends Controller
                     }
                     $user->generatePasswordResetToken();
                     $user->update();
+
                     return $user->password_reset_token;
                 },
             ],
@@ -180,6 +183,7 @@ class AuthController extends Controller
      *    ),
      *    @SWG\Response(response = 200, description = "Login Success")
      * )
+     *
      * @param LoginForm $form
      *
      * @return $this|array
@@ -254,14 +258,17 @@ class AuthController extends Controller
      *    ),
      *    @SWG\Response(response = 200, description = "success")
      * )
+     *
      * @param RegisterForm $form
      *
      * @return $this|array|User|\common\models\UserProfile
+     *
      * @throws \common\exceptions\SystemException
      */
     public function actionRegister(RegisterForm $form)
     {
         $form->load(app()->request->post());
+
         return $form->register();
     }
 
@@ -293,9 +300,6 @@ class AuthController extends Controller
      *    ),
      *    @SWG\Response(response = 200, description = "success")
      * )
-     *
-     *
-     * @return null
      */
     public function actionResetPassword()
     {
@@ -326,7 +330,7 @@ class AuthController extends Controller
     }
 
     /**
-     * 用户鉴权接口
+     * 用户鉴权接口.
      *
      * @SWG\Post(
      *    path = "/auth/query",
@@ -345,7 +349,9 @@ class AuthController extends Controller
      *    ),
      *    @SWG\Response(response = 200, description = "success")
      * )
+     *
      * @return mixed
+     *
      * @throws UnauthorizedHttpException
      */
     public function actionQuery()
@@ -360,11 +366,12 @@ class AuthController extends Controller
 
         //更新在线状态
         $user->setOnline();
+
         return;
     }
 
     /**
-     * 验证手机号是否注册
+     * 验证手机号是否注册.
      *
      * @SWG\Post(
      *    path = "/auth/phone",

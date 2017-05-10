@@ -2,12 +2,10 @@
 
 namespace common\jobs;
 
-use common\exceptions\Exception;
 use Yii;
 
 final class TestJob extends Job
 {
-    
     /**
      * The main method to handle logic.
      *
@@ -17,9 +15,9 @@ final class TestJob extends Job
     {
         echo $this->job->getData();
     }
-    
+
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function init()
     {

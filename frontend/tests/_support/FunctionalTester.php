@@ -1,8 +1,10 @@
 <?php
+
 namespace frontend\tests;
 
 /**
- * Inherited Methods
+ * Inherited Methods.
+ *
  * @method void wantToTest($text)
  * @method void wantTo($text)
  * @method void execute($callable)
@@ -19,7 +21,6 @@ namespace frontend\tests;
 class FunctionalTester extends \Codeception\Actor
 {
     use _generated\FunctionalTesterActions;
-
 
     public function seeValidationError($message)
     {

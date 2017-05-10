@@ -7,7 +7,7 @@ use yii\helpers\ArrayHelper;
 use yii\web\Linkable;
 
 /**
- * Polyfill for nest restful
+ * Polyfill for nest restful.
  *
  * ~~~
  * Yii::$classMap['yii\base\ArrayableTrait'] = 'path/to/my/ArrayableTrait.php';
@@ -21,6 +21,7 @@ trait ArrayableTrait
     public function fields()
     {
         $fields = array_keys(Yii::getObjectVars($this));
+
         return array_combine($fields, $fields);
     }
 
@@ -41,6 +42,7 @@ trait ArrayableTrait
         }
 
         $expands = $this->expand($expand);
+
         return $recursive ? ArrayHelper::toArray($data, [], true, $expands) : $data;
     }
 
@@ -54,6 +56,7 @@ trait ArrayableTrait
         foreach ($expands as $key => $value) {
             $expands[$key] = array_filter($value);
         }
+
         return $expands;
     }
 

@@ -6,19 +6,18 @@ use Yii;
 use yii\base\Model;
 
 /**
- * Login form
+ * Login form.
  */
 class LoginForm extends Model
 {
     public $username;
     public $password;
     public $rememberMe = true;
-    
+
     private $_user;
-    
-    
+
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function rules()
     {
@@ -31,13 +30,13 @@ class LoginForm extends Model
             ['password', 'validatePassword'],
         ];
     }
-    
+
     /**
      * Validates the password.
      * This method serves as the inline validation for password.
      *
      * @param string $attribute the attribute currently being validated
-     * @param array  $params the additional name-value pairs given in the rule
+     * @param array  $params    the additional name-value pairs given in the rule
      */
     public function validatePassword($attribute, $params)
     {
@@ -48,11 +47,11 @@ class LoginForm extends Model
             }
         }
     }
-    
+
     /**
      * Logs in a user using the provided username and password.
      *
-     * @return boolean whether the user is logged in successfully
+     * @return bool whether the user is logged in successfully
      */
     public function login()
     {
@@ -62,9 +61,9 @@ class LoginForm extends Model
             return false;
         }
     }
-    
+
     /**
-     * Finds user by [[username]]
+     * Finds user by [[username]].
      *
      * @return User|null
      */
@@ -73,7 +72,7 @@ class LoginForm extends Model
         if ($this->_user === null) {
             $this->_user = User::findByUsername($this->username);
         }
-        
+
         return $this->_user;
     }
 }

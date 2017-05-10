@@ -12,17 +12,17 @@ use common\models\WebMaster;
 class User extends \yii\web\User
 {
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function can($permissionName, $params = [], $allowCaching = true)
     {
-        if ($this->identity->isSuper == WebMaster::SUPER_YES) {
+        if ($this->identity->isSuper === WebMaster::SUPER_YES) {
             return true;
         }
-        
+
         return parent::can($permissionName, $params, $allowCaching);
     }
-    
+
     /**
      * @return array
      */
@@ -59,4 +59,3 @@ class User extends \yii\web\User
         ];
     }
 }
-

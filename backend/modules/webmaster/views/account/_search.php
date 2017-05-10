@@ -1,8 +1,8 @@
 <?php
 
 use kartik\daterange\DateRangePicker;
-use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
+use yii\helpers\Html;
 
 /* @var $this yii\web\View */
 /* @var $model backend\modules\webmaster\models\WebmasterSearch */
@@ -16,14 +16,14 @@ use yii\bootstrap\ActiveForm;
         'method' => 'get',
         'options' => ['class' => 'form-inline mb15'],
         'fieldConfig' => ['template' => '{input}'],
-        'enableClientScript' => false
+        'enableClientScript' => false,
     ]); ?>
     <?= $form->field($model, 'status')->dropDownList(['' => '账号状态'] + \common\Constants::statusLabels()) ?>
     <?= $form->field($model, 'register_at')->widget(DateRangePicker::class, [
         'options' => [
             'placeholder' => '创建时间区间',
-            'class' => 'form-control'
-        ]
+            'class' => 'form-control',
+        ],
     ]) ?>
     <?= $form->field($model, 'query')->textInput(['placeholder' => '搜索查询条件']) ?>
     <div class="form-group">

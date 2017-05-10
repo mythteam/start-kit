@@ -3,9 +3,7 @@
 namespace  common\traits;
 
 /**
- * Class SingletonTrait
- *
- * @package common\traits
+ * Class SingletonTrait.
  */
 trait SingletonTrait
 {
@@ -20,7 +18,7 @@ trait SingletonTrait
     public static function getInstance()
     {
         if (!self::$_instance instanceof self) {
-            self::$_instance = new self;
+            self::$_instance = new self();
         }
 
         return self::$_instance;
@@ -29,7 +27,15 @@ trait SingletonTrait
     /**
      * Disable clone, serialize and new.
      */
-    private function __clone(){}
-    private function __sleep(){}
-    private function __construct(){}
+    private function __clone()
+    {
+    }
+
+    private function __sleep()
+    {
+    }
+
+    private function __construct()
+    {
+    }
 }

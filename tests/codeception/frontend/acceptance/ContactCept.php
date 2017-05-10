@@ -1,6 +1,7 @@
 <?php
-use tests\codeception\frontend\AcceptanceTester;
+
 use tests\codeception\frontend\_pages\ContactPage;
+use tests\codeception\frontend\AcceptanceTester;
 
 /* @var $scenario Codeception\Scenario */
 

@@ -4,8 +4,8 @@
 /* @var $content string */
 
 use backend\themes\adminlte\assets\AppAsset;
-use yii\helpers\Html;
 use common\widgets\Alert;
+use yii\helpers\Html;
 
 AppAsset::register($this);
 ?>

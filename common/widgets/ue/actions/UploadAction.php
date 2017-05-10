@@ -11,15 +11,15 @@ use yii\helpers\Json;
 class UploadAction extends Action
 {
     /**
-     * @var string The target directory uploaded to.
+     * @var string the target directory uploaded to
      */
     public $uploadBasePath = '@webroot/upload';
     /**
-     * @var string The web access url.
+     * @var string the web access url
      */
     public $uploadBaseUrl = '@web/upload';
     /**
-     * @var bool If enable csrf token validation.
+     * @var bool if enable csrf token validation
      */
     public $csrf = false;
 
@@ -58,15 +58,15 @@ class UploadAction extends Action
      */
     public $config = [];
     /**
-     * @var string The action name.
+     * @var string the action name
      */
     public $action; //request action name
     /**
-     * @var string Jsonp callback function name.
+     * @var string jsonp callback function name
      */
     public $jsonpCallback;
     /**
-     * @var string The current directory.
+     * @var string the current directory
      */
     public $currentPath;
     /**
@@ -92,9 +92,9 @@ class UploadAction extends Action
 
         return parent::init();
     }
-    
+
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     final public function run()
     {
@@ -103,7 +103,7 @@ class UploadAction extends Action
         $this->patchConfig();
 
         $result = $this->dispatch();
-        
+
         if ($this->jsonpCallback) {
             if (preg_match("/^[\w_]+$/", $this->jsonpCallback)) {
                 $result = htmlspecialchars($this->jsonpCallback) . '(' . $result . ')';
@@ -116,7 +116,7 @@ class UploadAction extends Action
 
         return $result;
     }
-    
+
     /**
      * Run the action for frontend called.
      *
@@ -126,7 +126,7 @@ class UploadAction extends Action
     {
         $_GET['action'] = $this->action;
         $CONFIG = $this->config;
-        
+
         switch ($this->action) {
             case 'config':
                 $result = $this->getConfigJson();
@@ -150,12 +150,12 @@ class UploadAction extends Action
                 ]);
                 break;
         }
-        
+
         return $result;
     }
-    
+
     /**
-     * Load the configuration for the config.json
+     * Load the configuration for the config.json.
      */
     private function loadConfig()
     {
@@ -163,18 +163,18 @@ class UploadAction extends Action
         $this->action = Yii::$app->getRequest()->get('action');
         $this->jsonpCallback = Yii::$app->getRequest()->get('jsonpCallback');
     }
-    
+
     /**
      * 修正路径避免直接修改json config.
      */
     private function patchConfig()
     {
         $uploadBasePath = $this->getUploadBasePath();
-        
+
         foreach ($this->pathFormat as $key => $val) {
             $this->setConfig($key, $val);
         }
-        
+
         foreach ($this->configPatch as $key => $val) {
             if ($this->hasConfig($key)) {
                 $this->setConfig($key, $val);
@@ -221,7 +221,7 @@ class UploadAction extends Action
     {
         $this->config[$name] = $value;
     }
-    
+
     /**
      * 上传存储路径.
      *
@@ -233,7 +233,7 @@ class UploadAction extends Action
     {
         return rtrim(Yii::getAlias($this->uploadBasePath), '\\/') . '/' . $url;
     }
-    
+
     /**
      * 上传WEB路径.
      *
@@ -245,7 +245,7 @@ class UploadAction extends Action
     {
         return rtrim(Yii::getAlias($this->uploadBaseUrl), '\\/') . '/' . $url;
     }
-    
+
     /**
      * Return the configuration json string to frontend.
      *
@@ -258,7 +258,7 @@ class UploadAction extends Action
 
         return Json::encode($filterConfig);
     }
-    
+
     /**
      * Filter the configruation.
      *
@@ -282,7 +282,7 @@ class UploadAction extends Action
 
         return $out;
     }
-    
+
     /**
      * @param array $CONFIG
      *
@@ -349,7 +349,7 @@ class UploadAction extends Action
         $start = htmlspecialchars($start);
         $end = $start + $size;
 
-        $path = $this->getUploadBasePath() . (substr($path, 0, 1) == '/' ? '' : '/') . $path;
+        $path = $this->getUploadBasePath() . (substr($path, 0, 1) === '/' ? '' : '/') . $path;
         $files = $this->getFiles($path, $allowFiles);
         if (!count($files)) {
             return Json::encode([
@@ -376,7 +376,7 @@ class UploadAction extends Action
 
         return $result;
     }
-    
+
     /**
      * @param array $CONFIG
      *
@@ -456,7 +456,7 @@ class UploadAction extends Action
         }
         //set to public for callback
         $this->result = $result;
-        if ($result['state'] == 'SUCCESS') {
+        if ($result['state'] === 'SUCCESS') {
             try {
                 if (is_callable($this->afterUpload)) {
                     call_user_func($this->afterUpload, $this);
@@ -483,13 +483,13 @@ class UploadAction extends Action
             return;
         }
 
-        if (substr($path, strlen($path) - 1) != '/') {
+        if (substr($path, strlen($path) - 1) !== '/') {
             $path .= '/';
         }
 
         $handle = opendir($path);
         while (false !== ($file = readdir($handle))) {
-            if ($file != '.' && $file != '..') {
+            if ($file !== '.' && $file !== '..') {
                 $path2 = $path . $file;
                 if (is_dir($path2)) {
                     $this->getFiles($path2, $allowFiles, $files);

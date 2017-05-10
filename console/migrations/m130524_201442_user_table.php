@@ -12,7 +12,7 @@ class m130524_201442_user_table extends Migration
         if (!Console::confirm('Are you sure to init user table?')) {
             return;
         }
-        
+
         $this->dropTableIfExists($this->tb_name);
         $this->createTable($this->tb_name, [
             'id' => $this->primaryKey(),
@@ -27,7 +27,7 @@ class m130524_201442_user_table extends Migration
             'access_token' => $this->string(32)->notNull()->comment('APP登录token'),
             'password_reset_token' => $this->string()->unique(),
         ]);
-    
+
         $this->createIndex('idx_phone', $this->tb_name, 'phone');
     }
 

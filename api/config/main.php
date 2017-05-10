@@ -77,4 +77,3 @@ return [
         require(__DIR__ . '/params.php')
     ),
 ];
-

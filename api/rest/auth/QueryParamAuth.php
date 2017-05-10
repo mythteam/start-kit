@@ -2,7 +2,6 @@
 
 namespace api\rest\auth;
 
-use Yii;
 use yii\filters\auth\AuthMethod;
 
 class QueryParamAuth extends AuthMethod
@@ -18,7 +17,7 @@ class QueryParamAuth extends AuthMethod
     public $authedUser;
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function authenticate($user, $request, $response)
     {

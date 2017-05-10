@@ -7,7 +7,7 @@ use yii\grid\Column;
 class ActionColumn extends Column
 {
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public $headerOptions = ['class' => 'action-column'];
     /**
@@ -20,7 +20,7 @@ class ActionColumn extends Column
     public $visibleButtons = [];
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     protected function renderDataCellContent($model, $key, $index)
     {

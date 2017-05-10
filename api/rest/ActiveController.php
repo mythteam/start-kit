@@ -13,18 +13,20 @@ class ActiveController extends Controller
      */
     public $modelClass;
     /**
-     * @var string the scenario used for updating a model.
+     * @var string the scenario used for updating a model
+     *
      * @see \yii\base\Model::scenarios()
      */
     public $updateScenario = Model::SCENARIO_DEFAULT;
     /**
-     * @var string the scenario used for creating a model.
+     * @var string the scenario used for creating a model
+     *
      * @see \yii\base\Model::scenarios()
      */
     public $createScenario = Model::SCENARIO_DEFAULT;
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function init()
     {
@@ -35,7 +37,7 @@ class ActiveController extends Controller
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function actions()
     {
@@ -74,7 +76,7 @@ class ActiveController extends Controller
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     protected function verbs()
     {
@@ -95,8 +97,9 @@ class ActiveController extends Controller
      * If the user does not have access, a [[ForbiddenHttpException]] should be thrown.
      *
      * @param string $action the ID of the action to be executed
-     * @param object $model the model to be accessed. If null, it means no specific model is being accessed.
-     * @param array $params additional parameters
+     * @param object $model  the model to be accessed. If null, it means no specific model is being accessed.
+     * @param array  $params additional parameters
+     *
      * @throws ForbiddenHttpException if the user does not have access
      */
     public function checkAccess($action, $model = null, $params = [])

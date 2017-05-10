@@ -12,7 +12,7 @@ use yii\web\UrlRule;
 class Setup implements BootstrapInterface
 {
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function bootstrap($app)
     {

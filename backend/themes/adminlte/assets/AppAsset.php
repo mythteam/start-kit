@@ -13,7 +13,7 @@ class AppAsset extends AssetBundle
     public $baseUrl = '@web/themes/adminlte';
 
     public $css = [
-        'css/site.css'
+        'css/site.css',
     ];
 
     public $depends = [

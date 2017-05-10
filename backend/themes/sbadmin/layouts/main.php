@@ -4,12 +4,12 @@
 /* @var $content string */
 
 use backend\assets\AppAsset;
-use yii\helpers\Html;
-use yii\bootstrap\Nav;
-use yii\bootstrap\NavBar;
-use yii\widgets\Breadcrumbs;
 use common\widgets\Alert;
 use common\widgets\Menu;
+use yii\bootstrap\Nav;
+use yii\bootstrap\NavBar;
+use yii\helpers\Html;
+use yii\widgets\Breadcrumbs;
 
 AppAsset::register($this);
 ?>
@@ -48,21 +48,21 @@ AppAsset::register($this);
                     'items' => [
                         [
                             'label' => '<i class="fa fa-user fa-fw"></i>' . t('app', 'User Profile'),
-                            'url' => ['/profile/update']
+                            'url' => ['/profile/update'],
                         ],
                         [
                             'label' => '<i class="fa fa-gear fa-fw"></i>' . t('app', 'Settings'),
-                            'url' => ['/setting/index']
+                            'url' => ['/setting/index'],
                         ],
                         '<li class="divider"></li>',
                         [
                             'label' => '<i class="fa fa-sign-out fa-fw"></i>' . t('app', 'Logout'),
                             'url' => ['/site/logout'],
-                            'linkOptions' => ['data' => ['method' => 'POST']]
-                        ]
-                    ]
-                ]
-            ]
+                            'linkOptions' => ['data' => ['method' => 'POST']],
+                        ],
+                    ],
+                ],
+            ],
         ]); ?>
         <!-- menu -->
         <div class="navbar-default sidebar" role="navigation">
@@ -70,25 +70,25 @@ AppAsset::register($this);
                 <?= Menu::widget([
                     'options' => [
                         'class' => 'nav in',
-                        'id' => 'side-menu'
+                        'id' => 'side-menu',
                     ],
                     'items' => [
                         ['label' => 'Hello,' . Yii::$app->user->identity->account, 'options' => ['class' => 'sidebar-search']],
                         [
                             'label' => '首页',
                             'url' => ['/site/index'],
-                            'icon' => 'fa-dashboard'
+                            'icon' => 'fa-dashboard',
                         ],
                         [
                             'label' => '管理员管理',
                             'url' => '#',
                             'items' => [
                                 ['label' => '管理员账号', 'url' => ['/webmaster/account/list']],
-                                ['label' => '创建账号', 'url' => ['/webmaster/account/create']]
+                                ['label' => '创建账号', 'url' => ['/webmaster/account/create']],
                             ],
-                            'icon' => 'fa-user'
+                            'icon' => 'fa-user',
                         ],
-                    ]
+                    ],
                 ]) ?>
             </div>
         </div>

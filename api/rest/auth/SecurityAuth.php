@@ -14,7 +14,6 @@ class SecurityAuth extends ActionFilter
      */
     public function beforeAction($action)
     {
-
         return true;
         //throw new ForbiddenHttpException('Error Processing Request');
     }

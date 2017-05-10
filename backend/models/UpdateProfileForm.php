@@ -20,12 +20,12 @@ class UpdateProfileForm extends Model
      * @var string
      */
     public $password;
-    
+
     /**
      * @var Webmaster
      */
     protected $_user;
-    
+
     public function rules()
     {
         return [
@@ -33,7 +33,7 @@ class UpdateProfileForm extends Model
             ['password', 'string', 'min' => 6, 'max' => 11],
         ];
     }
-    
+
     /**
      * {@inheritdoc}
      */
@@ -41,13 +41,13 @@ class UpdateProfileForm extends Model
     {
         parent::init();
         $this->_user = Yii::$app->user->identity;
-        
+
         $this->account = $this->_user->account;
         $this->nickname = $this->_user->nickname;
     }
-    
+
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function attributeLabels()
     {
@@ -57,9 +57,9 @@ class UpdateProfileForm extends Model
             'nickname' => '用户昵称',
         ];
     }
-    
+
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function attributeHints()
     {
@@ -67,7 +67,7 @@ class UpdateProfileForm extends Model
             'password' => '留空，则密码不会修改',
         ];
     }
-    
+
     /**
      * @return bool
      */
@@ -77,7 +77,7 @@ class UpdateProfileForm extends Model
             $this->_user->setPassword($this->password);
         }
         $this->_user->nickname = $this->nickname;
-        
+
         return $this->_user->save();
     }
 }

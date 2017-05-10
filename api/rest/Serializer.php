@@ -5,9 +5,9 @@ namespace api\rest;
 class Serializer extends \yii\rest\Serializer
 {
     /**
-     * Serialize model validation errors
+     * Serialize model validation errors.
      *
-     * @param  \yii\base\Model $model
+     * @param \yii\base\Model $model
      *
      * @return string
      */
@@ -23,11 +23,12 @@ class Serializer extends \yii\rest\Serializer
             $error[] = $message;
         }
         $this->response->setStatusCode(422, implode(';', $error));
+
         return $result;
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      *
      * We remove the `_link` element to decrease to data size
      * and the `_meta`, because no use now.
@@ -45,12 +46,11 @@ class Serializer extends \yii\rest\Serializer
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      *
      * We remove the header set here, because not used now.
      */
     protected function addPaginationHeaders($pagination)
     {
-
     }
 }

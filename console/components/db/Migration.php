@@ -53,6 +53,6 @@ class Migration extends BaseMigration
         echo "  > drop table {$table} ...";
         $time = microtime(true);
         $this->db->createCommand("DROP TABLE IF EXISTS {$table}")->execute();
-        echo " done (time: " . sprintf('0.3%f', microtime(true) - $time) . "s)\n";
+        echo ' done (time: ' . sprintf('0.3%f', microtime(true) - $time) . "s)\n";
     }
 }

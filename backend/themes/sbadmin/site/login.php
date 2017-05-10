@@ -5,10 +5,10 @@
 /* @var $form yii\bootstrap\ActiveForm */
 /* @var $model \common\models\LoginForm */
 
-use yii\bootstrap\ActiveForm;
 use backend\assets\AppAsset;
-use yii\helpers\Html;
 use common\widgets\Alert;
+use yii\bootstrap\ActiveForm;
+use yii\helpers\Html;
 
 $this->title = 'Login';
 AppAsset::register($this);

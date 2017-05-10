@@ -1,4 +1,5 @@
 <?php
+
 use console\components\db\Migration;
 use yii\helpers\Console;
 
@@ -22,7 +23,7 @@ class m161007_023218_articles_table extends Migration
             'brief' => $this->string(500)->notNull()->defaultValue('')->comment('摘要'),
             'content' => $this->text()->comment('内容'),
         ]);
-        
+
         $this->createIndex('idx_tag', $this->tb_name, ['tag_id']);
     }
 

@@ -9,7 +9,6 @@ use Qiniu\Auth;
 use Qiniu\Storage\BucketManager;
 use Qiniu\Storage\UploadManager;
 use Yaconf;
-use Yii;
 use yii\validators\RangeValidator;
 use yii\web\UploadedFile;
 
@@ -50,7 +49,7 @@ class UploadController extends Controller
      * )
      *
      * @param string $source
-     * @param Auth $auth
+     * @param Auth   $auth
      *
      * @return string
      */
@@ -78,6 +77,7 @@ class UploadController extends Controller
             'img' => Yaconf::get('kit.qn.bucket_img'),
             'voice' => Yaconf::get('kit.qn.bucket_voice'),
         ];
+
         return [
             'token' => $auth->uploadToken($buckets[$source], null, 3600, $policy),
         ];
@@ -107,7 +107,7 @@ class UploadController extends Controller
     }
 
     /**
-     * Test upload via swagger
+     * Test upload via swagger.
      *
      * @SWG\Post(
      *    path = "/upload/test",
@@ -135,9 +135,10 @@ class UploadController extends Controller
      * )
      *
      * @param FileNamingResolver $resolver
-     * @param UploadManager $upload
+     * @param UploadManager      $upload
      *
      * @return array
+     *
      * @throws \Exception
      */
     public function actionTestUpload(
@@ -158,13 +159,14 @@ class UploadController extends Controller
                 'errmsg' => $err->message(),
             ];
         }
+
         return [
             'avatar' => $ret['data'],
         ];
     }
 
     /**
-     * 列出Bucket的中的所有文件
+     * 列出Bucket的中的所有文件.
      *
      * @SWG\Get(
      *    path = "/upload/files",
@@ -209,10 +211,10 @@ class UploadController extends Controller
      * )
      *
      * @param BucketManager $bucketManager
-     * @param string $bucket
-     * @param string $prefix
-     * @param string $marker
-     * @param int $limit
+     * @param string        $bucket
+     * @param string        $prefix
+     * @param string        $marker
+     * @param int           $limit
      *
      * @return mixed
      */
@@ -223,7 +225,6 @@ class UploadController extends Controller
         $marker = '',
         $limit = 10
     ) {
-
         list($items, $marker, $err) = $bucketManager->listFiles($bucket, $prefix, $marker, $limit);
 
         return [
@@ -233,7 +234,7 @@ class UploadController extends Controller
     }
 
     /**
-     * Delete file by key
+     * Delete file by key.
      *
      * @SWG\Post(
      *    path = "/upload/file-delete",
@@ -253,7 +254,7 @@ class UploadController extends Controller
      *    @SWG\Response(response = 200, description = "success")
      * )
      *
-     * @param  BucketManager $bucketManager
+     * @param BucketManager $bucketManager
      *
      * @return mixed
      */
@@ -268,6 +269,7 @@ class UploadController extends Controller
                 'errmsg' => $result->message(),
             ];
         }
+
         return;
     }
 }

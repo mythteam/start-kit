@@ -40,6 +40,7 @@ class RedisTaskController extends Controller
             throw new InvalidConfigException('Redis component must be configured correctlly!');
         }
     }
+
     /**
      * Listen mailer task redis queue.
      *

@@ -32,7 +32,7 @@ $config = [
             'ruleConfig' => ['class' => yii\web\UrlRule::class, 'host' => FRONT_URL],
             // 'cache' => 'cache',
             'hostInfo' => FRONT_URL,
-            'rules' => require '_routes.php'
+            'rules' => require '_routes.php',
         ],
         'assetManager' => [
             'class' => yii\web\AssetManager::class,
@@ -40,8 +40,8 @@ $config = [
         ],
     ],
     'params' => array_merge(
-        require (__DIR__ . '/../../common/config/params.php'),
-        require (__DIR__ . '/params.php')
+        require(__DIR__ . '/../../common/config/params.php'),
+        require(__DIR__ . '/params.php')
     ),
 ];
 

@@ -11,17 +11,16 @@ use yii\rest\OptionsAction;
 use yii\web\Response;
 
 /**
- * Class Controller
+ * Class Controller.
  *
  * @property \common\models\User authedUser
- * @package api\rest
  */
 class Controller extends \yii\web\Controller
 {
     use MethodInjectionTrait;
 
     /**
-     * @var string|array the configuration for creating the serializer that formats the response data.
+     * @var string|array the configuration for creating the serializer that formats the response data
      */
     public $serializer = [
         'class' => Serializer::class,
@@ -29,12 +28,12 @@ class Controller extends \yii\web\Controller
     ];
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public $enableCsrfValidation = false;
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function actions()
     {
@@ -46,7 +45,7 @@ class Controller extends \yii\web\Controller
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function behaviors()
     {
@@ -66,7 +65,7 @@ class Controller extends \yii\web\Controller
                     'zh-Hans-CN' => 'zh-CN',
                     'zh-CN',
                     'ko' => 'ko-KR',
-                    'ko-KR'
+                    'ko-KR',
                 ],
             ],
             // 'security' =>[
@@ -87,18 +86,20 @@ class Controller extends \yii\web\Controller
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function afterAction($action, $result)
     {
         $result = parent::afterAction($action, $result);
+
         return $this->serializeData($result);
     }
 
     /**
      * Declares the allowed HTTP verbs.
      * Please refer to [[VerbFilter::actions]] on how to declare the allowed verbs.
-     * @return array the allowed HTTP verbs.
+     *
+     * @return array the allowed HTTP verbs
      */
     protected function verbs()
     {
@@ -107,7 +108,8 @@ class Controller extends \yii\web\Controller
 
     /**
      * Declares the actions without authentication.
-     * @return array the action IDs.
+     *
+     * @return array the action IDs
      */
     protected function excepts()
     {
@@ -118,8 +120,10 @@ class Controller extends \yii\web\Controller
      * Serializes the specified data.
      * The default implementation will create a serializer based on the configuration given by [[serializer]].
      * It then uses the serializer to serialize the given data.
+     *
      * @param mixed $data the data to be serialized
-     * @return mixed the serialized data.
+     *
+     * @return mixed the serialized data
      */
     protected function serializeData($data)
     {
@@ -127,11 +131,9 @@ class Controller extends \yii\web\Controller
     }
 
     /**
-     * Send validation faild response
+     * Send validation faild response.
      *
-     * @param  string $msg
-     *
-     * @return null
+     * @param string $msg
      */
     public function sendFaildValidation($msg)
     {
@@ -139,9 +141,9 @@ class Controller extends \yii\web\Controller
     }
 
     /**
-     * Send error response
+     * Send error response.
      *
-     * @param  string $msg
+     * @param string $msg
      */
     public function error($msg)
     {

@@ -55,7 +55,7 @@ class SiteController extends Controller
             ],
         ];
     }
-    
+
     /**
      * Landingpage.
      *
@@ -65,7 +65,7 @@ class SiteController extends Controller
     {
         return $this->render('index');
     }
-    
+
     /**
      * Login Page.
      *
@@ -86,7 +86,7 @@ class SiteController extends Controller
             ]);
         }
     }
-    
+
     /**
      * Logout.
      *

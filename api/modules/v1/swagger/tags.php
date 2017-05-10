@@ -1,5 +1,5 @@
 <?php
-/**
+/*
  * @SWG\Tag(
  *   name="user",
  *   description="用户信息操作"
