@@ -1,4 +1,4 @@
-preset: symfony
+preset: Symfony
 
 linting: true
 
@@ -6,3 +6,6 @@ enabled:
   - strict
   - strict_param
   - ordered_use
+
+disabled:
+  - concat_without_spaces
